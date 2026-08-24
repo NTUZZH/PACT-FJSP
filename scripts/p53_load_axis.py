@@ -1,0 +1,265 @@
+r"""The load axis: one joint policy against per-regime specialists as the shop
+fills up.
+
+Both sides are trained at 10 modules on 25 stations and neither is retrained,
+so every cell above 10 modules is zero-shot for BOTH. What changes across the
+three sizes is the shop's load, jobs per station, which rises 0.4 -> 0.8 -> 1.2.
+
+Estimator and conventions are p11_equivalence.py's, deliberately: the mean
+per-instance relative makespan gap, paired over instances, 20k-resample
+bootstrap on rng seed 7, both sides pooled over the SAME seed set. A cell whose
+two sides have different seed pools is refused rather than reported, because
+pooling three seeds against one averages the noise out of one side only.
+
+The claims are about the two sizes neither side trained on, so those 16 cells
+(8 regimes x 2 sizes) are the discovery family and their two-sided bootstrap p
+values are Holm-adjusted across the 16, as E1 and E3 correct theirs. The
+training-size column repeats a comparison E1 and E2 already certify under their
+own family and is printed here as the baseline, without a second verdict.
+Equivalence against the +-1% margin is a pre-specified assertion, uncorrected.
+
+Usage: python scripts/p53_load_axis.py
+"""
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import numpy as np
+
+from macro_io import emit, refuse
+
+REGIMES = ['N', 'L', 'S', 'W', 'LS', 'LW', 'SW', 'LSW']
+SIZES = ['10x25', '20x25', '30x25']
+WORD = {'10x25': 'Ten', '20x25': 'Twenty', '30x25': 'Thirty'}
+NJ = {'10x25': 10, '20x25': 20, '30x25': 30}
+NM = 25
+JOINT = 'greedy+10x25+family+jointblind-v1'
+SEED_SFX = ('', '-s302', '-s303')
+MARGIN = 1.0
+HOLM_SIZES = ('20x25', '30x25')   # the two sizes neither side trained on
+ALPHA = 0.05
+N_BOOT = 20000
+MACROS = 'paper/macros_load.tex'
+DATA = 'results/load_axis.json'
+
+rng = np.random.default_rng(7)          # one stream, fixed consumption order
+
+
+def arr(size, tag, r):
+    p = f'test_results/FAMILY/{size}/Result_{tag}_{r}.npy'
+    if not os.path.exists(p):
+        return None
+    a = np.load(p)
+    return (a[:, 0] if a.ndim > 1 else a).astype(float)
+
+
+def pooled(size, base, r):
+    xs = [arr(size, f'{base}{s}', r) for s in SEED_SFX]
+    xs = [x for x in xs if x is not None]
+    return (np.mean(xs, axis=0), len(xs)) if xs else (None, 0)
+
+
+def ci(d):
+    n = len(d)
+    bs = d[rng.integers(0, n, (N_BOOT, n))].mean(axis=1)
+    lo, hi = np.percentile(bs, [2.5, 97.5])
+    p = 2.0 * (1 + min(int((bs <= 0).sum()), int((bs >= 0).sum()))) / (N_BOOT + 1)
+    return float(d.mean()), float(lo), float(hi), min(1.0, p)
+
+
+def holm(ps):
+    """Holm-Bonferroni adjusted p values, order preserved."""
+    order = sorted(range(len(ps)), key=lambda i: ps[i])
+    out = [0.0] * len(ps)
+    run = 0.0
+    for rank, i in enumerate(order):
+        run = max(run, (len(ps) - rank) * ps[i])
+        out[i] = min(1.0, run)
+    return out
+
+
+cells, asym, missing, spec_rows = [], [], [], []
+for size in SIZES:
+    for r in REGIMES:
+        a, na = pooled(size, JOINT, r)
+        b, nb = pooled(size, f'greedy+10x25+family+spec-{r}', r)
+        if a is None or b is None:
+            missing.append(f'{size}/{r} (joint {na} seeds, spec {nb} seeds)')
+            continue
+        if na != nb:
+            asym.append(f'{size}/{r}: {na} vs {nb} seeds')
+            continue
+        m, lo, hi, p = ci(100 * (a - b) / b)
+        cells.append(dict(size=size, regime=r, mean=m, lo=lo, hi=hi, p=p,
+                          n=len(a), seeds=na))
+
+if missing:
+    refuse(MACROS, 'missing evaluations: ' + '; '.join(missing))
+    sys.exit(1)
+if asym:
+    refuse(MACROS, 'asymmetric seed pools: ' + '; '.join(asym))
+    sys.exit(1)
+
+# The claims this script makes are about the two sizes NEITHER side trained on,
+# so those 16 cells are the discovery family and the correction runs over them
+# alone. The training-size column is not a new claim: it repeats the comparison
+# E1 and E2 already report, under their own correction, and is printed here as
+# the baseline the other two columns move away from. Correcting all 24 together
+# would silently restate E1's verdicts under a wider family than E1 used, and
+# the same regime would then carry two different verdicts in one paper.
+new = [c for c in cells if c['size'] in HOLM_SIZES]
+for c, q in zip(new, holm([c['p'] for c in new])):
+    c['p_holm'] = q
+    # A win must clear BOTH the interval and the corrected test: the CI keeps
+    # the effect direction honest, Holm keeps the simultaneous looks honest.
+    if c['hi'] < 0 and q < ALPHA:
+        c['verdict'] = 'joint'
+    elif c['lo'] > 0 and q < ALPHA:
+        c['verdict'] = 'specialist'
+    elif -MARGIN < c['lo'] and c['hi'] < MARGIN:
+        c['verdict'] = 'equivalent'
+    else:
+        c['verdict'] = 'inconclusive'
+for c in cells:
+    if c['size'] not in HOLM_SIZES:
+        c['p_holm'] = None
+        c['verdict'] = 'baseline'
+
+lines = ['% auto-generated by scripts/p53_load_axis.py -- do not hand-edit',
+         '% joint vs per-regime specialist; negative = the joint policy is faster.',
+         '% Both sides trained at 10x25; 20x25 and 30x25 are zero-shot for both.']
+print(f'{"size":8s} {"reg":4s} {"gap":>7s}  {"CI":>16s}  {"p_holm":>8s}  verdict')
+for size in SIZES:
+    sel = [c for c in cells if c['size'] == size]
+    w = WORD[size]
+    nwin = sum(c['verdict'] == 'joint' for c in sel)
+    nlose = sum(c['verdict'] == 'specialist' for c in sel)
+    for c in sel:
+        q = '      --' if c['p_holm'] is None else f'{c["p_holm"]:8.4f}'
+        print(f'{c["size"]:8s} {c["regime"]:4s} {c["mean"]:+7.2f}  '
+              f'[{c["lo"]:+6.2f},{c["hi"]:+6.2f}]  {q}  {c["verdict"]}')
+    # the pooled-over-regimes gap at this size, one number per size
+    allg = np.concatenate([100 * (pooled(size, JOINT, c['regime'])[0]
+                                  - pooled(size, f'greedy+10x25+family+spec-'
+                                                 f'{c["regime"]}', c['regime'])[0])
+                           / pooled(size, f'greedy+10x25+family+spec-'
+                                          f'{c["regime"]}', c['regime'])[0]
+                           for c in sel])
+    m, lo, hi, _ = ci(allg)
+    spec_rows.append(dict(size=size, mean=m, lo=lo, hi=hi))
+    lines += [
+        f'\\newcommand{{\\Load{w}Jobs}}{{{NJ[size]}}}',
+        f'\\newcommand{{\\Load{w}Ratio}}{{{NJ[size] / NM:.1f}}}',
+        f'\\newcommand{{\\Load{w}Win}}{{{nwin}}}'
+        f'\\newcommand{{\\Load{w}Lose}}{{{nlose}}}',
+        f'\\newcommand{{\\Load{w}MeanAbs}}{{{abs(m):.2f}}}'
+        f'\\newcommand{{\\Load{w}Mean}}{{{m:+.2f}}}'
+        f'\\newcommand{{\\Load{w}Lo}}{{{lo:+.2f}}}'
+        f'\\newcommand{{\\Load{w}Hi}}{{{hi:+.2f}}}',
+        # the same number stated as a positive lead, for prose that says
+        # "ahead by"; sign-flipped once, here, so no sentence flips it by hand
+        f'\\newcommand{{\\Load{w}Ahead}}{{{-m:.2f}}}'
+        f'\\newcommand{{\\Load{w}AheadLo}}{{{-hi:.2f}}}'
+        f'\\newcommand{{\\Load{w}AheadHi}}{{{-lo:.2f}}}',
+    ]
+    for c in sel:
+        # signed for a table column; unsigned for prose that already says
+        # "ahead" or "behind", so one paragraph never mixes the conventions
+        lines.append(
+            f'\\newcommand{{\\Load{w}{c["regime"]}}}{{{c["mean"]:+.2f}}}'
+            f'\\newcommand{{\\Load{w}{c["regime"]}Abs}}{{{abs(c["mean"]):.2f}}}'
+            f'\\newcommand{{\\Load{w}{c["regime"]}Lo}}{{{c["lo"]:+.2f}}}'
+            f'\\newcommand{{\\Load{w}{c["regime"]}Hi}}{{{c["hi"]:+.2f}}}')
+    print(f'  -> {size}: joint ahead on {nwin}, specialist ahead on {nlose}, '
+          f'pooled {m:+.2f}% [{lo:+.2f},{hi:+.2f}]')
+
+lines.append(f'\\newcommand{{\\LoadStations}}{{{NM}}}')
+lines.append(f'\\newcommand{{\\LoadRegimes}}{{{len(REGIMES)}}}')
+lines.append(f'\\newcommand{{\\LoadTests}}{{{len(new)}}}')
+
+# The same load axis against the other rival, so one figure can show both.
+# SPT is the paper's "best rule" everywhere (Sec. VI Protocol), fixed rather
+# than picked per instance, and it is pooled over the same eight regimes as
+# the specialist comparison above so the two curves are commensurable.
+rule_rows = []
+for size in SIZES:
+    d = []
+    for r in REGIMES:
+        a, na = pooled(size, JOINT, r)
+        b = arr(size, 'SPT', r)
+        if a is None or b is None:
+            refuse(MACROS, f'missing SPT reference at {size}/{r}')
+            sys.exit(1)
+        d.append(100 * (a - b) / b)
+    m, lo, hi, _ = ci(np.concatenate(d))
+    rule_rows.append(dict(size=size, mean=m, lo=lo, hi=hi))
+    w = WORD[size]
+    lines.append(f'\\newcommand{{\\Load{w}Rule}}{{{m:+.2f}}}'
+                 f'\\newcommand{{\\Load{w}RuleLo}}{{{lo:+.2f}}}'
+                 f'\\newcommand{{\\Load{w}RuleHi}}{{{hi:+.2f}}}')
+    print(f'  -> {size}: vs SPT {m:+.2f}% [{lo:+.2f},{hi:+.2f}]')
+
+# The conditioned variant on the same axis. It is the paper's evaluated
+# pathway, not the released model, and the question here is only whether the
+# transfer belongs to joint training or to the released architecture.
+COND = 'greedy+10x25+family+joint-v1'
+cond_rows = []
+for size in SIZES:
+    d, seeds_ok = [], True
+    for r in REGIMES:
+        a, na = pooled(size, COND, r)
+        b, nb = pooled(size, f'greedy+10x25+family+spec-{r}', r)
+        if a is None or b is None or na != nb:
+            seeds_ok = False
+            break
+        d.append(100 * (a - b) / b)
+    if not seeds_ok:
+        refuse(MACROS, f'conditioned-variant arm incomplete at {size}')
+        sys.exit(1)
+    m, lo, hi, _ = ci(np.concatenate(d))
+    cond_rows.append(dict(size=size, mean=m, lo=lo, hi=hi))
+    w = WORD[size]
+    lines.append(f'\\newcommand{{\\LoadCond{w}}}{{{m:+.2f}}}'
+                 f'\\newcommand{{\\LoadCond{w}Abs}}{{{abs(m):.2f}}}'
+                 f'\\newcommand{{\\LoadCond{w}Lo}}{{{lo:+.2f}}}'
+                 f'\\newcommand{{\\LoadCond{w}Hi}}{{{hi:+.2f}}}')
+    print(f'  -> {size}: conditioned variant vs specialists {m:+.2f}% '
+          f'[{lo:+.2f},{hi:+.2f}]')
+
+emit(MACROS, lines)
+
+# The supplement's full table: every regime at every size, one cell per
+# (regime, size), so the main text can print counts and the reader can check
+# each one. Generated whole, like every other table in this paper.
+TABLE = 'paper/tables/load_table.tex'
+os.makedirs(os.path.dirname(TABLE), exist_ok=True)
+SHORT = {'joint': 'policy', 'specialist': 'spec.', 'equivalent': 'equiv.',
+         'inconclusive': '---', 'baseline': ''}
+with open(TABLE, 'w') as f:
+    f.write('% auto-generated by scripts/p53_load_axis.py -- do not hand-edit\n')
+    f.write('\\begin{tabular}{l' + 'r@{\\,}l' * len(SIZES) + '}\n\\toprule\n')
+    f.write('regime & ' + ' & '.join(
+        f'\\multicolumn{{2}}{{c}}{{{NJ[s]} modules}}' for s in SIZES) + '\\\\\n')
+    f.write('\\midrule\n')
+    for r in REGIMES:
+        row = [f'${r}$']
+        for s in SIZES:
+            c = next(c for c in cells if c['size'] == s and c['regime'] == r)
+            row.append(f'${c["mean"]:+.2f}$ & '
+                       f'\\footnotesize{{{SHORT[c["verdict"]]}}}')
+        f.write(' & '.join(row) + '\\\\\n')
+    f.write('\\midrule\npooled & ' + ' & '.join(
+        f'${next(x for x in spec_rows if x["size"] == s)["mean"]:+.2f}$ & '
+        for s in SIZES) + '\\\\\n')
+    f.write('\\bottomrule\n\\end{tabular}\n')
+print(f'wrote {TABLE}')
+
+os.makedirs('results', exist_ok=True)
+import json
+with open(DATA, 'w') as f:
+    json.dump(dict(cells=cells, rule=rule_rows, spec=spec_rows,
+                   sizes=SIZES, regimes=REGIMES,
+                   n_machines=NM, jobs=NJ, margin=MARGIN, alpha=ALPHA), f,
+              indent=1)
+print(f'wrote {DATA}')

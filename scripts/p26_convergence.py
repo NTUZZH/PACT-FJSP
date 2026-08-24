@@ -1,0 +1,131 @@
+"""P26: did the joint policy stop improving before we stopped training it?
+
+E1 reports that the joint policy is inferior to its specialist on W, and explains
+it by construction: the shaping envelope assigns WINDOW the trivial lower bound
+(delta = 0), so the reward carries no outage information (Sec. theory). That
+explanation is only worth anything if the alternative is ruled out. The obvious
+alternative is that the joint is simply UNDERTRAINED on W: it sees a sixth of the
+batch, ~1/3 of its specialist's experience per regime, and 2000 updates may
+simply not be enough for the one regime the reward does not help it with.
+
+The honest answer to this is not "we think so". It is the
+learning curve. train_family.py validates every 25 updates and logs the makespan
+PER REGIME, so the curve exists already and no retraining is needed to read it.
+
+This script reads those curves out of train_log/FAMILY_joint-v1*.log and asks, for
+each regime and each of the three seeds, whether validation was still descending
+when training stopped: it compares the mean over the final fifth of training with
+the mean over the fifth before it.
+
+WHAT IT MAY NOT CLAIM. A first pass over seed 301 alone showed W degrading by
+1.3% over the final fifth, which is a tidy story (the unanchored regime drifts as
+the shared weights chase the five regimes the reward does help with). It does not
+survive the other two seeds: s302 shows W IMPROVING by 0.46%. So the script emits
+the PLATEAU fact, which all three seeds support, and not the drift story, which
+they do not. The macro is the worst-case magnitude across every regime and seed,
+so the sentence it backs cannot be stronger than the weakest seed allows.
+
+Emits macros_conv.tex.
+
+Usage: python scripts/p26_convergence.py
+"""
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import numpy as np
+
+LOGS = ['train_log/FAMILY_joint-v1.log',
+        'train_log/FAMILY_joint-v1-s302.log',
+        'train_log/FAMILY_joint-v1-s303.log']
+REGIMES = ['N', 'L', 'S', 'W', 'LS', 'LW']
+# [vali @475] rel=0.8712 (best 0.8687)  N=133.1  L=211.9  ...
+VALI = re.compile(
+    r'\[vali @(\d+)\] rel=[\d.]+[^\n]*?' +
+    r'\s+'.join(f'{r}=([\\d.]+)' for r in REGIMES))
+
+
+def curves(path):
+    """update -> {regime: validation makespan}, straight out of the log."""
+    rows = VALI.findall(open(path, errors='replace').read())
+    if not rows:
+        return None
+    upd = np.array([int(r[0]) for r in rows])
+    return upd, {r: np.array([float(row[1 + i]) for row in rows])
+                 for i, r in enumerate(REGIMES)}
+
+
+def tail_change(v):
+    """% change of the final fifth against the fifth before it.
+
+    Positive = still improving (makespan falling). Negative = drifting back up.
+    A curve that has flattened gives a number near zero either way, which is the
+    only thing we are entitled to conclude from three seeds.
+    """
+    n = len(v)
+    last = v[-n // 5:].mean()
+    prev = v[-2 * (n // 5):-n // 5].mean()
+    return 100.0 * (prev - last) / prev
+
+
+rows = []
+for path in LOGS:
+    if not os.path.exists(path):
+        print(f'MISSING {path}')
+        continue
+    got = curves(path)
+    if got is None:
+        print(f'no [vali] lines in {path}')
+        continue
+    _, reg = got
+    seed = re.search(r'(s30\d)', path).group(1) if 's30' in path else 's301'
+    rows.append((seed, {r: tail_change(reg[r]) for r in REGIMES}))
+
+if len(rows) < 3:
+    raise SystemExit(f'need all three seeds; found {len(rows)}. Not emitting.')
+
+print(f'{"seed":6}' + ''.join(f'{r:>8}' for r in REGIMES))
+print('  (% improvement of the final fifth over the one before it; '
+      '+ = still learning)')
+print('-' * 56)
+for seed, d in rows:
+    print(f'{seed:6}' + ''.join(f'{d[r]:+8.2f}' for r in REGIMES))
+print('-' * 56)
+print(f'{"mean":6}' + ''.join(
+    f'{np.mean([d[r] for _, d in rows]):+8.2f}' for r in REGIMES))
+
+# The question E1 has to answer is about W, so the macro has to be about W. The
+# first version of this script emitted the largest remaining improvement over ALL
+# regimes and seeds, which came out at +1.06% -- and that was N on s302, a regime
+# nobody is asking about. Quoting it under a sentence about W would answer a
+# question that was not asked, with a number from a regime that was not asked
+# about. So: the most the unspent fifth of training could still have bought ON W,
+# on the single most favourable seed.
+w_best = max(d['W'] for _, d in rows)        # +0.46 on s302; the other two are negative
+w_down = sum(1 for _, d in rows if d['W'] < 0)
+print(f'\nW, most improvement still available on any seed : {w_best:+.2f}%')
+print(f'W, seeds that moved BACKWARDS over the final fifth: {w_down}/{len(rows)}')
+print('=> training had stopped buying improvement on W before the budget ran out,')
+print('   so the W deficit is not an artefact of stopping early. It is NOT evidence')
+print('   that W actively degrades: the three seeds disagree on the sign.')
+
+out = [
+    '% auto-generated by scripts/p26_convergence.py -- do not hand-edit',
+    '% Read from the per-regime validation curves train_family.py already logs every',
+    '% 25 updates; no retraining. Backs one sentence in E1: the joint had stopped',
+    '% improving ON W before the update budget ran out, so its W deficit is not',
+    '% undertraining. It does NOT license the stronger claim that W degrades during',
+    '% training: s302 shows W improving, and the paper must not say what only two of',
+    '% three seeds support.',
+    f'\\newcommand{{\\ConvWBest}}{{{max(w_best, 0.0):.1f}}}'
+    '  % most the unspent final fifth could still have bought on W, best seed (%)',
+    f'\\newcommand{{\\ConvWDown}}{{{w_down}}}'
+    '  % ... and the seeds on which W moved backwards instead',
+    f'\\newcommand{{\\ConvSeeds}}{{{len(rows)}}}'
+    '  % seeds the plateau is established over',
+]
+with open('paper/macros_conv.tex', 'w') as f:
+    f.write('\n'.join(out) + '\n')
+print('\nwrote paper/macros_conv.tex')
