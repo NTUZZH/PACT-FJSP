@@ -1,0 +1,1005 @@
+{
+ "generator": "scripts/p73_effect_sizes.py",
+ "scipy": "1.18.0",
+ "numpy": "2.4.6",
+ "bootstrap_resamples": 20000,
+ "bootstrap_seed": 7,
+ "zero_handling": "nonzero differences only (scipy zero_method='wilcox')",
+ "verification": {
+  "E1/E2 superiority": {
+   "reproduced_exactly": true,
+   "family": [
+    [
+     "E1",
+     "N"
+    ]
+   ],
+   "compared": "12 bootstrap estimates and p, 1 Holm p",
+   "sandbox_files_vs_manuscript": {
+    "paper/macros_eq.tex": "identical"
+   }
+  },
+  "E3 token interventions": {
+   "reproduced_exactly": true,
+   "compared": "30 Wilcoxon p, 30 Holm p",
+   "sandbox_files_vs_manuscript": {
+    "paper/macros_e3.tex": "identical"
+   }
+  },
+  "E6 scale transfer": {
+   "reproduced_exactly": true,
+   "compared": "16 Wilcoxon p, 16 Holm p",
+   "sandbox_files_vs_manuscript": {
+    "paper/macros_e6.tex": "identical",
+    "paper/tables/e6_table.tex": "identical"
+   }
+  }
+ },
+ "tests": [
+  {
+   "family": "E1/E2 superiority",
+   "comparison": "policy vs specialist",
+   "regime": "N",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 89,
+   "n_zero": 11,
+   "mean_diff_h": -0.556666666666666,
+   "diff_ci95_h": [
+    -0.9766666666666657,
+    -0.13666666666666671
+   ],
+   "mean_gap_pct": -0.4107665900281493,
+   "W_plus": 1379.0,
+   "W_minus": 2626.0,
+   "r": -0.31136079900124847,
+   "wilcoxon_two_sided": {
+    "statistic": 1379.0,
+    "p": 0.010687828324778654
+   },
+   "p_raw": 0.010299485025748713,
+   "p_holm": 0.010299485025748713,
+   "p_kind": "paired-bootstrap (p11), Holm",
+   "subfamily": "E1",
+   "seeds_pooled": 3,
+   "bootstrap_gap_ci95_pct": [
+    -0.7257042076076363,
+    -0.09448987609770954
+   ],
+   "family_size": 1,
+   "files": [
+    "greedy+10x25+family+jointblind-v1",
+    "greedy+10x25+family+spec-N"
+   ],
+   "note": "Wilcoxon p and r are descriptive companions on the same pooled pairing; the test of record is the bootstrap p."
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "conflicting token vs true token",
+   "regime": "L",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 91,
+   "n_zero": 9,
+   "mean_diff_h": -0.75,
+   "diff_ci95_h": [
+    -1.9,
+    0.36
+   ],
+   "mean_gap_pct": -0.30732932892315906,
+   "W_plus": 1798.5,
+   "W_minus": 2387.5,
+   "r": -0.14070711896798854,
+   "wilcoxon_two_sided": {
+    "statistic": 1798.5,
+    "p": 0.24269034916890164
+   },
+   "p_raw": 0.24269034916890164,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "conflicting",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1798.5,
+    "p": 0.8786548254155492,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "conflicting token vs true token",
+   "regime": "S",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 94,
+   "n_zero": 6,
+   "mean_diff_h": -1.58,
+   "diff_ci95_h": [
+    -2.38,
+    -0.8
+   ],
+   "mean_gap_pct": -0.7852744852396204,
+   "W_plus": 1305.0,
+   "W_minus": 3160.0,
+   "r": -0.4154535274356103,
+   "wilcoxon_two_sided": {
+    "statistic": 1305.0,
+    "p": 0.0004482739190306072
+   },
+   "p_raw": 0.0004482739190306072,
+   "p_holm": 0.006275834866428501,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "conflicting",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1305.0,
+    "p": 0.9997758630404847,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "conflicting token vs true token",
+   "regime": "W",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 94,
+   "n_zero": 6,
+   "mean_diff_h": 4.18,
+   "diff_ci95_h": [
+    2.79,
+    5.62
+   ],
+   "mean_gap_pct": 2.9081366512082782,
+   "W_plus": 3597.5,
+   "W_minus": 867.5,
+   "r": 0.6114221724524076,
+   "wilcoxon_two_sided": {
+    "statistic": 867.5,
+    "p": 2.5733493724958334e-07
+   },
+   "p_raw": 2.5733493724958334e-07,
+   "p_holm": 3.86002405874375e-06,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "conflicting",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 3597.5,
+    "p": 1.2866746862479167e-07,
+    "p_holm": 1.930012029371875e-06
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "conflicting token vs true token",
+   "regime": "LS",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 89,
+   "n_zero": 11,
+   "mean_diff_h": -1.61,
+   "diff_ci95_h": [
+    -2.97,
+    -0.31975000000002185
+   ],
+   "mean_gap_pct": -0.5549174036720484,
+   "W_plus": 1433.0,
+   "W_minus": 2572.0,
+   "r": -0.284394506866417,
+   "wilcoxon_two_sided": {
+    "statistic": 1433.0,
+    "p": 0.019582420583158518
+   },
+   "p_raw": 0.019582420583158518,
+   "p_holm": 0.22620800978769123,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "conflicting",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1433.0,
+    "p": 0.9902087897084207,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "conflicting token vs true token",
+   "regime": "LW",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 89,
+   "n_zero": 11,
+   "mean_diff_h": -0.36,
+   "diff_ci95_h": [
+    -1.96,
+    1.16
+   ],
+   "mean_gap_pct": -0.07649932016576667,
+   "W_plus": 1860.5,
+   "W_minus": 2144.5,
+   "r": -0.07091136079900125,
+   "wilcoxon_two_sided": {
+    "statistic": 1860.5,
+    "p": 0.5606685794272992
+   },
+   "p_raw": 0.5606685794272992,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "conflicting",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1860.5,
+    "p": 0.7196657102863504,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token withheld vs true token",
+   "regime": "L",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 90,
+   "n_zero": 10,
+   "mean_diff_h": -0.79,
+   "diff_ci95_h": [
+    -1.75,
+    0.18
+   ],
+   "mean_gap_pct": -0.3410187617825356,
+   "W_plus": 1606.0,
+   "W_minus": 2489.0,
+   "r": -0.21562881562881564,
+   "wilcoxon_two_sided": {
+    "statistic": 1606.0,
+    "p": 0.07482923176675933
+   },
+   "p_raw": 0.07482923176675933,
+   "p_holm": 0.7482923176675933,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "withheld",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1606.0,
+    "p": 0.9625853841166203,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token withheld vs true token",
+   "regime": "S",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 91,
+   "n_zero": 9,
+   "mean_diff_h": -1.66,
+   "diff_ci95_h": [
+    -2.55,
+    -0.8
+   ],
+   "mean_gap_pct": -0.8056066198917686,
+   "W_plus": 1254.0,
+   "W_minus": 2932.0,
+   "r": -0.40086000955566176,
+   "wilcoxon_two_sided": {
+    "statistic": 1254.0,
+    "p": 0.0008681910408580969
+   },
+   "p_raw": 0.0008681910408580969,
+   "p_holm": 0.01128648353115526,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "withheld",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1254.0,
+    "p": 0.9995659044795709,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token withheld vs true token",
+   "regime": "W",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 88,
+   "n_zero": 12,
+   "mean_diff_h": -0.36,
+   "diff_ci95_h": [
+    -1.24,
+    0.53
+   ],
+   "mean_gap_pct": -0.19694171173800132,
+   "W_plus": 1682.0,
+   "W_minus": 2234.0,
+   "r": -0.14096016343207354,
+   "wilcoxon_two_sided": {
+    "statistic": 1682.0,
+    "p": 0.24919662325971048
+   },
+   "p_raw": 0.24919662325971048,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "withheld",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1682.0,
+    "p": 0.8754016883701448,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token withheld vs true token",
+   "regime": "LS",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 89,
+   "n_zero": 11,
+   "mean_diff_h": -1.61,
+   "diff_ci95_h": [
+    -3.04,
+    -0.28
+   ],
+   "mean_gap_pct": -0.5447450028332704,
+   "W_plus": 1705.5,
+   "W_minus": 2299.5,
+   "r": -0.14831460674157304,
+   "wilcoxon_two_sided": {
+    "statistic": 1705.5,
+    "p": 0.223140381064714
+   },
+   "p_raw": 0.223140381064714,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "withheld",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1705.5,
+    "p": 0.888429809467643,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token withheld vs true token",
+   "regime": "LW",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 89,
+   "n_zero": 11,
+   "mean_diff_h": -0.09,
+   "diff_ci95_h": [
+    -1.6702499999999998,
+    1.54
+   ],
+   "mean_gap_pct": 0.03156787459226937,
+   "W_plus": 1853.0,
+   "W_minus": 2152.0,
+   "r": -0.07465667915106117,
+   "wilcoxon_two_sided": {
+    "statistic": 1853.0,
+    "p": 0.5401012435212709
+   },
+   "p_raw": 0.5401012435212709,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "withheld",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1853.0,
+    "p": 0.7299493782393646,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token and active channels removed vs true token",
+   "regime": "L",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 89,
+   "n_zero": 11,
+   "mean_diff_h": -0.24,
+   "diff_ci95_h": [
+    -1.28,
+    0.8
+   ],
+   "mean_gap_pct": -0.07211336320715561,
+   "W_plus": 1906.0,
+   "W_minus": 2099.0,
+   "r": -0.048189762796504367,
+   "wilcoxon_two_sided": {
+    "statistic": 1906.0,
+    "p": 0.6922910864594203
+   },
+   "p_raw": 0.6922910864594203,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "full-blind",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1906.0,
+    "p": 0.6538544567702899,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token and active channels removed vs true token",
+   "regime": "S",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 86,
+   "n_zero": 14,
+   "mean_diff_h": -1.15,
+   "diff_ci95_h": [
+    -2.06,
+    -0.24975000000002182
+   ],
+   "mean_gap_pct": -0.5398744551066513,
+   "W_plus": 1326.5,
+   "W_minus": 2414.5,
+   "r": -0.2908313285217856,
+   "wilcoxon_two_sided": {
+    "statistic": 1326.5,
+    "p": 0.0188506674823076
+   },
+   "p_raw": 0.0188506674823076,
+   "p_holm": 0.22620800978769123,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "full-blind",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1326.5,
+    "p": 0.9905746662588462,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token and active channels removed vs true token",
+   "regime": "W",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 88,
+   "n_zero": 12,
+   "mean_diff_h": 0.05,
+   "diff_ci95_h": [
+    -0.87,
+    0.98
+   ],
+   "mean_gap_pct": 0.07573374959422562,
+   "W_plus": 1957.0,
+   "W_minus": 1959.0,
+   "r": -0.0005107252298263534,
+   "wilcoxon_two_sided": {
+    "statistic": 1957.0,
+    "p": 0.9966633872706444
+   },
+   "p_raw": 0.9966633872706444,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "full-blind",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1957.0,
+    "p": 0.5016683063646779,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token and active channels removed vs true token",
+   "regime": "LS",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 91,
+   "n_zero": 9,
+   "mean_diff_h": -1.17,
+   "diff_ci95_h": [
+    -2.55,
+    0.12
+   ],
+   "mean_gap_pct": -0.38471288564450234,
+   "W_plus": 1703.0,
+   "W_minus": 2483.0,
+   "r": -0.18633540372670807,
+   "wilcoxon_two_sided": {
+    "statistic": 1703.0,
+    "p": 0.1219935831471469
+   },
+   "p_raw": 0.1219935831471469,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "full-blind",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 1703.0,
+    "p": 0.9390032084264266,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E3 token interventions",
+   "comparison": "token and active channels removed vs true token",
+   "regime": "LW",
+   "size": null,
+   "n": 100,
+   "n_nonzero": 92,
+   "n_zero": 8,
+   "mean_diff_h": 0.7,
+   "diff_ci95_h": [
+    -0.82,
+    2.23
+   ],
+   "mean_gap_pct": 0.3989699624268331,
+   "W_plus": 2296.0,
+   "W_minus": 1982.0,
+   "r": 0.07339878447872837,
+   "wilcoxon_two_sided": {
+    "statistic": 1982.0,
+    "p": 0.5402893204246655
+   },
+   "p_raw": 0.5402893204246655,
+   "p_holm": 1.0,
+   "p_kind": "two-sided Wilcoxon (p17), Holm over 15",
+   "intervention": "full-blind",
+   "family_size": 15,
+   "one_sided_greater": {
+    "statistic": 2296.0,
+    "p": 0.27014466021233274,
+    "p_holm": 1.0
+   }
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "N",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 50,
+   "n_zero": 0,
+   "mean_diff_h": 5.920000000000003,
+   "diff_ci95_h": [
+    4.8933333333333335,
+    7.02
+   ],
+   "mean_gap_pct": 3.258941097086955,
+   "W_plus": 1274.0,
+   "W_minus": 1.0,
+   "r": 0.9984313725490196,
+   "wilcoxon_two_sided": {
+    "statistic": 1.0,
+    "p": 7.953581179438207e-10
+   },
+   "p_raw": 7.953581179438207e-10,
+   "p_holm": 6.362864943550566e-09,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "L",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 50,
+   "n_zero": 0,
+   "mean_diff_h": 7.233333333333331,
+   "diff_ci95_h": [
+    5.793333333333333,
+    8.679999999999996
+   ],
+   "mean_gap_pct": 2.8496070529061264,
+   "W_plus": 1246.5,
+   "W_minus": 28.5,
+   "r": 0.9552941176470588,
+   "wilcoxon_two_sided": {
+    "statistic": 28.5,
+    "p": 4.117696580975657e-09
+   },
+   "p_raw": 4.117696580975657e-09,
+   "p_holm": 2.470617948585394e-08,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "S",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 49,
+   "n_zero": 1,
+   "mean_diff_h": 6.0266666666666655,
+   "diff_ci95_h": [
+    3.386666666666664,
+    8.59333333333333
+   ],
+   "mean_gap_pct": 2.318438805719345,
+   "W_plus": 1028.5,
+   "W_minus": 196.5,
+   "r": 0.6791836734693878,
+   "wilcoxon_two_sided": {
+    "statistic": 196.5,
+    "p": 3.4945214995407624e-05
+   },
+   "p_raw": 3.4945214995407624e-05,
+   "p_holm": 6.989042999081525e-05,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "W",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 49,
+   "n_zero": 1,
+   "mean_diff_h": 6.666666666666665,
+   "diff_ci95_h": [
+    5.2733333333333325,
+    8.053333333333333
+   ],
+   "mean_gap_pct": 3.213796381006627,
+   "W_plus": 1186.5,
+   "W_minus": 38.5,
+   "r": 0.9371428571428572,
+   "wilcoxon_two_sided": {
+    "statistic": 38.5,
+    "p": 1.1148831450968805e-08
+   },
+   "p_raw": 1.1148831450968805e-08,
+   "p_holm": 4.459532580387522e-08,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "LS",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 49,
+   "n_zero": 1,
+   "mean_diff_h": 8.42666666666667,
+   "diff_ci95_h": [
+    6.300000000000001,
+    10.56666666666667
+   ],
+   "mean_gap_pct": 2.494847234095393,
+   "W_plus": 1160.5,
+   "W_minus": 64.5,
+   "r": 0.8946938775510204,
+   "wilcoxon_two_sided": {
+    "statistic": 64.5,
+    "p": 4.974198698934449e-08
+   },
+   "p_raw": 4.974198698934449e-08,
+   "p_holm": 1.4922596096803349e-07,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "LW",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 50,
+   "n_zero": 0,
+   "mean_diff_h": 10.386666666666667,
+   "diff_ci95_h": [
+    8.87983333333333,
+    12.013333333333335
+   ],
+   "mean_gap_pct": 3.8115897585628082,
+   "W_plus": 1273.5,
+   "W_minus": 1.5,
+   "r": 0.9976470588235294,
+   "wilcoxon_two_sided": {
+    "statistic": 1.5,
+    "p": 8.217643568074413e-10
+   },
+   "p_raw": 8.217643568074413e-10,
+   "p_holm": 6.362864943550566e-09,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "SW",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 49,
+   "n_zero": 1,
+   "mean_diff_h": 5.199999999999999,
+   "diff_ci95_h": [
+    2.0866666666666664,
+    8.040166666666655
+   ],
+   "mean_gap_pct": 1.8178566483674592,
+   "W_plus": 987.5,
+   "W_minus": 237.5,
+   "r": 0.6122448979591837,
+   "wilcoxon_two_sided": {
+    "statistic": 237.5,
+    "p": 0.00019089833225048632
+   },
+   "p_raw": 0.00019089833225048632,
+   "p_holm": 0.00019089833225048632,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "LSW",
+   "size": "20x25",
+   "n": 50,
+   "n_nonzero": 50,
+   "n_zero": 0,
+   "mean_diff_h": 10.713333333333331,
+   "diff_ci95_h": [
+    8.533333333333335,
+    12.92666666666666
+   ],
+   "mean_gap_pct": 2.9497719709476873,
+   "W_plus": 1243.5,
+   "W_minus": 31.5,
+   "r": 0.9505882352941176,
+   "wilcoxon_two_sided": {
+    "statistic": 31.5,
+    "p": 4.9059913143618886e-09
+   },
+   "p_raw": 4.9059913143618886e-09,
+   "p_holm": 2.470617948585394e-08,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "N",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 19,
+   "n_zero": 1,
+   "mean_diff_h": 7.4333333333333345,
+   "diff_ci95_h": [
+    5.2,
+    9.700000000000001
+   ],
+   "mean_gap_pct": 3.1503416486077382,
+   "W_plus": 188.0,
+   "W_minus": 2.0,
+   "r": 0.9789473684210527,
+   "wilcoxon_two_sided": {
+    "statistic": 2.0,
+    "p": 0.00018108551035952273
+   },
+   "p_raw": 0.00018108551035952273,
+   "p_holm": 0.000810000091067211,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "L",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 20,
+   "n_zero": 0,
+   "mean_diff_h": 12.383333333333331,
+   "diff_ci95_h": [
+    9.416666666666666,
+    15.333333333333325
+   ],
+   "mean_gap_pct": 4.022030270317231,
+   "W_plus": 209.0,
+   "W_minus": 1.0,
+   "r": 0.9904761904761905,
+   "wilcoxon_two_sided": {
+    "statistic": 1.0,
+    "p": 0.00010305922341480608
+   },
+   "p_raw": 0.00010305922341480608,
+   "p_holm": 0.0007214145639036426,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "S",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 20,
+   "n_zero": 0,
+   "mean_diff_h": 7.250000000000003,
+   "diff_ci95_h": [
+    2.9162500000000025,
+    11.150000000000002
+   ],
+   "mean_gap_pct": 2.1609847971753786,
+   "W_plus": 187.0,
+   "W_minus": 23.0,
+   "r": 0.780952380952381,
+   "wilcoxon_two_sided": {
+    "statistic": 23.0,
+    "p": 0.002200013062890384
+   },
+   "p_raw": 0.002200013062890384,
+   "p_holm": 0.004517556357880386,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "W",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 20,
+   "n_zero": 0,
+   "mean_diff_h": 10.766666666666667,
+   "diff_ci95_h": [
+    7.76666666666667,
+    13.633333333333335
+   ],
+   "mean_gap_pct": 4.074016692973961,
+   "W_plus": 206.0,
+   "W_minus": 4.0,
+   "r": 0.9619047619047619,
+   "wilcoxon_two_sided": {
+    "statistic": 4.0,
+    "p": 0.0001620000182134422
+   },
+   "p_raw": 0.0001620000182134422,
+   "p_holm": 0.000810000091067211,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "LS",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 20,
+   "n_zero": 0,
+   "mean_diff_h": 15.016666666666666,
+   "diff_ci95_h": [
+    8.783333333333331,
+    20.21666666666667
+   ],
+   "mean_gap_pct": 3.667582950373922,
+   "W_plus": 190.0,
+   "W_minus": 20.0,
+   "r": 0.8095238095238095,
+   "wilcoxon_two_sided": {
+    "statistic": 20.0,
+    "p": 0.001505852119293462
+   },
+   "p_raw": 0.001505852119293462,
+   "p_holm": 0.004517556357880386,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "LW",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 20,
+   "n_zero": 0,
+   "mean_diff_h": 14.483333333333329,
+   "diff_ci95_h": [
+    11.533333333333337,
+    17.41666666666666
+   ],
+   "mean_gap_pct": 4.380568332840755,
+   "W_plus": 210.0,
+   "W_minus": 0.0,
+   "r": 1.0,
+   "wilcoxon_two_sided": {
+    "statistic": 0.0,
+    "p": 1.9073486328125e-06
+   },
+   "p_raw": 1.9073486328125e-06,
+   "p_holm": 1.52587890625e-05,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "SW",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 20,
+   "n_zero": 0,
+   "mean_diff_h": 7.599999999999997,
+   "diff_ci95_h": [
+    3.7333333333333343,
+    11.383333333333331
+   ],
+   "mean_gap_pct": 2.0733935479581196,
+   "W_plus": 182.5,
+   "W_minus": 27.5,
+   "r": 0.7380952380952381,
+   "wilcoxon_two_sided": {
+    "statistic": 27.5,
+    "p": 0.0037971106608651784
+   },
+   "p_raw": 0.0037971106608651784,
+   "p_holm": 0.004517556357880386,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  },
+  {
+   "family": "E6 scale transfer",
+   "comparison": "policy vs SPT",
+   "regime": "LSW",
+   "size": "30x25",
+   "n": 20,
+   "n_nonzero": 19,
+   "n_zero": 1,
+   "mean_diff_h": 16.68333333333334,
+   "diff_ci95_h": [
+    12.666666666666677,
+    21.200000000000003
+   ],
+   "mean_gap_pct": 3.819128629185681,
+   "W_plus": 190.0,
+   "W_minus": 0.0,
+   "r": 1.0,
+   "wilcoxon_two_sided": {
+    "statistic": 0.0,
+    "p": 0.0001314204445389205
+   },
+   "p_raw": 0.0001314204445389205,
+   "p_holm": 0.000788522667233523,
+   "p_kind": "two-sided Wilcoxon (p18), Holm over 8 per size",
+   "best_rule": "SPT",
+   "family_size": 8,
+   "seeds_pooled": 3
+  }
+ ]
+}

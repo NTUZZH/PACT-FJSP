@@ -28,7 +28,22 @@ axes stay order-isomorphic (asserted below).
 
 Legacy mode (`family_mode=False`) keeps the parent's exact feature set —
 the E0 bit-exact regression anchor.
+
+RELEASE (candidate fourth rule, evaluation only): a descriptor may carry
+release dates rho_i (integer hours per job). They are applied by
+initialising the job-ready time of job i to rho_i on both time axes, which is
+the start map b -> max(b, rho_i) on the job's first operation; every later
+start already goes through max(job_ready, ...). The shaping potential keeps
+its trivial envelope for this rule (op_ct_lb is untouched), the observation
+has no new channel, and the mask is the parent's non-delay rule. The parent
+builds its first-decision mask with every job ready at 0 and machine-side
+delays ignored; with release dates the first decision instant is
+min_i rho_i and only jobs released at that instant are admissible, which is
+the same rule restricted to readiness. The branch runs only when some
+descriptor carries a release field; with release=None every code path is the
+unchanged published one (tests/test_release.py asserts it).
 """
+import copy
 import numpy as np
 import sys
 import os
@@ -159,6 +174,20 @@ class FJSPEnvFamily(FJSPEnvForSameOpNums):
                                       for d in descriptor_list])  # [E]
         self.horizon_norm = self.true_horizon * slope
 
+        # release dates (candidate fourth rule). Guarded: without any release
+        # field nothing below or in initial_vars changes.
+        J = job_length_list[0].shape[0]
+        self._has_release = any(getattr(d, 'release', None) is not None
+                                for d in descriptor_list)
+        if self._has_release:
+            self.true_release = np.zeros((E, J))
+            for e, d in enumerate(descriptor_list):
+                if getattr(d, 'release', None) is not None:
+                    r = np.asarray(d.release, dtype=float)
+                    assert r.shape == (J,), f'release must have length J={J}'
+                    self.true_release[e] = r
+            self.release_norm = self.true_release * slope
+
         time_lag_list = [d.lag for d in descriptor_list]
 
         state = super().set_initial_data(job_length_list, op_pt_list,
@@ -170,6 +199,9 @@ class FJSPEnvFamily(FJSPEnvForSameOpNums):
         assert abs(self.pt_lower_bound) < 1e-12, \
             'family env requires pt_lower_bound == 0 (pure slope normalization)'
 
+        if self._has_release:
+            self._apply_release_first_mask()
+
         # global constraint token g [E, 12]
         mean_pt_true = np.array([float(p[p > 0].mean()) for p in raw_pt])
         self.token_g = np.stack([
@@ -179,14 +211,43 @@ class FJSPEnvFamily(FJSPEnvForSameOpNums):
         self.old_state.token_tensor = self.state.token_tensor
         return self.state
 
-    def _attach_token(self):
-        self.state.token_tensor = torch.from_numpy(
-            np.copy(self.token_g)).float().to(self.state.device)
+    def _apply_release_first_mask(self):
+        """First-decision non-delay mask under release dates: only pairs
+        whose job is released at the first decision instant min_i rho_i are
+        admissible (initial_vars sets pair_free_time and next_schedule_time).
+        Rebuilds the step-0 state the parent built with every job ready at 0."""
+        unavailable = (self.pair_free_time
+                       > self.next_schedule_time[:, None, None])
+        self.dynamic_pair_mask = np.logical_or(self.candidate_process_relation,
+                                               unavailable)
+        self.comp_idx = self.logic_operator(x=~self.dynamic_pair_mask)
+        self.mch_current_available_jc_nums = np.sum(~self.dynamic_pair_mask,
+                                                    axis=1)
+        self.construct_mch_features()
+        self.construct_pair_features()
+        self.old_state.update(self.fea_j, self.op_mask, self.fea_m,
+                              self.mch_mask, self.dynamic_pair_mask,
+                              self.comp_idx, self.candidate, self.fea_pairs,
+                              op_type=self.op_type, mch_type=self.mch_type)
+        self.old_mch_current_available_jc_nums = np.copy(
+            self.mch_current_available_jc_nums)
+        self.state = copy.deepcopy(self.old_state)
 
     def reset(self):
         state = super().reset()
+        if getattr(self, '_has_release', False):
+            # the parent's reset restores the step-0 state but not the
+            # env-side mask arrays the dispatching rules read; restore the
+            # release-restricted step-0 ones
+            self.dynamic_pair_mask = np.copy(
+                self.old_state.dynamic_pair_mask_tensor.cpu().numpy())
+            self.comp_idx = self.logic_operator(x=~self.dynamic_pair_mask)
         self._attach_token()
         return state
+
+    def _attach_token(self):
+        self.state.token_tensor = torch.from_numpy(
+            np.copy(self.token_g)).float().to(self.state.device)
 
     # ------------------------------------------------------------------
     # dynamic state
@@ -199,6 +260,14 @@ class FJSPEnvFamily(FJSPEnvForSameOpNums):
             self.mch_last_class = np.full(
                 (self.number_of_envs, self.number_of_machines), IDLE_CLASS,
                 dtype=int)
+        if getattr(self, '_has_release', False):
+            # job i is ready at rho_i on both axes: the start map
+            # b -> max(b, rho_i) on its first operation
+            self.candidate_free_time = np.copy(self.release_norm)
+            self.true_candidate_free_time = np.copy(self.true_release)
+            self.next_schedule_time = self.release_norm.min(axis=1)
+            self.pair_free_time = np.repeat(
+                self.release_norm[:, :, None], self.number_of_machines, axis=2)
 
     # ------------------------------------------------------------------
     # δ-hooks

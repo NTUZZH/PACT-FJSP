@@ -221,6 +221,7 @@ out = [
     f'\\newcommand{{\\EsevenZeroLo}}{{{lo_zero:+.2f}}}',
     f'\\newcommand{{\\EsevenZeroHi}}{{{hi_zero:+.2f}}}',
     f'\\newcommand{{\\EsevenCtrlZeroDelta}}{{{ctrl["zero"][0]:+.2f}}}',
+    f'\\newcommand{{\\EsevenCtrlZeroAbs}}{{{abs(ctrl["zero"][0]):.2f}}}',
     f'\\newcommand{{\\EsevenCtrlMaxDelta}}{{{ctrl["max"][0]:+.2f}}}',
     f'\\newcommand{{\\EsevenSeeds}}{{{len(SEEDS)}}}',
 ]

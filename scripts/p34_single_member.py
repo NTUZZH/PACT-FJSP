@@ -20,8 +20,8 @@ apart on the four compositions: behind the dispatching rules, behind the
 specialists, far behind joint-v1. That is a real risk and this script is written to
 report it if it happens.
 
-SYMMETRY. Three seeds on BOTH sides, always. This project has already had to retract
-a headline that came from three seeds on one side and one on the other; the
+SYMMETRY. Three seeds on BOTH sides, always. A pooled verdict with three seeds on
+one side and one on the other folds a seed effect into the measured gap, so the
 comparison is refused rather than run if a seed is missing.
 
 Emits paper/macros_single.tex.
@@ -33,7 +33,14 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import numpy as np  # noqa: E402
+import numpy as np
+
+
+def _nz(x):
+    """round to 2 dp and drop the sign of a negative zero (-0.00 -> 0.00)"""
+    v = round(float(x), 2)
+    return 0.0 if v == 0 else v
+  # noqa: E402
 
 from macro_io import emit  # noqa: E402
 
@@ -53,16 +60,36 @@ B = 20000
 # artefact this script compares is read from 10x25_cpuref, in which all of them were
 # evaluated by the same command. The published 10x25 results are not touched; they are
 # simply not what a same-campaign comparison may be built from.
-RES = 'test_results/FAMILY/10x25_cpuref'
-SEEDS = ['', '-s302', '-s303']
+import argparse
+
+_ap = argparse.ArgumentParser()
+_ap.add_argument('--arm', choices=['joint-nlsw', 'jointblind-nlsw'], default='joint-nlsw',
+                 help='joint-nlsw: the conditioned architecture (10x25_cpuref, macros_single); '
+                      'jointblind-nlsw: the released blind architecture retrained on N, L, S, W '
+                      '(10x25_blindref, macros_singleblind)')
+ARM = _ap.parse_args().arm
+if ARM == 'joint-nlsw':
+    RES = 'test_results/FAMILY/10x25_cpuref'
+    NLSW_SEEDS = ['', '-s302', '-s303']
+    NLSW = 'greedy+10x25+family+joint-nlsw'   # trained on the single members only
+    JOINT = 'greedy+10x25+family+joint-v1'    # the paper's joint: also saw LS and LW
+    OUT, PFX = 'paper/macros_single.tex', 'Nlsw'
+else:
+    # The released (blind) architecture, same recipe as jointblind-v1, trained on
+    # N, L, S, W only; every artefact evaluated by one command into 10x25_blindref
+    # (scripts/run_hgnn_seeds_and_blindref.sh, part A).
+    RES = 'test_results/FAMILY/10x25_blindref'
+    NLSW_SEEDS = ['-s301', '-s302', '-s303']
+    NLSW = 'greedy+10x25+family+jointblind-nlsw'
+    JOINT = 'greedy+10x25+family+jointblind-v1'
+    OUT, PFX = 'paper/macros_singleblind.tex', 'Bnlsw'
+SEEDS = ['', '-s302', '-s303']            # seed files of the joint and the specialists
 RULES = ['FIFO', 'MOR', 'SPT', 'MWKR']
 
 TRAINED = ['N', 'L', 'S', 'W']          # what joint-nlsw saw
 HELDOUT = ['LS', 'LW', 'SW', 'LSW']     # what it did not
 ALL = TRAINED + HELDOUT
 
-NLSW = 'greedy+10x25+family+joint-nlsw'   # trained on the single members only
-JOINT = 'greedy+10x25+family+joint-v1'    # the paper's joint: also saw LS and LW
 WORD = {'LS': 'LS', 'LW': 'LW', 'SW': 'SW', 'LSW': 'LSW',
         'N': 'N', 'L': 'L', 'S': 'S', 'W': 'W'}
 
@@ -75,15 +102,15 @@ def arr(tag, r):
     return (a[:, 0] if a.ndim > 1 else a).astype(float)
 
 
-def pooled(base, r):
-    xs = [arr(f'{base}{s}', r) for s in SEEDS]
+def pooled(base, r, seeds=SEEDS):
+    xs = [arr(f'{base}{s}', r) for s in seeds]
     if any(x is None for x in xs):
-        missing = [s or '301' for s, x in zip(SEEDS, xs) if x is None]
+        missing = [s or '301' for s, x in zip(seeds, xs) if x is None]
         raise SystemExit(
             f'REFUSING TO REPORT: {base} on {r} is missing seed(s) {missing}. '
             f'The paper pools three seeds on both sides of every comparison. A '
-            f'result computed from fewer seeds on one side than the other is the '
-            f'exact asymmetry this project has already had to retract once.')
+            f'result computed from fewer seeds on one side than the other folds '
+            f'a seed effect into the measured gap.')
     return np.mean(xs, axis=0)
 
 
@@ -126,19 +153,19 @@ print('joint-nlsw vs the per-instance best of FIFO/MOR/SPT/MWKR')
 print('  (%, negative = the policy is ahead)')
 beat = 0
 for r in ALL:
-    p, b = pooled(NLSW, r), best_rule(r)
+    p, b = pooled(NLSW, r, NLSW_SEEDS), best_rule(r)
     m, lo, hi = ci(100.0 * (p - b) / b)
     if hi < 0:
         beat += 1
     tag = 'HELD OUT' if r in HELDOUT else 'trained '
     print(f'  {tag} {r:4s}  {m:+6.2f}  [{lo:+6.2f},{hi:+6.2f}]'
           f'  {"AHEAD" if hi < 0 else "not ahead"}')
-    lines.append(f'\\newcommand{{\\Nlsw{WORD[r]}Rule}}{{{m:+.2f}}}'
-                 f'\\newcommand{{\\Nlsw{WORD[r]}RuleLo}}{{{lo:+.2f}}}'
-                 f'\\newcommand{{\\Nlsw{WORD[r]}RuleHi}}{{{hi:+.2f}}}'
+    lines.append(f'\\newcommand{{\\{PFX}{WORD[r]}Rule}}{{{_nz(m):+.2f}}}'
+                 f'\\newcommand{{\\{PFX}{WORD[r]}RuleLo}}{{{_nz(lo):+.2f}}}'
+                 f'\\newcommand{{\\{PFX}{WORD[r]}RuleHi}}{{{_nz(hi):+.2f}}}'
                  f'  % joint-nlsw vs best rule on {r} (%), CI')
 held_beat = sum(1 for r in HELDOUT
-                if ci(100.0 * (pooled(NLSW, r) - best_rule(r)) / best_rule(r))[2] < 0)
+                if ci(100.0 * (pooled(NLSW, r, NLSW_SEEDS) - best_rule(r)) / best_rule(r))[2] < 0)
 print(f'  ahead of the rules on {beat} of {len(ALL)} regimes, '
       f'{held_beat} of {len(HELDOUT)} of them held out\n')
 
@@ -148,7 +175,7 @@ print(f'  ahead of the rules on {beat} of {len(ALL)} regimes, '
 print('joint-nlsw vs joint-v1 (%, positive = nlsw is worse)')
 gaps = {}
 for r in ALL:
-    a, b = pooled(NLSW, r), pooled(JOINT, r)
+    a, b = pooled(NLSW, r, NLSW_SEEDS), pooled(JOINT, r)
     m, lo, hi = ci(100.0 * (a - b) / b)
     gaps[r] = (m, lo, hi)
     note = ''
@@ -157,24 +184,24 @@ for r in ALL:
     elif r in ('SW', 'LSW'):
         note = '  <- both zero-shot: the fair cell'
     print(f'  {r:4s}  {m:+6.2f}  [{lo:+6.2f},{hi:+6.2f}]  {verdict(lo, hi):12s}{note}')
-    lines.append(f'\\newcommand{{\\Nlsw{WORD[r]}Joint}}{{{m:+.2f}}}'
-                 f'\\newcommand{{\\Nlsw{WORD[r]}JointLo}}{{{lo:+.2f}}}'
-                 f'\\newcommand{{\\Nlsw{WORD[r]}JointHi}}{{{hi:+.2f}}}'
+    lines.append(f'\\newcommand{{\\{PFX}{WORD[r]}Joint}}{{{_nz(m):+.2f}}}'
+                 f'\\newcommand{{\\{PFX}{WORD[r]}JointLo}}{{{_nz(lo):+.2f}}}'
+                 f'\\newcommand{{\\{PFX}{WORD[r]}JointHi}}{{{_nz(hi):+.2f}}}'
                  f'  % joint-nlsw vs joint-v1 on {r} (%), CI')
 
 # --- 3. vs the per-regime specialist, which is the paper's parity claim ---
 print('\njoint-nlsw vs the per-regime specialist (%, positive = nlsw is worse)')
 spec_equiv = 0
 for r in ALL:
-    a, b = pooled(NLSW, r), pooled(f'greedy+10x25+family+spec-{r}', r)
+    a, b = pooled(NLSW, r, NLSW_SEEDS), pooled(f'greedy+10x25+family+spec-{r}', r)
     m, lo, hi = ci(100.0 * (a - b) / b)
     v = verdict(lo, hi)
     if v in ('EQUIVALENT', 'SUPERIOR', 'non-inferior'):
         spec_equiv += 1
     print(f'  {r:4s}  {m:+6.2f}  [{lo:+6.2f},{hi:+6.2f}]  {v}')
-    lines.append(f'\\newcommand{{\\Nlsw{WORD[r]}Spec}}{{{m:+.2f}}}'
-                 f'\\newcommand{{\\Nlsw{WORD[r]}SpecLo}}{{{lo:+.2f}}}'
-                 f'\\newcommand{{\\Nlsw{WORD[r]}SpecHi}}{{{hi:+.2f}}}'
+    lines.append(f'\\newcommand{{\\{PFX}{WORD[r]}Spec}}{{{_nz(m):+.2f}}}'
+                 f'\\newcommand{{\\{PFX}{WORD[r]}SpecLo}}{{{_nz(lo):+.2f}}}'
+                 f'\\newcommand{{\\{PFX}{WORD[r]}SpecHi}}{{{_nz(hi):+.2f}}}'
                  f'  % joint-nlsw vs the {r} specialist (%), CI')
 
 zs = [gaps[r][0] for r in ('SW', 'LSW')]
@@ -186,23 +213,23 @@ print(f'\non the two cells where BOTH policies are zero-shot, joint-nlsw is '
 # much, and the difference between crossing it by a hair and crossing it by a mile is
 # the difference between a result and a failure. The number is emitted rather than
 # described so that a rerun moves the sentence instead of contradicting it.
-_lsw_hi = ci(100.0 * (pooled(NLSW, 'LSW') - pooled(f'greedy+10x25+family+spec-LSW',
+_lsw_hi = ci(100.0 * (pooled(NLSW, 'LSW', NLSW_SEEDS) - pooled(f'greedy+10x25+family+spec-LSW',
                                                    'LSW'))
              / pooled('greedy+10x25+family+spec-LSW', 'LSW'))[2]
 lines += [
-    f'\\newcommand{{\\NlswLSWOver}}{{{_lsw_hi - MARGIN:.2f}}}'
+    f'\\newcommand{{\\{PFX}LSWOver}}{{{_lsw_hi - MARGIN:.2f}}}'
     '  % how far past the +-1% margin the LSW interval reaches (percentage points)',
-    f'\\newcommand{{\\NlswBeat}}{{{beat}}}'
-    f'\\newcommand{{\\NlswRegimes}}{{{len(ALL)}}}'
+    f'\\newcommand{{\\{PFX}Beat}}{{{beat}}}'
+    f'\\newcommand{{\\{PFX}Regimes}}{{{len(ALL)}}}'
     '  % regimes where joint-nlsw is ahead of the best dispatching rule',
-    f'\\newcommand{{\\NlswHeldBeat}}{{{held_beat}}}'
-    f'\\newcommand{{\\NlswHeldN}}{{{len(HELDOUT)}}}'
+    f'\\newcommand{{\\{PFX}HeldBeat}}{{{held_beat}}}'
+    f'\\newcommand{{\\{PFX}HeldN}}{{{len(HELDOUT)}}}'
     '  % ... of them held out (LS, LW, SW, LSW: every composition)',
-    f'\\newcommand{{\\NlswSpecEquiv}}{{{spec_equiv}}}'
+    f'\\newcommand{{\\{PFX}SpecEquiv}}{{{spec_equiv}}}'
     '  % regimes where joint-nlsw is equivalent to or better than the specialist',
 ]
 
-emit('paper/macros_single.tex', lines,
-     header=('% auto-generated by scripts/p34_single_member.py -- do not hand-edit\n'
-             '% joint-nlsw saw each rule ONLY ALONE. Every composition is unseen.'))
-print('\nwrote paper/macros_single.tex')
+emit(OUT, lines,
+     header=(f'% auto-generated by scripts/p34_single_member.py --arm {ARM} -- do not hand-edit\n'
+             f'% {ARM} saw each rule ONLY ALONE. Every composition is unseen. Campaign: {RES}'))
+print(f'\nwrote {OUT}')

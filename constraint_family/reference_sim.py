@@ -34,7 +34,9 @@ def simulate(job_length, op_pt, desc, actions):
     first = np.concatenate([[0], np.cumsum(job_length)[:-1]]).astype(int)
 
     next_op = first.copy()
-    job_ready = np.zeros(J)
+    # release dates: job j is ready at rho_j (0 when the descriptor has none)
+    rel = getattr(desc, 'release', None)
+    job_ready = np.zeros(J) if rel is None else np.asarray(rel, dtype=float).copy()
     mch_free = np.zeros(M)
     mch_last = np.full(M, IDLE_CLASS, dtype=int)
 
@@ -95,6 +97,18 @@ def validate_schedule(job_length, op_pt, desc, op_st, op_ct, op_mch,
             v.append(f'op {op} duration mismatch')
         if op_st[op] < -tol:
             v.append(f'op {op} negative start')
+
+    # release dates: the first op of job j starts no earlier than rho_j
+    rel = getattr(desc, 'release', None)
+    if rel is not None:
+        rel = np.asarray(rel, dtype=float)
+        if rel.shape != (len(job_length),):
+            v.append(f'release has shape {rel.shape}, expected ({len(job_length)},)')
+        else:
+            for j in range(len(job_length)):
+                if job_length[j] and op_st[first[j]] < rel[j] - tol:
+                    v.append(f'job {j}: first op {first[j]} starts before '
+                             f'release {rel[j]:g}')
 
     # job precedence + lags
     for j, L in enumerate(job_length):

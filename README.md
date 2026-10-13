@@ -1,208 +1,335 @@
-# One Policy Across Time Lags, Setups and Availability Windows
+# PACT: A reinforcement learning framework with a certified reward for flexible job-shop scheduling under changing timing rules
 
-Artifacts for **"One Policy Across Time Lags, Setups and Availability Windows: A
-Shared Environment and a Certified Reward for Flexible Job-Shop
-Scheduling"**.
-
----
+Artifacts for the manuscript **"PACT: A reinforcement learning framework with a
+certified reward for flexible job-shop scheduling under changing timing rules"**
+by Ziheng Zhang, Wei Zhang, Xin Lou and Hao Zhang, submitted to *Advanced
+Engineering Informatics*. PACT stands for Policy Across Composable Timing Rules.
 
 ## The problem
 
-A flexible job shop is normally scheduled by a policy trained against one fixed set of
-timing rules. A real floor's rules do not stay fixed. A new curing recipe imposes a
-mandatory wait after an operation. A change in product mix means consecutive jobs on a
-machine need a changeover whose length depends on what ran before. A maintenance
-program takes a station offline on a calendar. Each change today means training,
-revalidating and certifying another policy, one per situation.
+A factory for prefabricated prefinished volumetric construction (PPVC) builds
+room-sized building modules on a shared set of stations, and its schedule must
+obey timing rules. This work studies three rule types. A minimum time lag is a
+mandatory wait after an operation, such as concrete curing, before the module's
+next operation may start. A sequence-dependent setup is a changeover on a station
+whose length depends on the product that ran before it. A machine unavailability
+window is an interval, such as planned maintenance, in which a station cannot
+run. Which of these rules apply depends on the process, the product mix and the
+equipment, so one plant meets different combinations of them over its life. The
+eight<!-- \NRegimes, paper/macros.tex --> combinations, including the shop with
+no rule active, are called regimes and are named by their active rules.
 
-This work makes the rules a **run-time input**. One policy covers three constraint types
-and all eight of their combinations, and is told at run time which are active.
-
-| | |
+| regime | active rules |
 |---|---|
-| **L** | time lag: a mandatory wait after an operation before the next may start |
-| **S** | sequence-dependent setup: a changeover whose length depends on what ran last |
-| **W** | availability window: an interval in which a machine cannot run |
+| `N` | none |
+| `L`, `S`, `W` | time lags, setups, or availability windows alone |
+| `LS`, `LW`, `SW`, `LSW` | the rules named by the letters, together |
 
-The eight *regimes* are the subsets of {L, S, W}, including the empty one.
+A constructive scheduler trained by deep reinforcement learning places one
+operation per decision, and it is normally validated for one regime. A rule
+change alters when jobs and stations become ready, which assignments are legal,
+and the makespan estimate from which the policy receives its reward after every
+dispatch. A policy validated under one regime is therefore not justified under
+another, and the specialist approach keeps one validated policy per regime.
 
-## The obstacle, and the contribution
+## The contribution
 
-The obstacle is certifying a shared **training signal**, not conditioning a
-network. A constructive
-scheduling policy is trained from a dense reward that pays it, at each step, the
-improvement in an estimate of the earliest the shop could still finish. That estimate
-must be *exact at completion*, so that the summed payments equal the makespan, and it
-must *never rule out a finish the shop can still reach*, so that each intermediate
-payment measures real progress. Once the rules become a run-time input, both properties
-must hold for every rule and every combination of rules at once.
+PACT records the active timing rules and their parameters in an explicit,
+machine-readable constraint descriptor. The descriptor configures one shared
+scheduling environment, which applies every rule through one of two hooks. One
+hook sets when a job's next operation becomes ready, and the other sets when a
+station's next block of work may start. From the same descriptor, the
+environment computes a makespan estimate that the paper proves to be a lower
+bound at every partial schedule and exact at completion, for the three rules and
+all their combinations. The stepwise decrease of this estimate is therefore one
+certified dense reward for every regime. With this reward, one policy trained
+on six<!-- \NTrainRegimes, paper/macros.tex --> regimes schedules all eight,
+including `SW` and `LSW`, which it never met in training. The released policy
+does not read the descriptor, and a conditioned variant that reads it is
+evaluated as a control. A membership test states when a further rule can join
+the family, and release dates are added through this test without retraining.
+A descriptor error would change the transition, the legal actions and the reward
+at once, so configuration checks C1 to C5 test every revised descriptor before
+use. Check C6, an independent validator, then tests every schedule against the
+descriptor.
 
-The paper constructs one estimate that provably does, for the whole family, and
-identifies the modeling convention (a *detached* setup) under which it silently stops
-being a valid floor while its totals still telescope.
+## What is in the release
 
-## Results
-
-Numbers are from the macro files in `paper/`, which the scripts below regenerate.
-`\EqMargin` is a ±1% equivalence margin, fixed before the experiments were run.
-
-| | |
+| path | contents |
 |---|---|
-| Parity with per-regime specialists | equivalent on **5 of 6** training regimes and better on the sixth, on roughly a third of each specialist's experience |
-| Zero-shot on the two held-out compositions | equivalent to the specialist trained on that composition alone (both intervals inside the ±1% margin) |
-| Against the best dispatching rule | **+2.0%** at the policy's own one-second budget, pooled over all eight regimes |
-| Latency | **0.49 s** on **4** CPU cores, no solver on site |
-| Training cost | **6.0** GPU-h against **24** GPU-h for the 7-specialist catalogue it replaces (**4.0x**) |
-| Scaled to 2--8x the job count, nothing retrained | overtakes the specialists past the training size, and ahead of credited warm-started CP-SAT by **+4.5%** at 50 and **+3.0%** at 80 modules with the solver given **30 min** per instance |
-| Trained on the single-rule regimes only, so all **4** compositions are unseen | still outperforms the best dispatching rule on **every one** |
-| Out of distribution (setups **1.76x** larger and asymmetric; windows **2.53x** denser) | **0** infeasible schedules; the lead grows under denser windows and dissolves to a statistical tie wherever a changeover competes with another rule. Retraining with the magnitudes randomized across the shifted ranges restores all but one of the collapsed leads, at a window-only price in distribution |
+| `constraint_family/` | the descriptor (`descriptor.py`), the two-hook environment and certified estimate (`fjsp_env_family.py`), checks C1 to C6 (`checks.py`, with C7 as a written procedure), a reference simulator (`reference_sim.py`), the CP-SAT model (`cpsat_family.py`), the blocking shop (`fjsp_env_blocking.py`) and the port to ReSched (`resched_port/`) |
+| `model/` | the dual-attention policy network and the feature-wise linear modulation (FiLM) layer of the conditioned variant |
+| top level | `train_family.py`, `eval_family.py` (policies, dispatching rules, descriptor-token interventions), `eval_blocking.py`, `eval_ga_family.py` (genetic algorithm), `ppvc_instance_generator.py` (benchmark generator), `schedule_validator.py` (stand-alone validator), and the modules they import |
+| `scripts/` | analysis scripts, each naming its outputs in its docstring |
+| `backbones/hgnn/` | the heterogeneous graph neural network (HGNN) scheduler of Song et al. (2023), ported to the family, with its Apache-2.0 `LICENSE` and a `NOTICE` |
+| `data/PPVC/` | base test instances by size, `<modules>x<stations>`, `10x25` to `80x25` and two 15-station sets |
+| `data/FAMILY/` | one descriptor per instance and regime (`<size>/desc/<regime>/`), and the shifted-magnitude sets |
+| `trained_network/` | every evaluated checkpoint (table below), and in `PPVC/` the prior study's lag-only policy |
+| `test_results/` | per-instance results `Result_<method>_<regime>.npy` (makespan in hours, rollout seconds), one folder per campaign, and in `PPVC/` the prior study's evaluation |
+| `or_solution/FAMILY/` | CP-SAT solutions per instance by size and budget (`<size>_fairwarm<budget>s`, with `R` marking re-solves from the repaired warm start), and the warm-start caches |
+| `results/` | summaries the scripts write and read |
+| `paper/` | every `macros_*.tex` file and every generated table in `paper/tables/` |
+| `train_log/` | each checkpoint's resolved configuration (`FAMILY/config_<name>.json`) and training log |
 
-The paper reports its negative results as prominently as its positive ones. The
-constraint description adds no accuracy, so the recommended deployment artifact is the
-**token-blind** policy (32,786 parameters, the size of a single specialist, against
-71,838 for the conditioned one). The description is still required: it configures the
-*environment*, selecting the mask and the delay that are applied, so a wrong one builds
-the schedule against the wrong rules even though no network reads it.
+Each size has its main campaign in the folder of that name. In
+`10x25_cpuref` and `10x25_blindref`, every artifact of one equivalence
+comparison was evaluated by one command on one machine. `10x25_cpuref` serves
+the shifted-magnitude study and the single-rule control of the conditioned
+architecture, and `10x25_blindref` serves the single-rule control of the
+released architecture. The other folders hold the shifted-magnitude and
+misconfiguration runs and a CP-SAT no-wait probe.
 
-## Layout
+Checkpoints are named `10x25+family+<name>.pth`, and `-s30x` stands for the
+three training seeds 301, 302 and 303.<!-- \SeedList, paper/macros.tex --> A name without a seed suffix, such as
+`jointblind-v1`, is the seed-301 model.
 
-```
-constraint_family/          the family environment, the constraint descriptor, the CP-SAT model
-model/                      the policy: the dual-attention backbone and the FiLM pathway
-train_family.py             training
-eval_family.py              evaluation (greedy rollouts, dispatching rules, interventions)
-ppvc_instance_generator.py  the benchmark generator
-
-data/PPVC/                  base instances: 10x25 train/test; 20x25 through 80x25 (and 50x15, 80x15) for scale transfer
-data/FAMILY/                the constraint descriptors, one per (instance, regime)
-
-trained_network/FAMILY/     the joint policies, the token-blind control, the single-rule
-                            policy, the all-eight-regime arms, the domain-randomized
-                            arm, and the per-regime specialists (3 seeds each)
-trained_network/PPVC/       the lag-only checkpoint the E0 regression anchor is checked against
-
-test_results/FAMILY/        per-instance makespans, every method and regime (.npy)
-or_solution/FAMILY/         CP-SAT reference solutions at every anytime budget
-results/                    the aggregated tables
-paper/                      the generated macro files: every number the paper prints
-scripts/                    the generators
-```
-
-**Every number in the paper is emitted from these result files by a script in
-`scripts/`. None is typed by hand.** `paper/macros_*.tex` holds the output, so rerunning
-a generator and diffing that directory is how you check us.
+| `<name>` | what it is |
+|---|---|
+| `jointblind-v1`, `-s302`, `-s303` | the released PACT policy, which does not read the descriptor |
+| `joint-v1`, `-s302`, `-s303` | the conditioned variant, which reads the descriptor through FiLM |
+| `spec-<regime>`, `-s302`, `-s303` | the per-regime specialists |
+| `jointblind-eq-s30x` | the released architecture at the equal-experience budget |
+| `jointblind-nlsw-s30x`, `joint-nlsw` | single-rule controls trained on `N`, `L`, `S`, `W` only, released and conditioned architecture |
+| `spec-W-third` | a `W` specialist with the released policy's experience on `W` |
+| `joint-all8-*`, `joint-all8e-*` | trained on all eight regimes, at matched updates or matched experience |
+| `joint-dr-*` | the conditioned variant trained with randomized rule magnitudes |
+| `joint-deltazero-*`, `joint-deltamax-*` | the trivial and the maximum reward envelopes |
+| `joint-concat-*` | the descriptor read by direct concatenation |
+| `jointpair-*`, `jointpairfilm-*` | pair-level setup and window information in the observation |
+| `jointact-*` | the active-schedule action mask in place of the non-delay mask |
+| `jointblind-mb-s301` | the released architecture at the catalogue's total update budget |
+| `hgnn-certified-joint-s30x`, `hgnn-published-joint-s30x` | one HGNN policy over the training regimes, with the certified or the published reward |
+| `hgnn-certified-<regime>-s301` | the HGNN per-regime specialists |
 
 ## Environment
 
-Python 3.10+, PyTorch, NumPy, SciPy, OR-Tools (CP-SAT 9.14), Matplotlib. Training uses
-one GPU; every analysis script is CPU-only.
+The results were produced with Python 3.11, PyTorch 2.11 (CUDA 12.8), NumPy
+1.26, SciPy, OR-Tools 9.14.6206 (CP-SAT) and Matplotlib. Training used one
+NVIDIA RTX PRO 5000 GPU. Evaluation, the solvers and the analyses run on the
+CPU. The unmodified upstream HGNN scripts also import pandas, and
+`backbones/hgnn/compat.py` supplies the `gym` and `pynvml` modules they expect.
 
-## Instance separation
+## Instance separation and seeds
 
-The three pools are disjoint by construction. Training instances are generated online
-from fresh 31-bit random seeds and are never written to disk. The 20 validation
-instances used for model selection come from seeds 100-119. The 100 test instances per
-regime are fixed files from seeds 50000-50099, with descriptor seed 20260706.
+Validation and test instances are disjoint by construction. Training instances
+are generated online from fresh 31-bit random seeds and are never written to
+disk. The 20 validation instances used for model selection come from generator
+seeds 100 to 119. The 100<!-- \nTest, paper/macros.tex --> test instances per
+regime at the training size are fixed files from generator seeds 50000 to 50099,
+with descriptor seed 20260706.<!-- seed0 and desc_seed0 in the 10x25 dataset_meta.json files -->
+Each size's `dataset_meta.json` records its seeds. The 20- and
+30-module test sets hold 50<!-- \nTestTwenty, paper/macros.tex --> and
+20<!-- \nTestThirty, paper/macros.tex --> instances per regime. At 50 and 80
+modules, the paper reads the first 10<!-- \ScPrefixN, paper/macros_scale1800.tex -->
+instances per regime in sorted order.
+
+The released policy, every specialist and every three-seed control are trained
+with seeds 301, 302 and 303.<!-- \SeedList, paper/macros.tex --> Every
+comparison pools the same seeds on both sides.
 
 ## Reproducing the results
 
+Every number in the manuscript comes from a `paper/macros_*.tex` file or a
+table in `paper/tables/`, which the scripts below write. The release ships the
+authors' copies, so a rerun is checked by diffing `paper/`. Section, table,
+figure and experiment (E1 to E7) labels follow the submitted manuscript, and
+"S" marks a supplementary section. A new training run can be diffed against
+the checkpoint's configuration in `train_log/FAMILY/`.
+
 ```bash
-# E0  regression anchor. With conditioning off and a lag-only descriptor, this
-#     environment reproduces the released lag-only policy's makespans exactly, so
-#     every effect reported afterwards is an effect of the family extensions alone.
-python scripts/p1_tests.py
-
-# E1/E2  parity against per-regime specialists, and zero-shot transfer to the two
-#        compositions the policy never trained on, as paired equivalence tests
-python scripts/p11_equivalence.py
-
-#        the same claims with the TRAINING RUN, not the test instance, as the unit
-#        of inference, plus the verdicts at +-0.5%, +-1% and +-2%
-python scripts/p27_seed_inference.py
-
-# E5  against dispatching rules, a genetic algorithm, and CP-SAT
-python scripts/p12_warm_cache.py --procs 16          # best-of-four warm starts
-python scripts/p12_cpsat_fairwarm.py --budget 300    # the solver campaign
-python scripts/p13_e5_table_fair.py                  # the table
-python scripts/p30_anytime.py                        # where the solver overtakes the policy
-
-# Why the joint policy trails its specialist on W: an experience-matched specialist
-# separates "it saw less of W" from "joint training costs something on W".
-python scripts/p31_w_causal.py
-
-# Composition when the policy has only ever seen the rules ALONE: train on the
-# single-rule regimes, read every combination zero-shot.
-python scripts/p34_single_member.py
-
-# The enumeration comparator: one policy trained on ALL eight regimes, at matched
-# compute and at matched per-regime exposure, against the six-regime joint.
-python scripts/p37_all8_joint.py
-
-# CP-SAT model size, and the 5 s solver status on the setup regimes.
-python scripts/p36_cpsat_modelsize.py
-
-# Out of distribution: setups drawn larger and asymmetric, windows drawn denser.
-python scripts/p29_ood.py          # build the shifted benchmarks (refuses to run if the
-                                   # published benchmark does not regenerate byte-for-byte)
-python scripts/p33_ood_table.py    # the table
-
-# The domain-randomized arm: trained with member magnitudes drawn across the
-# shifted ranges, evaluated into the same three campaigns as p33.
-python scripts/p43_dr_arm.py
-
-# The deployment artifact per regime: the token-blind policy against the
-# conditioned joint and against each specialist, from the main campaign.
-python scripts/p45_blind_perregime.py
-
-# Residual optimality gaps at the 30 s and 300 s tiers, from the solver's own bounds.
-python scripts/p38_optgap.py
-
-# The solver ladders past the training size (the solves ship under or_solution/;
-# p44_cpsat_scale.py re-runs a rung). p39 aggregates the 20x25 and 30x25
-# crossover, p60 the 30-minute-per-instance campaign at 50x25 and 80x25, and
-# p61 re-solves the one-hour boundary improvements and reports the flip count.
-python scripts/p39_anytime_scale.py
-python scripts/p60_scale1800.py
-python scripts/p61_boundary_flip.py --report
-
-# E3 probes: the conflicting-token cell across all three seeds, environment
-# misconfiguration checked by the independent validator, and the first-dispatch
-# mask exception, from one fresh rollout campaign.
-python scripts/p40_misconfig.py
-
-python scripts/make_family_figures.py
+# released policy, seed 301 (the conditioned variant sets --use_film True)
+python train_family.py --data_source FAMILY --n_j 10 --use_type_embedding True \
+    --validate_timestep 25 --use_film False --max_updates 2000 \
+    --seed_train 301 --model_suffix jointblind-v1
+# a specialist on one regime
+python train_family.py --data_source FAMILY --n_j 10 --use_type_embedding True \
+    --validate_timestep 25 --family_regimes L --max_updates 1000 --model_suffix spec-L
+# greedy evaluation and the four textbook dispatching rules on all regimes
+python eval_family.py --family_model 10x25+family+jointblind-v1 \
+    --regimes N L S W LS LW SW LSW --methods greedy FIFO MOR SPT MWKR
 ```
+<!-- 2000 and 1000 updates: \ExpRelUpdates and \ExpSpecUpdates, paper/macros_eqexp.tex -->
+
+### Reproduction check (Section 7.3)
+
+```bash
+python scripts/p1_tests.py     # unit and reward tests, and the lag-only reproduction (T5)
+```
+
+### One policy against the specialists (Section 8.1)
+
+```bash
+python scripts/p11_equivalence.py              # E1 and E2 verdicts (Table 4)
+python scripts/p55_equal_experience.py         # equal-experience budget (Table 4)
+python scripts/p34_single_member.py --arm jointblind-nlsw   # Table 5
+python scripts/p34_single_member.py            # conditioned architecture (S17)
+python scripts/p54_coverage_lag.py             # writes results/coverage_lag.json
+python scripts/p63_rulechange_table.py         # rule changes (Table 6)
+python scripts/p69_release_dates.py --analyze-only   # release dates (Table 7)
+```
+
+`p11` tests paired equivalence within a ±1%<!-- \EqMargin, paper/macros.tex -->
+margin fixed before the runs. `p69 --analyze-only` reads
+`results/release_dates_raw.json`, and without the flag it reruns every rollout.
+`p27_seed_inference.py` gives the seed-level and margin-sweep verdicts (S10,
+S24.1), and `p31_w_causal.py` the shortfall on `W` (S7).
+
+### Time budgets and shop size (Section 8.2)
+
+```bash
+python scripts/p13_e5_table_fair.py   # fixed-budget comparison, E5 macros
+python scripts/p62_e5_table_aei.py    # Table 8, with the one-second rivals and HGNN
+python scripts/p30_anytime.py         # CP-SAT budget ladder (Fig. 5(a), S4)
+python scripts/p52_ga_ladder.py       # GA at short budgets
+python scripts/p39_anytime_scale.py   # CP-SAT crossover at 20 and 30 modules
+python scripts/p56_ga_scale.py        # GA at 10 to 30 modules
+python scripts/p18_e6_table.py        # E6 scale transfer (S13)
+python scripts/p53_load_axis.py       # against the specialists (Fig. 6, S16)
+python scripts/p60_scale1800.py       # 30-minute CP-SAT at 50 and 80 modules
+python scripts/p70_prodbatch_table.py # Table 9
+python scripts/p72_aware_rules.py     # constraint-aware rules (S5)
+python scripts/p76_aware_table.py     # their tables
+python scripts/p75_deploy_cost.py     # deployment cost (S14)
+python scripts/make_family_figures.py # Figs. 5 and 6
+```
+<!-- 30 minutes: \ScBudgetMin, paper/macros_scale1800.tex -->
+
+`p75` is a timing measurement, so run it on four pinned cores with
+`OMP_NUM_THREADS=4`, as its docstring shows.
+
+To rerun the shipped solver campaign, build the warm-start cache, repair it,
+and solve on dedicated cores.
+
+```bash
+python scripts/p12_warm_cache.py --procs 16         # best of four rules
+python scripts/p41_repaired_warm_cache.py           # repaired warm starts
+python scripts/p12_cpsat_fairwarm.py --budget 300   # one 10x25 tier
+python scripts/p44_cpsat_scale.py --size 30x25 --phase cache --procs 16
+python scripts/p44_cpsat_scale.py --size 30x25 --phase solve --budget 30 --workers 8 --jobs 2
+python scripts/p61_boundary_flip.py --report        # 30-minute boundary cases
+python scripts/p38_optgap.py                        # gaps from solver bounds
+python scripts/p36_cpsat_modelsize.py               # model size
+```
+
+`p41` reads the 10x25 cache `or_solution/FAMILY/warmstart_cache`, which ships
+and which `p12_warm_cache.py` rebuilds. The 5 s and 30 s re-solves from the
+repaired warm start are run by `scripts/run_fairwarm_repaired.sh`, which calls
+`p12_cpsat_fairwarm.py` with the repaired cache.
+
+### The published HGNN scheduler as a learned rival (Section 8.2, S6)
+
+```bash
+CUDA_VISIBLE_DEVICES= python backbones/hgnn/tests/test_family_hgnn.py
+python backbones/hgnn/train_family_hgnn.py --hgnn_reward certified --seed 301
+python backbones/hgnn/train_family_hgnn.py --hgnn_reward published --seed 301
+python backbones/hgnn/train_family_hgnn.py --family_regimes L --seed 301   # a specialist
+python backbones/hgnn/eval_family_hgnn.py --family_model 10x25+family+hgnn-certified-joint-s301
+python scripts/p78_hgnn_rival.py
+```
+
+The acceptance tests check the ported environment against the reference
+simulator in every regime and against the upstream environment in regime `N`.
+They also assert that its legal action set equals the PACT policy's mask. The
+trainer keeps the upstream network of 204,250<!-- \HgnnParams, paper/macros_hgnn.tex -->
+parameters and its training recipe. `backbones/hgnn/tools/run_upstream_test.py`
+runs the unmodified upstream `test.py` on the CPU.
+
+### Use of the descriptor and the reward (Section 8.3)
+
+```bash
+python scripts/p17_e3_multiplicity.py   # E3 token interventions (S12)
+python scripts/p40_misconfig.py         # Table 10
+python scripts/p51_info_arms.py         # pair-level timing information (S9)
+python scripts/p22_admissibility.py     # E7 reward envelopes (Table 11)
+python scripts/p24_envelope_fuzz.py     # envelope audit
+python scripts/p28_exposure_and_certification.py
+```
+
+### Limits of the method (Section 8.4)
+
+```bash
+python eval_blocking.py --regime L --limit 100 --family_model 10x25+family+jointblind-v1
+python scripts/p29_ood.py --build     # shifted-magnitude descriptors
+python scripts/p33_ood_table.py       # Table 12
+python scripts/p43_dr_arm.py          # randomized-magnitude arm (S18)
+```
+
+`eval_blocking.py` writes `paper/macros_e4.tex`, and the shipped result was
+produced with the model named in the command. `p29_ood.py --build` refuses to
+run unless the published benchmark regenerates exactly. `--build --eval` also
+runs the evaluations.
+
+### Supporting analyses
+
+```bash
+python scripts/p73_effect_sizes.py      # effect sizes (S11)
+python scripts/p74_gantt.py             # schedule example (S2)
+python scripts/p77_gantt_macros.py      # its makespans
+python scripts/p64_instance_bound.py    # instance lower bound (Section 9.2)
+python scripts/p65_check_counts.py      # configuration checks (Table 2)
+python scripts/p49_resched_crosscheck.py   # port to ReSched (Section 6.2)
+python scripts/make_route_figure.py     # Fig. 4
+```
+
+`p49` needs the ReSched release of Xiao et al. at `external/ReSched/`, which is
+not part of this repository.
 
 ## Two things that will bite you
 
-**The CP-SAT baseline is only as strong as the incumbent it starts from.** The seeding
-heuristic is therefore part of the baseline's configuration, not an implementation
-detail. This campaign warm-starts CP-SAT from the per-instance best of four dispatching
-rules (FIFO, MOR, SPT, MWKR) rather than from a single fixed rule, and gives it 8 search
-workers on dedicated cores: the budget is wall-clock, and a solver competing for CPU
-silently returns worse solutions. Seeding from MWKR alone, which is far behind SPT on the
-setup-bearing regimes, understates the solver by a wide margin. The solver is credited
-with the better of its warm start and its search, since a hint is a suggestion the search
-may fail even to match.
+**The CP-SAT baseline is only as strong as the incumbent it starts from.** The
+warm start is therefore part of the baseline's configuration. Each solve starts
+from the per-instance best of four dispatching rules (FIFO, MOR, SPT, MWKR),
+repaired so that every rule selects inside the policy's action mask. Seeding from
+MWKR alone would understate the solver by a wide margin, because MWKR is far
+behind SPT on the setup-bearing regimes. The solver is credited with the better
+of its warm start and its search, because a hint is a suggestion the search may
+fail to match. The budget is wall-clock, so each solve runs
+8<!-- \CpWorkers, paper/macros.tex --> search workers on dedicated cores. A
+solver that competes for CPU returns worse solutions and reports no error.
 
-**The greedy rollout is not bit-reproducible across evaluation environments.** It is
-deterministic in the instance, the descriptor, and the environment it is evaluated in.
-It is not deterministic *across* environments: an arg-max over near-equal action scores
-can break the other way and send the rollout down a different path. On one regime this
-was worth up to eight hours of makespan on 32 of 100 instances, on identical inputs. Two
-policies must therefore be evaluated by the same command on the same machine before
-their makespans are compared. `test_results/FAMILY/10x25_cpuref/` is one such campaign,
-and it is the one the out-of-distribution and single-rule comparisons are read from. The
-dispatching rules have no such sensitivity: their makespans are bit-identical across
-every campaign here.
+**The greedy rollout is not bit-reproducible across evaluation environments.**
+It is deterministic within one evaluation environment. On another device or
+thread count, an arg-max over near-equal action scores can break the other way
+and send the rollout down a different path, and S18 measures the size of this
+effect on regime `N`. Two policies must
+therefore be evaluated by the same command on the same machine before their
+makespans are compared. The dispatching rules have no such sensitivity.
 
 ## Relation to prior work
 
-The lag-aware environment, its feature channels, the backbone configuration, and the
-guidebook-grounded instances come from a prior study of scheduling under time lags alone
-([arXiv:2607.11725](https://arxiv.org/abs/2607.11725)). Nothing above that base layer is
-taken from it: the constraint descriptor, the two-hook family environment, the
-uniform admissibility theorem, joint training, and every experiment are introduced
-here. The paper's supplementary material sets out the division component by component,
-and shows that its central theorem *contains* that study's bound as the special case
-c = (1, 0, 0), which is what the E0 anchor checks.
+The lag-aware environment, the backbone configuration and the
+guidebook-grounded instances come from a prior study of scheduling under time
+lags alone, which is a public preprint
+([arXiv:2607.11725](https://arxiv.org/abs/2607.11725)). That backbone is the
+dual-attention network of Wang et al. (2024). The descriptor, the two-hook
+environment, the family-wide proof, the configuration checks and joint training
+are introduced in this work. The central theorem contains the prior study's
+bound as the lag-only case, and the reproduction check confirms this reduction. The supplementary material
+restates the base process, the solver model and the generator, so the paper can
+be reproduced without the prior study.
+
+The code in `backbones/hgnn/` is adapted from
+[songwenas12/fjsp-drl](https://github.com/songwenas12/fjsp-drl) (commit
+`d7637b70029be6cb8fe78e450dcb07767876daea`) of Song et al., *IEEE Transactions
+on Industrial Informatics* 19(2):1600-1610, 2023, doi:10.1109/TII.2022.3189725.
+That code is licensed under the Apache License, Version 2.0, and
+`backbones/hgnn/NOTICE` lists every changed and added file.
+
+## License and citation
+
+The code of this repository is released under the MIT License (see `LICENSE`).
+The files in `backbones/hgnn/` remain under the Apache License, Version 2.0 of
+their upstream repository.
+
+The manuscript is under review and has no DOI yet. Until it is published,
+please cite it as follows.
+
+```bibtex
+@unpublished{zhang2026pact,
+  author = {Zhang, Ziheng and Zhang, Wei and Lou, Xin and Zhang, Hao},
+  title  = {{PACT}: A reinforcement learning framework with a certified reward
+            for flexible job-shop scheduling under changing timing rules},
+  note   = {Manuscript submitted to Advanced Engineering Informatics},
+  year   = {2026}
+}
+```

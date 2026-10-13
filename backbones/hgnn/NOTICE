@@ -1,0 +1,55 @@
+NOTICE
+
+This folder contains code adapted from the repository
+https://github.com/songwenas12/fjsp-drl (commit d7637b70029be6cb8fe78e450dcb07767876daea),
+the implementation of W. Song, X. Chen, Q. Li and Z. Cao, "Flexible Job-Shop
+Scheduling via Graph Neural Network and Deep Reinforcement Learning," IEEE
+Transactions on Industrial Informatics, 19(2):1600-1610, 2023,
+DOI 10.1109/TII.2022.3189725. That code is licensed under the Apache License,
+Version 2.0; the license text is kept in LICENSE in this folder.
+
+Changes to the upstream files
+  env/fjsp_env.py    one line in next_time(): the boolean-mask assignment
+                     aa[d, 0] = 1, which PyTorch 2 rejects, is written as
+                     aa[:, 0, :][d] = 1 (same intended effect: mark the released
+                     machines idle). Otherwise unchanged; used as the control.
+  env/load_data.py   two functions appended: load_time_lags() reads the
+                     per-operation lags from the side-car <stem>.meta.json, and
+                     matrix_to_lines() writes a (job_length, op_pt) instance in
+                     the .fjs line format.
+
+Files added
+  env/fjsp_env_lag.py  copy of env/fjsp_env.py extended with post-operation
+                       time-lags (lag_mode 'aware' or 'blind'), optional lag
+                       features (ope_feat_dim 8), and an optional
+                       minimum-processing-time estimate (bound_pt 'min').
+  compat.py            stand-ins for gym and pynvml and the removed
+                       pandas.ExcelWriter.save, so the upstream files run as is.
+  ppvc_hgnn.py,
+  tools/run_upstream_test.py
+All other files are copied unchanged.
+
+PACT copy (this folder)
+  Copied from the lag-only port above; the PACT copy adds attached
+  sequence-dependent setups, machine unavailability windows and the
+  constraint-family descriptor (lags, setups and windows switched per
+  instance by its activation bits), PACT's certified makespan estimate as a
+  reward option, and PACT's non-delay mask as the legal action set.
+  Upstream checkpoint and instance sets kept for the reproduction check:
+  model/save_10_5.pt, data_dev/1005, data_test/1005.
+
+  Changed file
+    PPO_model.py       get_action_prob() intersects the upstream job/machine
+                       eligibility with state.pair_eligible_batch when the
+                       state carries it (pair-level legality under setups and
+                       windows); unchanged for the upstream environments.
+
+  Files added
+    env/fjsp_env_family.py   the family environment (two-hook transition,
+                             decision time, legal pairs, 'published' and
+                             'certified' rewards)
+    pact_bridge.py           imports of PACT's descriptor, environment,
+                             generator, reference simulator and rules; the
+                             training sampler of train_family.py; validation
+                             sets
+    train_family_hgnn.py, eval_family_hgnn.py, tests/test_family_hgnn.py

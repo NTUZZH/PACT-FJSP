@@ -120,7 +120,7 @@ def main():
                        'GapOther': round(float(og.mean()), 4)}
         # only the macros the manuscript PRINTS go to the .tex (p9 forbids
         # unused definitions); the figure asserts against the full json grid.
-        if label in ('GaOne', 'CpOne', 'Rule'):
+        if label in ('CpOne',):   # GaOne and Rule margins are printed from p56/p78 (same convention as 8.2)
             # signed, for a gap column; unsigned, for a sentence that already
             # says "behind" or "trails by" and would otherwise print "+2.0%"
             out += [f'\\newcommand{{\\{label}GapAll}}{{{allg.mean():+.1f}}}'

@@ -205,7 +205,7 @@ if __name__ == '__main__':
     # started from, and the policy does" -- survives it. Reported, not hidden: this
     # is the number the E5 paragraph now quotes.
     DAGGERED = ['S', 'LS', 'SW', 'LSW']
-    J = 'greedy+10x25+family+joint-v1'
+    J = 'greedy+10x25+family+jointblind-v1'   # the released token-blind PACT policy (Table 6's PACT column)
     # The "repaired portfolio" this block reports must be THE hint the solver was
     # handed -- the same per-instance values the daggered 5s cells of Table I
     # credit (the fairwarmR re-solves improved on none of them) -- and NOT a

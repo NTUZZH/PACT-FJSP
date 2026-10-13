@@ -228,7 +228,7 @@ def f2_parity(joint='10x25+family+jointblind-v1', margin=1.0):
         seen.add(v)
     ax.set_yticks(y); ax.set_yticklabels(regimes)
     ax.set_ylim(-0.7, len(regimes) - 0.3)
-    ax.set_xlabel('paired makespan gap, joint − specialist (%)')
+    ax.set_xlabel('paired makespan gap, PACT minus specialist (%)')
     ax.set_ylabel('constraint regime')
     ax.grid(axis='x', lw=0.3, alpha=0.4)
     ax.set_axisbelow(True)
@@ -254,10 +254,10 @@ def f3_zeroshot(joint='10x25+family+jointblind-v1',
     is exactly the defect _pooled()'s docstring warns about, wearing a caption
     that misattributed the numbers. Every learned row now goes through _pooled(),
     and the second row is the conditioned variant it always claimed to be."""
-    rows = [('released joint (zero-shot)', joint, None),
+    rows = [('PACT (zero-shot)', joint, None),
             ('conditioned variant', cond, None),
             ('composition specialist', '10x25+family+spec-{R}', None),
-            ('best PDR', None, ('FIFO', 'MOR', 'SPT', 'MWKR'))]
+            ('best dispatching rule', None, ('FIFO', 'MOR', 'SPT', 'MWKR'))]
     regimes = ['SW', 'LSW']
     M = np.full((len(rows), len(regimes)), np.nan)
     for c, reg in enumerate(regimes):
@@ -1059,8 +1059,8 @@ def f5_anytime():
     # into the left fifth of its width and leave the rest empty. Each panel
     # labels its own ticks instead.
     fig, (bx, cx) = plt.subplots(
-        2, 1, figsize=(3.5, 2.86), dpi=300,
-        gridspec_kw={'height_ratios': [0.92, 0.88], 'hspace': 0.72})
+        2, 1, figsize=(3.5, 3.62), dpi=300,
+        gridspec_kw={'height_ratios': [0.92, 0.88], 'hspace': 0.76})
     from matplotlib.lines import Line2D
     # ---------------- panel (a): every alternative's gap TO the policy at
     # matched budgets, pooled setup-bearing (solid) vs the rest (dashed).
@@ -1087,32 +1087,44 @@ def f5_anytime():
             bx.plot(xs, ys, ls=ls, color=c, marker=mk, ms=3.8, mew=0.6,
                     markeredgecolor='white', lw=1.3, zorder=4)
     bx.set_xscale('log')
-    bx.set_xscale('log')
-    bx.xaxis.set_major_locator(FixedLocator([1, 2, 5, 10, 30]))
-    bx.xaxis.set_major_formatter(FixedFormatter(['1', '2', '5', '10', '30']))
+    # The axis has to start below the policy's own measured latency, or its
+    # marker is clipped onto the left spine and reads as a wrong x. A 0.4 s
+    # lower limit with a labelled 0.5 rung puts the marker inside the axes at
+    # its true value, and the measured rungs 1, 2, 5, 10, 30 keep their labels.
+    bx.xaxis.set_major_locator(FixedLocator([0.5, 1, 2, 5, 10, 30]))
+    bx.xaxis.set_major_formatter(
+        FixedFormatter(['0.5', '1', '2', '5', '10', '30']))
     bx.xaxis.set_minor_locator(FixedLocator([]))
-    bx.set_xlim(0.55, 35)
+    bx.set_xlim(0.40, 35)
     bx.set_xlabel('time budget per instance (s), log scale', labelpad=1)
     # Same discipline as panel (a), but the band goes on top: below the curves
     # there is no room (CP-SAT without setups runs to -4.7 at the last rung),
     # while nothing rises above +2.5, so one legend row clears every curve.
-    bx.set_ylim(-5.0, 4.6)
-    bx.set_ylabel('gap to the\npolicy (%)')
-    bx.set_title('(a) alternatives vs. the policy at matched budgets',
-                 fontsize=8, pad=3)
+    bx.set_ylim(-5.0, 5.4)
+    bx.set_ylabel('gap to\nPACT (%)')
+    bx.set_title('(a) alternatives vs. PACT at matched budgets',
+                 fontsize=8, pad=6)
     bx.grid(axis='y', lw=0.3, alpha=0.4)
     bx.set_axisbelow(True)
+    # The legend names the per-instance best of the four textbook rules by
+    # the term the manuscript defines (Section 6.2), not by the internal key.
+    SHOWN = {'best rule': 'rule pool'}
     mh = [Line2D([0], [0], color=MSTYLE[k][0], marker=MSTYLE[k][1], ls='-',
-                 lw=1.3, ms=3.8, mew=0.6, markeredgecolor='white', label=k)
+                 lw=1.3, ms=3.8, mew=0.6, markeredgecolor='white',
+                 label=SHOWN.get(k, k))
           for k in MSTYLE]
     # The solid/dashed key lives in the caption, not here: six entries need
     # three rows, and three rows do not fit under the curves without covering
     # them.
     mh += [Line2D([0], [0], color='black', ls='none', marker='v', ms=5,
-                  label=f'policy ({_psec:.2f} s)')]
-    leg2 = bx.legend(handles=mh, ncol=4, loc='upper left', fontsize=6.3,
-                     handlelength=1.25, handletextpad=0.4, columnspacing=0.7,
-                     labelspacing=0.25, borderpad=0.3, borderaxespad=0.25,
+                  label=f'PACT ({_psec:.2f} s)')]
+    # One row, sized so the box stays INSIDE the axes: a legend wider than
+    # its panel pushes the saved canvas past the 3.5 in column, and the whole
+    # figure is then scaled down in the manuscript, printing every label below
+    # its stated point size.
+    leg2 = bx.legend(handles=mh, ncol=4, loc='upper left', fontsize=5.9,
+                     handlelength=1.0, handletextpad=0.3, columnspacing=0.45,
+                     labelspacing=0.25, borderpad=0.25, borderaxespad=0.25,
                      framealpha=0.92, edgecolor='0.75')
     leg2.get_frame().set_linewidth(0.4)
 
@@ -1148,20 +1160,20 @@ def f5_anytime():
     # Room for one legend row above every curve: the 30-module lead peaks at
     # +3.4 and the 10-module curve bottoms at -2.6, so the axis runs to +6.6 and
     # the legend sits in empty space rather than over the data.
-    cx.set_ylim(-4.0, 7.6)
+    cx.set_ylim(-4.0, 8.2)
     cx.set_xlabel('time budget per instance (s), log scale')
-    cx.set_ylabel('policy lead over\ncredited solver (%)')
+    cx.set_ylabel('PACT lead over\ncredited solver (%)')
     cx.set_title('(b) the same frontier as the shop grows, all regimes pooled',
-                 fontsize=8, pad=3)
+                 fontsize=8, pad=6)
     cx.grid(axis='y', lw=0.3, alpha=0.4)
     cx.set_axisbelow(True)
-    leg3 = cx.legend(ncol=5, loc='upper left', fontsize=6.3, handlelength=1.25,
-                     handletextpad=0.4, columnspacing=0.7, labelspacing=0.25,
-                     borderpad=0.3, borderaxespad=0.25, framealpha=0.92,
+    leg3 = cx.legend(ncol=5, loc='upper left', fontsize=5.9, handlelength=1.0,
+                     handletextpad=0.3, columnspacing=0.45, labelspacing=0.25,
+                     borderpad=0.25, borderaxespad=0.25, framealpha=0.92,
                      edgecolor='0.75')
     leg3.get_frame().set_linewidth(0.4)
 
-    fig.tight_layout(pad=0.3)
+    fig.tight_layout(pad=0.3, h_pad=0.9)
     for ext in ('pdf', 'png'):
         fig.savefig(f'{OUT}/f5_anytime.{ext}', bbox_inches='tight')
     plt.close(fig)
@@ -1216,7 +1228,7 @@ def f23_parity_zeroshot(joint='10x25+family+jointblind-v1',
     rows = [('zero-shot joint', joint, None),
             ('conditioned variant', cond, None),
             ('composition specialist', '10x25+family+spec-{R}', None),
-            ('best PDR', None, ('FIFO', 'MOR', 'SPT', 'MWKR'))]
+            ('best dispatching rule', None, ('FIFO', 'MOR', 'SPT', 'MWKR'))]
     held = ['SW', 'LSW']
     M = np.full((len(rows), len(held)), np.nan)
     for c, reg in enumerate(held):
@@ -1264,7 +1276,7 @@ def f23_parity_zeroshot(joint='10x25+family+jointblind-v1',
     # Left headroom so the legend sits in empty space: every CI starts at >= -0.3,
     # so the band left of -0.4 carries no data for the legend to cover.
     ax.set_xlim(-1.5, 1.9)
-    ax.set_xlabel('paired makespan gap, joint − specialist (%)')
+    ax.set_xlabel('paired makespan gap, PACT policy − specialist (%)')
     ax.set_ylabel('training regime')
     ax.grid(axis='x', lw=0.3, alpha=0.4); ax.set_axisbelow(True)
     ax.spines['left'].set_visible(False)
@@ -1337,7 +1349,7 @@ def f6_load(src='results/load_axis.json'):
 
     for key, src_d, color, style, label in (
             ('spec', spec, C_JOINT, '-', 'over the regime specialist'),
-            ('rule', rule, C_PDR, '--', 'over the best rule')):
+            ('rule', rule, C_PDR, '--', 'over SPT')):
         m = [-src_d[s]['mean'] for s in D['sizes']]
         lo = [-src_d[s]['hi'] for s in D['sizes']]
         hi = [-src_d[s]['lo'] for s in D['sizes']]
@@ -1347,19 +1359,20 @@ def f6_load(src='results/load_axis.json'):
 
     ax.axhline(0, color='black', lw=0.7, zorder=2)
 
-    # the documented floor batch: 1866 modules over two 40-floor towers
-    floor = 1866 / (2 * 40)
+    # the documented floor batch: 3034 modules over two 56-storey towers
+    # (United Tec Construction project record, Avenue South Residence)
+    floor = 3034 / (2 * 56)
     ax.axvline(floor, color='#777777', lw=0.8, ls=(0, (4, 2)), zorder=2)
     lo_y, hi_y = ax.get_ylim()
     ax.text(floor + 0.4, lo_y + 0.62 * (hi_y - lo_y),
-            'one floor of the\ndocumented tower', ha='left', va='center',
+            'per-floor batch\n(one floor of the\ndocumented tower)', ha='left', va='center',
             fontsize=6.2, color='black', linespacing=1.2)
 
     ax.set_xticks(jobs)
     ax.set_xlim(jobs[0] - 1.2, jobs[-1] + 2.2)
     ax.set_xlabel(f'modules scheduled together '
                   f'({D["n_machines"]} stations throughout)', fontsize=7.2)
-    ax.set_ylabel('policy ahead by (%)', fontsize=7.2)
+    ax.set_ylabel('PACT ahead by (%)', fontsize=7.2)
     ax.tick_params(labelsize=7)
     ax.grid(axis='y', color='#DDDDDD', lw=0.5, zorder=0)
     ax.set_axisbelow(True)

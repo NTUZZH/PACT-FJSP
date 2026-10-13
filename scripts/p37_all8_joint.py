@@ -100,7 +100,9 @@ def guard():
 
 
 def fmt(x):
-    return f'{x:+.2f}'
+    v = round(float(x), 2)
+    v = 0.0 if v == 0 else v      # never print a negative zero
+    return f'{v:+.2f}'
 
 
 if __name__ == '__main__':

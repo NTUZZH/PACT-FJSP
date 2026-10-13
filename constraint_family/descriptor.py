@@ -44,16 +44,41 @@ class ConstraintDescriptor:
                  (None when WINDOW inactive)
       horizon  : int hours — the deterministic horizon estimate H used to
                  lay out outage calendars (job-chain lower bound)
+      setup_convention : declared setup convention, 'attached' (default, the
+                 only convention the environment implements), 'detached' or
+                 'hybrid'. Metadata only: the environment never reads it; the
+                 configuration check C2 (constraint_family/checks.py) rejects
+                 anything but 'attached' (paper Remark 1). Serialized only when
+                 it differs from the default, so every existing record and
+                 every existing to_json() output is unchanged.
+      release  : [J] int hours, release date rho_i of each job (earliest
+                 start of its first operation), or None (every job ready at
+                 0). The candidate fourth rule of the family: it is not an
+                 activation bit (the token stays 12-dim); the rule is active
+                 iff the field is present. Serialized only when present, so
+                 every existing record is byte-identical. Applied by
+                 FJSPEnvFamily as the start map b -> max(b, rho_i) on the
+                 first operation of job i, with the trivial delay envelope.
     """
 
+    DEFAULT_SETUP_CONVENTION = 'attached'
+
+
     def __init__(self, active, lag, op_class, setup=None, windows=None,
-                 horizon=None):
+                 horizon=None, setup_convention=DEFAULT_SETUP_CONVENTION,
+                 release=None):
         self.active = tuple(bool(b) for b in active)
         self.lag = np.asarray(lag, dtype=float)
         self.op_class = np.asarray(op_class, dtype=int)
         self.setup = None if setup is None else np.asarray(setup, dtype=float)
         self.windows = windows
         self.horizon = horizon
+        self.setup_convention = setup_convention
+        self.release = None if release is None else np.asarray(release, dtype=float)
+
+    @property
+    def has_release(self):
+        return self.release is not None
 
     @property
     def has_lag(self):
@@ -68,7 +93,7 @@ class ConstraintDescriptor:
         return self.active[2]
 
     def to_json(self):
-        return {
+        d = {
             'active': list(self.active),
             'lag': self.lag.astype(int).tolist(),
             'op_class': self.op_class.tolist(),
@@ -79,6 +104,11 @@ class ConstraintDescriptor:
                              for w in self.windows],
             'horizon': None if self.horizon is None else int(self.horizon),
         }
+        if self.setup_convention != self.DEFAULT_SETUP_CONVENTION:
+            d['setup_convention'] = self.setup_convention
+        if self.release is not None:
+            d['release'] = self.release.astype(int).tolist()
+        return d
 
     @classmethod
     def from_json(cls, d):
@@ -86,7 +116,10 @@ class ConstraintDescriptor:
                    setup=d['setup'],
                    windows=None if d['windows'] is None
                    else [[(s, e) for (s, e) in w] for w in d['windows']],
-                   horizon=d['horizon'])
+                   horizon=d['horizon'],
+                   setup_convention=d.get('setup_convention',
+                                          cls.DEFAULT_SETUP_CONVENTION),
+                   release=d.get('release'))
 
 
 def job_chain_horizon(job_length, op_pt, time_lag):
