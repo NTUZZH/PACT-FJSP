@@ -14,12 +14,13 @@ identified after the scale results were in (post hoc), and the manuscript says s
              fair-warm CP-SAT 1 s rung at 10x25 (p62's credit rule, pooled over
              the six training regimes and per regime), against the 1800 s
              rule-seeded CP-SAT at 50x25 and 80x25 (p60's credit rule, pooled
-             over all eight regimes), the released checkpoint alone against
+             over all eight regimes), each training run alone against
              the same 1800 s solver, and the gain of the best of three over the
              seed mean at every size. Gaps are 100*(rival - option)/option,
              positive = the option is ahead; paired bootstrap, 20,000
              resamples, default_rng(7); a regime is ahead or behind when its
-             95% interval excludes zero.
+             95% interval excludes zero. Each training run is also compared
+             on its own (Run<One,Two,Three>, seeds 301-303).
 
 Usage:
   python scripts/p82_best3.py --cache
@@ -155,7 +156,7 @@ def analyse():
     # 50x25 / 80x25: against the 1800 s rule-seeded CP-SAT, all eight regimes pooled
     for size in ('50x25', '80x25'):
         w = WORD[size]
-        for tag, pick in (('BestThree', lambda a: a.min(0)), ('Released', lambda a: a[0])):
+        for tag, pick in (('BestThree', lambda a: a.min(0)),):
             gaps, ahead, behind = [], [], []
             for r in R8:
                 c = cp_1800(size, r)
@@ -169,6 +170,32 @@ def analyse():
             lines.append(f'\\newcommand{{\\{tag}{w}CpAheadN}}{{{len(ahead)}}}'
                          f'\\newcommand{{\\{tag}{w}CpBehindN}}{{{len(behind)}}}'
                          f'  % behind: {",".join(behind) or "none"}')
+    # each training run on its own against the same 1800 s solver
+    for size in ('50x25', '80x25'):
+        w = WORD[size]
+        means, clear, tie = [], 0, 0
+        for k, word in enumerate(('One', 'Two', 'Three')):
+            gaps, ahead, behind = [], [], []
+            for r in R8:
+                c = cp_1800(size, r)
+                x = seeds(size, r, len(c))[k]
+                g = 100 * (c - x) / x
+                m, lo, hi = ci(g, rng)
+                (ahead if lo > 0 else behind if hi < 0 else []).append(r)
+                gaps.append(g)
+            m, lo, hi = ci(np.concatenate(gaps), rng)
+            lines.append(trio(f'Run{word}{w}Cp', m, lo, hi))
+            lines.append(f'\\newcommand{{\\Run{word}{w}CpAheadN}}{{{len(ahead)}}}'
+                         f'\\newcommand{{\\Run{word}{w}CpBehindN}}{{{len(behind)}}}'
+                         f'  % seed {300 + k + 1}; behind: {",".join(behind) or "none"}')
+            means.append(m)
+            clear += lo > 0
+            tie += lo <= 0 <= hi
+        lines.append(f'\\newcommand{{\\Runs{w}CpMinAbs}}{{{min(means):.2f}}}'
+                     f'\\newcommand{{\\Runs{w}CpMaxAbs}}{{{max(means):.2f}}}'
+                     f'\\newcommand{{\\Runs{w}CpClearN}}{{{clear}}}'
+                     f'\\newcommand{{\\Runs{w}CpTieN}}{{{tie}}}'
+                     f'  % of the three runs: pooled interval above zero / including zero')
     emit('paper/macros_best3.tex', lines)
     print('\n'.join(lines))
 

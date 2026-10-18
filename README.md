@@ -101,6 +101,19 @@ three training seeds 301, 302 and 303.<!-- \SeedList, paper/macros.tex --> A nam
 | `hgnn-certified-joint-s30x`, `hgnn-published-joint-s30x` | one HGNN policy over the training regimes, with the certified or the published reward |
 | `hgnn-certified-<regime>-s301` | the HGNN per-regime specialists |
 
+**Which PACT checkpoint to deploy.** `jointblind-v1`, `jointblind-v1-s302` and
+`jointblind-v1-s303` are three training runs of one configuration. They share
+the architecture, hyperparameters, training regimes, budget and validation
+set, and differ only in the training seed, which sets the initial weights, the
+instances drawn during training and the action sampling. The paper reports
+their per-instance mean. At the training size the three runs are close, and
+the spread grows with the shop: at 80 modules seed 301, the checkpoint without
+a suffix, is the weakest of the three. For deployment, run all three on the
+instance in parallel, which takes the latency of one rollout, and keep the
+shortest schedule. Every schedule is validated, so the choice uses only its
+makespan. `scripts/p82_best3.py` evaluates this option and builds the
+best-of-three warm starts for CP-SAT.
+
 ## Environment
 
 The results were produced with Python 3.11, PyTorch 2.11 (CUDA 12.8), NumPy
