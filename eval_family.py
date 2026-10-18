@@ -49,6 +49,11 @@ ARG_BLIND = _pop('--blind_channels', '')  # e.g. 'window' / 'lag,setup' (E3)
 # OMP_NUM_THREADS, which the caller sets for the numpy environment code, so the
 # two settings silently become one.
 ARG_TORCH_THREADS = int(_pop('--torch_threads', '0'))
+# Optional: write each policy schedule (machine per operation, completion times)
+# as a CP-SAT warm start in the cache format of scripts/p12_cpsat_fairwarm.py,
+# <dir>/<regime>/<instance>.npz. Only validated schedules are written. Off by
+# default, so every published evaluation is unchanged.
+ARG_SAVE_SCHED = _pop('--save_schedules', '')
 _regimes = []
 if '--regimes' in sys.argv:
     i = sys.argv.index('--regimes')
@@ -324,6 +329,15 @@ def main():
                 viol = validate_schedule(jl, pt, descs[i], op_st, op_ct, amch)
                 if not viol:
                     feas += 1
+                if ARG_SAVE_SCHED and _policy_method:
+                    if viol:
+                        sys.exit(f'invalid policy schedule {stem}: {viol[:3]}')
+                    sd = os.path.join(ARG_SAVE_SCHED, regime)
+                    os.makedirs(sd, exist_ok=True)
+                    np.savez(os.path.join(sd, os.path.basename(stem) + '.npz'),
+                             amch=amch.copy(), ct=np.asarray(op_ct, float).copy(),
+                             ms=ms, rule=f'{method}+{ARG_MODEL}',
+                             rule_names=[f'{method}+{ARG_MODEL}'], rule_ms=[ms])
                 ms_list.append(ms)
                 t_list.append(dt)
             ms_arr = np.array(ms_list)

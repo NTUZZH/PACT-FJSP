@@ -99,8 +99,11 @@ def _solve_one(task):
 
 
 def solve_rung(size, regimes, budget, workers, jobs, anytime=False, limit=0,
-               out_suffix=''):
+               out_suffix='', warm_cache=None):
     data, base, cache = _paths(size)
+    # --warm-cache repoints the hint source (e.g. the policy's own schedules for
+    # the policy-seeded hybrid); everything else in the protocol is unchanged.
+    cache = warm_cache or cache
     fw.WARM_CACHE = cache
     tasks = []
     for regime in regimes:
@@ -125,7 +128,7 @@ def solve_rung(size, regimes, budget, workers, jobs, anytime=False, limit=0,
             tasks.append(((os.path.join(base, name), dp, out_path, budget,
                            workers, anytime), cache))
     print(f'[{size} {budget}s] {len(tasks)} solves queued  ({workers} workers '
-          f'x {jobs} jobs, best-of-4 PDR warm start'
+          f'x {jobs} jobs, warm start from {cache}'
           f'{", anytime trajectory recorded" if anytime else ""})', flush=True)
     t0 = time.time()
     with ProcessPoolExecutor(max_workers=jobs) as ex:
@@ -148,6 +151,7 @@ def main():
     # budget, no fixed seed), so re-running an instance is a second draw, not a
     # correction, and it must not overwrite the first.
     out_suffix = ''
+    warm_cache = None
     regimes = ['N', 'L', 'S', 'W', 'LS', 'LW', 'SW', 'LSW']
     i = 0
     while i < len(a):
@@ -169,6 +173,8 @@ def main():
             limit = int(a[i + 1]); i += 2
         elif a[i] == '--out-suffix':
             out_suffix = a[i + 1]; i += 2
+        elif a[i] == '--warm-cache':
+            warm_cache = a[i + 1]; i += 2
         elif a[i] == '--regimes':
             regimes = []
             i += 1
@@ -182,8 +188,10 @@ def main():
     elif phase == 'solve':
         assert workers * jobs <= 16, \
             f'{workers} workers x {jobs} jobs > 16 cores: would starve the solver'
+        if warm_cache:
+            assert out_suffix, 'a repointed hint source needs its own --out-suffix'
         solve_rung(size, regimes, budget, workers, jobs, anytime, limit,
-                   out_suffix)
+                   out_suffix, warm_cache)
     else:
         sys.exit(f'unknown phase {phase}')
 

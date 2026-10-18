@@ -187,6 +187,8 @@ python scripts/p18_e6_table.py        # E6 scale transfer (S13)
 python scripts/p53_load_axis.py       # against the specialists (Fig. 6, S16)
 python scripts/p60_scale1800.py       # 30-minute CP-SAT at 50 and 80 modules
 python scripts/p70_prodbatch_table.py # Table 9
+python scripts/p82_best3.py --analyse # best of the three checkpoints (Section 8.2)
+python scripts/p81_hybrid.py          # CP-SAT seeded with the policy's schedule (S15)
 python scripts/p72_aware_rules.py     # constraint-aware rules (S5)
 python scripts/p76_aware_table.py     # their tables
 python scripts/p75_deploy_cost.py     # deployment cost (S14)
@@ -209,6 +211,20 @@ python scripts/p44_cpsat_scale.py --size 30x25 --phase solve --budget 30 --worke
 python scripts/p61_boundary_flip.py --report        # 30-minute boundary cases
 python scripts/p38_optgap.py                        # gaps from solver bounds
 python scripts/p36_cpsat_modelsize.py               # model size
+```
+
+The production-batch hybrid starts from the policies' own schedules. Export
+them with `eval_family.py --save_schedules <dir>` for each of the three
+checkpoints, build the best-of-three cache, and run the hybrid cells. The runner
+solves each cell in its own process, lets only one 80-module model with setups
+run at a time, and records the timing evidence that the audit checks.
+
+```bash
+python scripts/p82_best3.py --cache                                # best-of-three warm starts
+python scripts/p80_cpsat_rerun.py --phase run --slots 0-15 0-15    # hybrid cells
+python scripts/p80_cpsat_rerun.py --phase audit                    # timing validity
+python scripts/p46_idle_quant.py --budget 30 --workers 8 --jobs 2  # non-delay audit (S8)
+python scripts/p50_actmask_analysis.py                             # its macros and table
 ```
 
 `p41` reads the 10x25 cache `or_solution/FAMILY/warmstart_cache`, which ships
@@ -283,9 +299,18 @@ repaired so that every rule selects inside the policy's action mask. Seeding fro
 MWKR alone would understate the solver by a wide margin, because MWKR is far
 behind SPT on the setup-bearing regimes. The solver is credited with the better
 of its warm start and its search, because a hint is a suggestion the search may
-fail to match. The budget is wall-clock, so each solve runs
-8<!-- \CpWorkers, paper/macros.tex --> search workers on dedicated cores. A
-solver that competes for CPU returns worse solutions and reports no error.
+fail to match. The hint assigns every model variable, so the solver accepts it
+as a complete feasible solution and its first incumbent has the warm start's
+makespan. The budget is wall-clock, so two solves run at a time on 16 reserved
+cores, each with 8<!-- \CpWorkers, paper/macros.tex --> search workers. A
+solver that competes for CPU returns worse solutions and reports no error, so
+every re-solved cell records its CPU share (CPU seconds over wall-clock seconds
+times workers) and its core affinity. `scripts/timing_validity.py` states the
+rule the audit applies: a cell is valid at a share of at least 0.9, after an
+optimality proof, or within 0.05 of the 5th percentile of its cell type, whose
+bars are frozen in `or_solution/FAMILY/share_thresholds.json`.
+Short budgets and the largest setup models spend a fixed single-threaded
+presolve inside the budget, which lowers their share without contention.
 
 **The greedy rollout is not bit-reproducible across evaluation environments.**
 It is deterministic within one evaluation environment. On another device or

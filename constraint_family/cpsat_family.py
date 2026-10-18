@@ -115,6 +115,8 @@ def family_solver(job_length, op_pt, desc, time_limit, warmstart=None,
     model = cp_model.CpModel()
 
     starts, blocks, ends = {}, {}, {}         # master vars per (job, task)
+    dur_vars = {}                             # (job, task) -> processing IntVar
+    alt_vars = {}                             # (job, task, alt) -> (lb, le, lbd)
     presences = {}                            # (job, task, alt) -> literal
     setup_durs = {}                           # (job, task) -> IntVar
     alt_machine = {}                          # (job, task, alt) -> machine id
@@ -139,6 +141,7 @@ def family_solver(job_length, op_pt, desc, time_limit, warmstart=None,
             model.Add(start == block + sd)
             model.Add(end == start + dur)
             starts[(j, t)], blocks[(j, t)], ends[(j, t)] = start, block, end
+            dur_vars[(j, t)] = dur
             setup_durs[(j, t)] = sd
             op_of_task[(j, t)] = op_idx
 
@@ -175,6 +178,7 @@ def family_solver(job_length, op_pt, desc, time_limit, warmstart=None,
                 model.Add(starts[(j, t)] + d == end).OnlyEnforceIf(p)
                 lits.append(p)
                 presences[(j, t, a)] = p
+                alt_vars[(j, t, a)] = (l_block, l_end, l_bdur)
                 alt_machine[(j, t, a)] = m
                 per_mch[m].append((j, t, a, p, l_int))
             model.AddExactlyOne(lits)
@@ -293,11 +297,39 @@ def family_solver(job_length, op_pt, desc, time_limit, warmstart=None,
                 if (prev_node, 0) in arc_lits.get(m, {}):
                     model.AddHint(arc_lits[m][(prev_node, 0)], 1)
         else:
+            # Without setups there is no circuit whose arcs propagate the rest
+            # of the schedule, and a hint of the starts and machine choices
+            # alone is INCOMPLETE for CP-SAT: its hint-guided first incumbent
+            # can lie far above the warm start (80x25 N, instance_000: 826
+            # against 523), so the search never starts from the schedule it was
+            # handed. Every remaining variable is therefore hinted as well
+            # (block, duration, end, the chosen alternative's machine-side
+            # interval, zeros on the absent alternatives, and the makespan), so
+            # that CP-SAT reports the hint complete and feasible and takes it
+            # as its first incumbent.
+            st_of, end_of = {}, {}
             for oi in range(n_ops_total):
                 (j, t) = task_of_op[oi]
-                if oi in dur_of:
-                    model.AddHint(starts[(j, t)],
-                                  max(0, int(ws_ct[oi]) - dur_of[oi]))
+                st = max(0, int(ws_ct[oi]) - dur_of[oi])
+                st_of[(j, t)], end_of[(j, t)] = st, st + dur_of[oi]
+            for (j, t), st in st_of.items():
+                model.AddHint(starts[(j, t)], st)
+                model.AddHint(blocks[(j, t)], st)
+                model.AddHint(setup_durs[(j, t)], 0)
+                model.AddHint(dur_vars[(j, t)], end_of[(j, t)] - st)
+                model.AddHint(ends[(j, t)], end_of[(j, t)])
+            for (j, t, a), (l_b, l_e, l_d) in alt_vars.items():
+                oi = op_of_task[(j, t)]
+                if jobs[j][t][a][1] == int(ws_mch[oi]):
+                    last = t == len(jobs[j]) - 1
+                    hold = end_of[(j, t)] if (not blocking or last) \
+                        else st_of[(j, t + 1)]
+                    vals = (st_of[(j, t)], hold, hold - st_of[(j, t)])
+                else:
+                    vals = (0, 0, 0)
+                for var, v in zip((l_b, l_e, l_d), vals):
+                    model.AddHint(var, v)
+            model.AddHint(makespan, max(end_of.values()))
 
     solver = cp_model.CpSolver()
     solver.parameters.max_time_in_seconds = float(time_limit)

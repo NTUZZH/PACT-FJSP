@@ -186,12 +186,18 @@ rule_rows = []
 for size in SIZES:
     d = []
     for r in REGIMES:
-        a, na = pooled(size, JOINT, r)
+        xs = [arr(size, f'{JOINT}{s}', r) for s in SEED_SFX]
+        xs = [x for x in xs if x is not None]
         b = arr(size, 'SPT', r)
-        if a is None or b is None:
+        if not xs or b is None:
             refuse(MACROS, f'missing SPT reference at {size}/{r}')
             sys.exit(1)
-        d.append(100 * (a - b) / b)
+        # The E6 estimator of the main text (scripts/p18_e6_table.py): the
+        # rule's lead relative to the POLICY's makespan, seed by seed, then
+        # averaged per instance. Stored with this file's sign (negative = the
+        # policy ahead), so the figure's single sign flip still applies, and
+        # the plotted line now equals the E6 numbers the text prints.
+        d.append(np.mean([100 * (x - b) / x for x in xs], axis=0))
     m, lo, hi, _ = ci(np.concatenate(d))
     rule_rows.append(dict(size=size, mean=m, lo=lo, hi=hi))
     w = WORD[size]

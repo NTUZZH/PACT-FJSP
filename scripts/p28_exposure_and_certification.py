@@ -316,7 +316,9 @@ print(f'   LW,SW,LSW: worst tail {100 * max(other):.1f}% -- the calendar lies '
 # of raising: "62% of cells are certified optimal" would quietly become a percentage
 # of a campaign smaller than the one the paper describes, and nothing would say so.
 # The 300 s campaign is a deliberate 30-instance prefix, not a truncated 100.
-EXPECT = {'10x25': 800, '10x25_fairwarm5s': 800, '10x25_fairwarm30s': 800,
+# The 5 s and 30 s tiers are the ones Table e5 prints: the solves handed the
+# repaired rule pool (fairwarmR5s, fairwarmR30s).
+EXPECT = {'10x25': 800, '10x25_fairwarmR5s': 800, '10x25_fairwarmR30s': 800,
           '10x25_fairwarm300s': 240}
 
 
@@ -337,7 +339,7 @@ def status(camp):
 
 print('\n4. CP-SAT CERTIFICATION, by campaign')
 cells = {}
-for camp in ('10x25', '10x25_fairwarm5s', '10x25_fairwarm30s',
+for camp in ('10x25', '10x25_fairwarmR5s', '10x25_fairwarmR30s',
              '10x25_fairwarm300s'):
     c, n = status(camp)
     cells[camp] = (c, n)
@@ -352,8 +354,8 @@ print(f'   reference campaign, regime L alone: {ref_l} '
       '(the baseline the no-wait inflation above is measured against)')
 
 ref_c, ref_n = cells['10x25']
-f5_c, f5_n = cells['10x25_fairwarm5s']
-f30_c, f30_n = cells['10x25_fairwarm30s']
+f5_c, f5_n = cells['10x25_fairwarmR5s']
+f30_c, f30_n = cells['10x25_fairwarmR30s']
 f300_c, f300_n = cells['10x25_fairwarm300s']
 timed_opt = (f5_c.get('OPTIMAL', 0) + f30_c.get('OPTIMAL', 0)
              + f300_c.get('OPTIMAL', 0))

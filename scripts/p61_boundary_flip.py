@@ -46,11 +46,32 @@ print(f'boundary set: {len(targets)} solves at the one-hour minimum')
 for r, i, w, o in targets:
     print(f'  {r:4s} {i}  {w:.0f} -> {o:.0f}')
 
-if '--report' not in _ARGV:
-    import scripts.p44_cpsat_scale as p44
+def _solve(task):
+    """One 1800 s re-solve on cores 0-15, annotated with the timing evidence
+    (cpu_share, affinity, load average) that the validity rule reads."""
+    stem, desc, out_path = task
+    os.sched_setaffinity(0, list(range(16)))
+    os.environ['OMP_NUM_THREADS'] = '1'
     import scripts.p12_cpsat_fairwarm as fw
+    import scripts.p44_cpsat_scale as p44
+    fw.WARM_CACHE = p44._paths('50x25')[2]
+    fw.solve_one((stem, desc, out_path, BUDGET, WORKERS, True))
+    rec = json.load(open(out_path))
+    rec['cpu_share'] = round(rec['cpu_per_wall'] / WORKERS, 3)
+    rec['affinity'] = sorted(os.sched_getaffinity(0))
+    rec['loadavg'] = [round(x, 2) for x in os.getloadavg()]
+    rec['hint'] = 'complete'
+    with open(out_path + '.tmp', 'w') as f:
+        json.dump(rec, f)
+    os.replace(out_path + '.tmp', out_path)
+    return out_path, rec['objective'], rec['cpu_share']
+
+
+if '--report' not in _ARGV and __name__ == '__main__':
+    import multiprocessing as mp
+    import scripts.p44_cpsat_scale as p44
     data, base, cache = p44._paths('50x25')
-    fw.WARM_CACHE = cache
+    todo = []
     for r, inst, _, _ in targets:
         out_dir = f'{OUT}/{r}'
         os.makedirs(out_dir, exist_ok=True)
@@ -58,9 +79,11 @@ if '--report' not in _ARGV:
         if os.path.exists(out_path):
             print(f'skip {r}/{inst} (done)')
             continue
-        print(f're-solving {r}/{inst} ...', flush=True)
-        fw.solve_one((os.path.join(base, inst), f'{data}/desc/{r}/{inst}.desc.json',
-                      out_path, BUDGET, WORKERS, True))
+        todo.append((os.path.join(base, inst), f'{data}/desc/{r}/{inst}.desc.json', out_path))
+    # two solves at a time on cores 0-15, as in the 1800 s campaign itself
+    with mp.Pool(2, maxtasksperchild=1) as pool:
+        for out_path, obj, share in pool.imap_unordered(_solve, todo):
+            print(f'solved {out_path}: {obj} (cpu_share {share})', flush=True)
 
 # ---- the conditional flip count -------------------------------------------
 flips, moved, same, missing = 0, 0, 0, 0

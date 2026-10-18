@@ -368,6 +368,15 @@ class FJSPEnvFamily(FJSPEnvForSameOpNums):
         the same guard _push_past_outages uses.
         """
         if self.mask_mode != 'active':
+            if os.environ.get('PACT_MASK_TOL') == '1':
+                # Tie-tolerant non-delay rule: a pair whose start equals the
+                # decision instant in hours stays admissible even when float
+                # error on the normalized axis puts it a few ulps above the
+                # minimum. Half a quantum separates a tie from a later start.
+                # Off by default, so every published number is unchanged.
+                return (self.pair_free_time
+                        > self.next_schedule_time[:, None, None]
+                        + 0.5 * self._slope)
             return super()._compute_unavailable_pairs()
         completion = np.where(self.candidate_process_relation, np.inf,
                               self.pair_free_time + self.candidate_pt)

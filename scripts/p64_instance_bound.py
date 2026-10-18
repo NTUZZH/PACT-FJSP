@@ -238,7 +238,8 @@ for tag, regs in (('All', REGIMES), ('Setup', list(SETUP)), ('NoSetup', NOSET)):
         f'\\newcommand{{\\IboundCpThirty{tag}}}{{{pooled("cp30", regs):.1f}}}'
         f'\\newcommand{{\\IboundCpThreeHundred{tag}}}{{{pooled("cp300", regs):.1f}}}'
         f'\\newcommand{{\\IboundLbRatio{tag}}}{{{pooled("lbratio", regs):.2f}}}'
-        f'  % pooled over {",".join(regs)}')
+        f'\\newcommand{{\\IboundPolPrefix{tag}}}{{{pooled("pol300", regs):.1f}}}'
+        f'  % pooled over {",".join(regs)}; PolPrefix = PACT on the same 300 s prefix as the solver')
 n_lb_tighter = sum(res[r]['lb_tighter'] for r in REGIMES)
 n300_tot = sum(res[r]['n300'] for r in REGIMES)
 lines.append(f'\\newcommand{{\\IboundSolverTighterN}}{{{n_lb_tighter}}}'

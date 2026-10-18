@@ -3,15 +3,15 @@
 % C^(s_0;c) of Eq. (3). Gaps: mean of 100*(makespan/C^ - 1), an UPPER
 % bound on the optimality gap. LbRatio: mean CP-SAT 300 s proven bound
 % divided by C^ (>1 = the solver bound is tighter).
-\newcommand{\IboundPolN}{43.0}\newcommand{\IboundCpThirtyN}{36.9}\newcommand{\IboundCpThreeHundredN}{35.6}\newcommand{\IboundLbRatioN}{1.13}  % N: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
+\newcommand{\IboundPolN}{43.0}\newcommand{\IboundCpThirtyN}{36.7}\newcommand{\IboundCpThreeHundredN}{34.6}\newcommand{\IboundLbRatioN}{1.14}  % N: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
 \newcommand{\IboundPolL}{5.6}\newcommand{\IboundCpThirtyL}{1.4}\newcommand{\IboundCpThreeHundredL}{0.5}\newcommand{\IboundLbRatioL}{1.00}  % L: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
 \newcommand{\IboundPolS}{51.1}\newcommand{\IboundCpThirtyS}{48.8}\newcommand{\IboundCpThreeHundredS}{48.8}\newcommand{\IboundLbRatioS}{1.16}  % S: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
-\newcommand{\IboundPolW}{61.7}\newcommand{\IboundCpThirtyW}{52.9}\newcommand{\IboundCpThreeHundredW}{50.9}\newcommand{\IboundLbRatioW}{1.23}  % W: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
+\newcommand{\IboundPolW}{61.7}\newcommand{\IboundCpThirtyW}{53.2}\newcommand{\IboundCpThreeHundredW}{48.5}\newcommand{\IboundLbRatioW}{1.24}  % W: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
 \newcommand{\IboundPolLS}{17.0}\newcommand{\IboundCpThirtyLS}{16.7}\newcommand{\IboundCpThreeHundredLS}{15.1}\newcommand{\IboundLbRatioLS}{1.02}  % LS: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
-\newcommand{\IboundPolLW}{10.4}\newcommand{\IboundCpThirtyLW}{4.7}\newcommand{\IboundCpThreeHundredLW}{3.4}\newcommand{\IboundLbRatioLW}{1.02}  % LW: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
+\newcommand{\IboundPolLW}{10.4}\newcommand{\IboundCpThirtyLW}{4.7}\newcommand{\IboundCpThreeHundredLW}{3.3}\newcommand{\IboundLbRatioLW}{1.02}  % LW: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
 \newcommand{\IboundPolSW}{70.2}\newcommand{\IboundCpThirtySW}{69.3}\newcommand{\IboundCpThreeHundredSW}{70.7}\newcommand{\IboundLbRatioSW}{1.24}  % SW: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
 \newcommand{\IboundPolLSW}{24.3}\newcommand{\IboundCpThirtyLSW}{24.4}\newcommand{\IboundCpThreeHundredLSW}{23.2}\newcommand{\IboundLbRatioLSW}{1.04}  % LSW: gap to C^ (%) of PACT, CP 30 s, CP 300 s (30-inst prefix); solver bound / C^
-\newcommand{\IboundPolAll}{35.4}\newcommand{\IboundCpThirtyAll}{31.9}\newcommand{\IboundCpThreeHundredAll}{31.0}\newcommand{\IboundLbRatioAll}{1.11}  % pooled over N,L,S,W,LS,LW,SW,LSW
-\newcommand{\IboundPolSetup}{40.7}\newcommand{\IboundCpThirtySetup}{39.8}\newcommand{\IboundCpThreeHundredSetup}{39.5}\newcommand{\IboundLbRatioSetup}{1.12}  % pooled over S,LS,SW,LSW
-\newcommand{\IboundPolNoSetup}{30.2}\newcommand{\IboundCpThirtyNoSetup}{24.0}\newcommand{\IboundCpThreeHundredNoSetup}{22.6}\newcommand{\IboundLbRatioNoSetup}{1.10}  % pooled over N,L,W,LW
-\newcommand{\IboundSolverTighterN}{209}\newcommand{\IboundSolverTighterOf}{240}  % 300 s instance-regime pairs where the solver bound exceeds C^
+\newcommand{\IboundPolAll}{35.4}\newcommand{\IboundCpThirtyAll}{31.9}\newcommand{\IboundCpThreeHundredAll}{30.6}\newcommand{\IboundLbRatioAll}{1.11}\newcommand{\IboundPolPrefixAll}{35.8}  % pooled over N,L,S,W,LS,LW,SW,LSW; PolPrefix = PACT on the same 300 s prefix as the solver
+\newcommand{\IboundPolSetup}{40.7}\newcommand{\IboundCpThirtySetup}{39.8}\newcommand{\IboundCpThreeHundredSetup}{39.5}\newcommand{\IboundLbRatioSetup}{1.12}\newcommand{\IboundPolPrefixSetup}{41.6}  % pooled over S,LS,SW,LSW; PolPrefix = PACT on the same 300 s prefix as the solver
+\newcommand{\IboundPolNoSetup}{30.2}\newcommand{\IboundCpThirtyNoSetup}{24.0}\newcommand{\IboundCpThreeHundredNoSetup}{21.7}\newcommand{\IboundLbRatioNoSetup}{1.10}\newcommand{\IboundPolPrefixNoSetup}{30.0}  % pooled over N,L,W,LW; PolPrefix = PACT on the same 300 s prefix as the solver
+\newcommand{\IboundSolverTighterN}{210}\newcommand{\IboundSolverTighterOf}{240}  % 300 s instance-regime pairs where the solver bound exceeds C^

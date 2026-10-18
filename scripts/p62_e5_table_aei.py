@@ -329,6 +329,24 @@ for f in glob.glob('paper/macros_*.tex') + ['paper/macros.tex']:
     if clash:
         refuse(MACROS, f'macro name collision with {f}: {sorted(clash)}')
 
+# The 300 s column is a fixed prefix of the test set, so its comparison with the
+# policy is made on the SAME instances (the full-column means are not comparable).
+_pr = np.random.default_rng(7)
+cap_ahead, cap_tie = [], []
+for row in rows:
+    v = row['cp'][300][0]
+    n = len(v)
+    pol = row['pol'][:n]
+    d = 100.0 * (v - pol) / pol
+    bs = d[_pr.integers(0, n, (N_BOOT, n))].mean(axis=1)
+    lo, hi = np.percentile(bs, 2.5), np.percentile(bs, 97.5)
+    if hi < 0:
+        cap_ahead.append(row['r'])
+    elif lo <= 0:
+        cap_tie.append(row['r'])
+lines.append(f'\\newcommand{{\\EfiveCapPrefixAheadN}}{{{len(cap_ahead)}}}'
+             f'  % regimes where CP-SAT at 300 s is ahead of PACT on the same prefix: '
+             f'{",".join(cap_ahead)}; not separable: {",".join(cap_tie) or "none"}')
 emit(MACROS, lines)
 
 head = [r'\begin{tabular}{lccccccccccc}', r'\toprule',
