@@ -1,7 +1,8 @@
-# PACT: A reinforcement learning framework with a certified reward for flexible job-shop scheduling under changing timing rules
+# PACT: Knowledge-driven reinforcement learning with a certified reward for flexible job-shop scheduling under changing timing rules
 
-Artifacts for the manuscript **"PACT: A reinforcement learning framework with a
-certified reward for flexible job-shop scheduling under changing timing rules"**
+Artifacts for the manuscript **"PACT: Knowledge-driven reinforcement learning
+with a certified reward for flexible job-shop scheduling under changing timing
+rules"**
 by Ziheng Zhang, Wei Zhang, Xin Lou and Hao Zhang, submitted to *Advanced
 Engineering Informatics*. PACT stands for Policy Across Composable Timing Rules.
 
@@ -172,39 +173,39 @@ python scripts/p1_tests.py     # unit and reward tests, and the lag-only reprodu
 ### One policy against the specialists (Section 8.1)
 
 ```bash
-python scripts/p11_equivalence.py              # E1 and E2 verdicts (Table 4)
+python scripts/p11_equivalence.py              # E1 and E2 verdicts (Table 4, S18)
 python scripts/p55_equal_experience.py         # equal-experience budget (Table 4)
-python scripts/p34_single_member.py --arm jointblind-nlsw   # Table 5
-python scripts/p34_single_member.py            # conditioned architecture (S17)
+python scripts/p34_single_member.py --arm jointblind-nlsw   # S21
+python scripts/p34_single_member.py            # conditioned architecture (S21)
 python scripts/p54_coverage_lag.py             # writes results/coverage_lag.json
-python scripts/p63_rulechange_table.py         # rule changes (Table 6)
-python scripts/p69_release_dates.py --analyze-only   # release dates (Table 7)
+python scripts/p63_rulechange_table.py         # rule changes (Table 5)
+python scripts/p69_release_dates.py --analyze-only   # release dates (S22)
 ```
 
 `p11` tests paired equivalence within a ±1%<!-- \EqMargin, paper/macros.tex -->
 margin fixed before the runs. `p69 --analyze-only` reads
 `results/release_dates_raw.json`, and without the flag it reruns every rollout.
 `p27_seed_inference.py` gives the seed-level and margin-sweep verdicts (S10,
-S24.1), and `p31_w_causal.py` the shortfall on `W` (S7).
+S30.1), and `p31_w_causal.py` the shortfall on `W` (S7).
 
 ### Time budgets and shop size (Section 8.2)
 
 ```bash
 python scripts/p13_e5_table_fair.py   # fixed-budget comparison, E5 macros
-python scripts/p62_e5_table_aei.py    # Table 8, with the one-second rivals and HGNN
+python scripts/p62_e5_table_aei.py    # Table 6, with the one-second rivals and HGNN
 python scripts/p30_anytime.py         # CP-SAT budget ladder (Fig. 5(a), S4)
 python scripts/p52_ga_ladder.py       # GA at short budgets
 python scripts/p39_anytime_scale.py   # CP-SAT crossover at 20 and 30 modules
 python scripts/p56_ga_scale.py        # GA at 10 to 30 modules
-python scripts/p18_e6_table.py        # E6 scale transfer (S13)
-python scripts/p53_load_axis.py       # against the specialists (Fig. 6, S16)
+python scripts/p18_e6_table.py        # E6 scale transfer (S14)
+python scripts/p53_load_axis.py       # against the specialists (Fig. 6, S20)
 python scripts/p60_scale1800.py       # 30-minute CP-SAT at 50 and 80 modules
-python scripts/p70_prodbatch_table.py # Table 9
+python scripts/p70_prodbatch_table.py # Table 7
 python scripts/p82_best3.py --analyse # best of the three checkpoints (Section 8.2)
 python scripts/p81_hybrid.py          # CP-SAT seeded with the policy's schedule (S15)
 python scripts/p72_aware_rules.py     # constraint-aware rules (S5)
 python scripts/p76_aware_table.py     # their tables
-python scripts/p75_deploy_cost.py     # deployment cost (S14)
+python scripts/p75_deploy_cost.py     # deployment cost (S16)
 python scripts/make_family_figures.py # Figs. 5 and 6
 ```
 <!-- 30 minutes: \ScBudgetMin, paper/macros_scale1800.tex -->
@@ -267,9 +268,9 @@ runs the unmodified upstream `test.py` on the CPU.
 
 ```bash
 python scripts/p17_e3_multiplicity.py   # E3 token interventions (S12)
-python scripts/p40_misconfig.py         # Table 10
+python scripts/p40_misconfig.py         # misconfigured stacks (S12)
 python scripts/p51_info_arms.py         # pair-level timing information (S9)
-python scripts/p22_admissibility.py     # E7 reward envelopes (Table 11)
+python scripts/p22_admissibility.py     # E7 reward envelopes (S13)
 python scripts/p24_envelope_fuzz.py     # envelope audit
 python scripts/p28_exposure_and_certification.py
 ```
@@ -279,8 +280,8 @@ python scripts/p28_exposure_and_certification.py
 ```bash
 python eval_blocking.py --regime L --limit 100 --family_model 10x25+family+jointblind-v1
 python scripts/p29_ood.py --build     # shifted-magnitude descriptors
-python scripts/p33_ood_table.py       # Table 12
-python scripts/p43_dr_arm.py          # randomized-magnitude arm (S18)
+python scripts/p33_ood_table.py       # shifted magnitudes (S23)
+python scripts/p43_dr_arm.py          # randomized-magnitude arm (S23)
 ```
 
 `eval_blocking.py` writes `paper/macros_e4.tex`, and the shipped result was
@@ -294,7 +295,7 @@ runs the evaluations.
 python scripts/p73_effect_sizes.py      # effect sizes (S11)
 python scripts/p74_gantt.py             # schedule example (S2)
 python scripts/p77_gantt_macros.py      # its makespans
-python scripts/p64_instance_bound.py    # instance lower bound (Section 9.2)
+python scripts/p64_instance_bound.py    # instance lower bound (Section 5.3)
 python scripts/p65_check_counts.py      # configuration checks (Table 2)
 python scripts/p49_resched_crosscheck.py   # port to ReSched (Section 6.2)
 python scripts/make_route_figure.py     # Fig. 4
@@ -328,7 +329,7 @@ presolve inside the budget, which lowers their share without contention.
 **The greedy rollout is not bit-reproducible across evaluation environments.**
 It is deterministic within one evaluation environment. On another device or
 thread count, an arg-max over near-equal action scores can break the other way
-and send the rollout down a different path, and S18 measures the size of this
+and send the rollout down a different path, and S23.1 measures the size of this
 effect on regime `N`. Two policies must
 therefore be evaluated by the same command on the same machine before their
 makespans are compared. The dispatching rules have no such sensitivity.
@@ -365,8 +366,8 @@ please cite it as follows.
 ```bibtex
 @unpublished{zhang2026pact,
   author = {Zhang, Ziheng and Zhang, Wei and Lou, Xin and Zhang, Hao},
-  title  = {{PACT}: A reinforcement learning framework with a certified reward
-            for flexible job-shop scheduling under changing timing rules},
+  title  = {{PACT}: Knowledge-driven reinforcement learning with a certified
+            reward for flexible job-shop scheduling under changing timing rules},
   note   = {Manuscript submitted to Advanced Engineering Informatics},
   year   = {2026}
 }
