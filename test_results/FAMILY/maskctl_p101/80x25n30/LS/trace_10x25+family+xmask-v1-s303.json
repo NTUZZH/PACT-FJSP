@@ -1,0 +1,75 @@
+{
+ "design": {
+  "kind": "trace",
+  "size": "80x25n30",
+  "combo": "LS",
+  "mask": {
+   "first_mask": "exact",
+   "mask_ties": "exact"
+  },
+  "mask_mode": "nondelay",
+  "data": "data/FAMILY/80x25n30",
+  "base": "data/PPVC/80x25+ppvc-mixed-n30",
+  "model": "10x25+family+xmask-v1-s303",
+  "checkpoint_sha256": "6e496141de50bf3381abecdf39d5a8d6900551df6fec1461bac9ce6245f28c59"
+ },
+ "instances": [
+  "instance_000",
+  "instance_001",
+  "instance_002",
+  "instance_003",
+  "instance_004",
+  "instance_005",
+  "instance_006",
+  "instance_007",
+  "instance_008",
+  "instance_009",
+  "instance_010",
+  "instance_011",
+  "instance_012",
+  "instance_013",
+  "instance_014",
+  "instance_015",
+  "instance_016",
+  "instance_017",
+  "instance_018",
+  "instance_019",
+  "instance_020",
+  "instance_021",
+  "instance_022",
+  "instance_023",
+  "instance_024",
+  "instance_025",
+  "instance_026",
+  "instance_027",
+  "instance_028",
+  "instance_029"
+ ],
+ "n": 30,
+ "wall_s": 836.9100114110042,
+ "cpu_s": 607.345326233999,
+ "cpu_share": 0.7256996785234218,
+ "affinity": [
+  17
+ ],
+ "loadavg": [
+  21.87939453125,
+  23.2548828125,
+  23.09130859375
+ ],
+ "host": "Aftershock-RTX-Pro5000",
+ "python": "3.11.15",
+ "omp": "1",
+ "commit": "fb7c6e77c267b893b01b0ee8fb4e81481b0d6901",
+ "finished": "2026-11-15 09:01:56",
+ "timing_note": "planning figures only; rollouts are deterministic",
+ "policy": {
+  "model": "10x25+family+xmask-v1-s303",
+  "params": 32786,
+  "delta_mode": "min",
+  "mask_mode": "nondelay",
+  "pair_extra": "none",
+  "snapshot_sha256": "27fffc26103f174dfdb30a2b14585de1a5e78f6cbcc89e929590422ca82d20b3",
+  "checkpoint_sha256": "6e496141de50bf3381abecdf39d5a8d6900551df6fec1461bac9ce6245f28c59"
+ }
+}

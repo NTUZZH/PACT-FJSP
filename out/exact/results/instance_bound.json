@@ -1,0 +1,1598 @@
+{
+ "generator": "scripts/p113_instance_bound.py",
+ "setting": "environment exact, training seeds 301,302,303,304,305 (5 runs per arm)",
+ "size": "10x25",
+ "budget_s": 600,
+ "cpsat_arm": "lns",
+ "policy_seed": 304,
+ "delta_mode": "min",
+ "mask": {
+  "first_mask": "exact",
+  "mask_ties": "exact"
+ },
+ "record_states": {
+  "memetic_rule|10x25|N": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|L": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|S": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|W": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|LS": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|LW": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|SW": {
+   "valid": 30
+  },
+  "memetic_rule|10x25|LSW": {
+   "valid": 30
+  },
+  "cpsat_rule|10x25|N": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|L": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|S": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|W": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|LS": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|LW": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|SW": {
+   "valid": 10,
+   "missing": 20
+  },
+  "cpsat_rule|10x25|LSW": {
+   "valid": 10,
+   "missing": 20
+  }
+ },
+ "per": {
+  "N": {
+   "found": {
+    "n": 10,
+    "mean": 34.699981846605944,
+    "min": 27.173913043478272,
+    "max": 47.25274725274724
+   },
+   "policy": {
+    "n": 10,
+    "mean": 45.24392796315121,
+    "min": 34.78260869565217,
+    "max": 57.14285714285712
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "L": {
+   "found": {
+    "n": 10,
+    "mean": 0.5079102348281994,
+    "min": 0.0,
+    "max": 2.051282051282022
+   },
+   "policy": {
+    "n": 10,
+    "mean": 4.134826844078847,
+    "min": 1.408450704225328,
+    "max": 10.25641025641022
+   },
+   "at_estimate": 6,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "S": {
+   "found": {
+    "n": 10,
+    "mean": 44.57391182391096,
+    "min": 33.08823529411764,
+    "max": 53.076923076923066
+   },
+   "policy": {
+    "n": 10,
+    "mean": 55.576286305908255,
+    "min": 41.176470588235304,
+    "max": 66.66666666666663
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "W": {
+   "found": {
+    "n": 10,
+    "mean": 48.64217306042552,
+    "min": 34.8314606741573,
+    "max": 62.637362637362614
+   },
+   "policy": {
+    "n": 10,
+    "mean": 61.244396074507634,
+    "min": 48.91304347826087,
+    "max": 80.2197802197802
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "LS": {
+   "found": {
+    "n": 10,
+    "mean": 6.264280234555861,
+    "min": 1.6877637130801482,
+    "max": 11.981566820276491
+   },
+   "policy": {
+    "n": 10,
+    "mean": 13.514115477077501,
+    "min": 8.43881856540083,
+    "max": 19.246861924686186
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "LW": {
+   "found": {
+    "n": 10,
+    "mean": 2.439166416381391,
+    "min": 0.9132420091324311,
+    "max": 7.692307692307665
+   },
+   "policy": {
+    "n": 10,
+    "mean": 8.528607656721356,
+    "min": 2.8169014084506783,
+    "max": 19.48717948717946
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "SW": {
+   "found": {
+    "n": 10,
+    "mean": 61.268859569055316,
+    "min": 45.58823529411764,
+    "max": 72.07207207207209
+   },
+   "policy": {
+    "n": 10,
+    "mean": 78.32043117237782,
+    "min": 55.14705882352941,
+    "max": 94.4444444444444
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "LSW": {
+   "found": {
+    "n": 10,
+    "mean": 13.156023163010442,
+    "min": 6.477732793522262,
+    "max": 19.815668202764968
+   },
+   "policy": {
+    "n": 10,
+    "mean": 23.924797613987646,
+    "min": 14.042553191489372,
+    "max": 33.05439330543933
+   },
+   "at_estimate": 0,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  },
+  "All": {
+   "found": {
+    "n": 80,
+    "mean": 26.4440382935967,
+    "min": 0.0,
+    "max": 72.07207207207209
+   },
+   "policy": {
+    "n": 80,
+    "mean": 36.31092363847629,
+    "min": 1.408450704225328,
+    "max": 94.4444444444444
+   },
+   "at_estimate": 6,
+   "instances": [
+    "instance_000",
+    "instance_001",
+    "instance_002",
+    "instance_003",
+    "instance_004",
+    "instance_005",
+    "instance_006",
+    "instance_007",
+    "instance_008",
+    "instance_009"
+   ]
+  }
+ },
+ "pairs": [
+  {
+   "combo": "N",
+   "instance": "instance_000",
+   "estimate": 90.0,
+   "memetic": 119.0,
+   "cpsat": 118.0,
+   "shortest": 118.0,
+   "policy": 125.0,
+   "found": 31.11111111111111,
+   "policy_gap": 38.888888888888886,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_000.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_001",
+   "estimate": 88.0,
+   "memetic": 126.0,
+   "cpsat": 123.0,
+   "shortest": 123.0,
+   "policy": 128.0,
+   "found": 39.77272727272727,
+   "policy_gap": 45.45454545454546,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_001.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_002",
+   "estimate": 91.00000000000001,
+   "memetic": 131.0,
+   "cpsat": 130.0,
+   "shortest": 130.0,
+   "policy": 143.0,
+   "found": 42.85714285714284,
+   "policy_gap": 57.14285714285712,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_002.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_003",
+   "estimate": 88.00000000000001,
+   "memetic": 118.0,
+   "cpsat": 117.0,
+   "shortest": 117.0,
+   "policy": 129.0,
+   "found": 32.95454545454544,
+   "policy_gap": 46.59090909090906,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_003.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_004",
+   "estimate": 89.0,
+   "memetic": 118.0,
+   "cpsat": 114.0,
+   "shortest": 114.0,
+   "policy": 130.0,
+   "found": 28.08988764044944,
+   "policy_gap": 46.06741573033708,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_004.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_005",
+   "estimate": 89.0,
+   "memetic": 119.0,
+   "cpsat": 119.0,
+   "shortest": 119.0,
+   "policy": 128.0,
+   "found": 33.70786516853932,
+   "policy_gap": 43.82022471910112,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_005.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_006",
+   "estimate": 91.00000000000001,
+   "memetic": 134.0,
+   "cpsat": 134.0,
+   "shortest": 134.0,
+   "policy": 138.0,
+   "found": 47.25274725274724,
+   "policy_gap": 51.64835164835162,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_006.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_007",
+   "estimate": 92.0,
+   "memetic": 123.0,
+   "cpsat": 121.0,
+   "shortest": 121.0,
+   "policy": 127.0,
+   "found": 31.52173913043479,
+   "policy_gap": 38.043478260869556,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_007.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_008",
+   "estimate": 86.00000000000001,
+   "memetic": 114.0,
+   "cpsat": 114.0,
+   "shortest": 114.0,
+   "policy": 129.0,
+   "found": 32.55813953488369,
+   "policy_gap": 49.99999999999998,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_008.json"
+   }
+  },
+  {
+   "combo": "N",
+   "instance": "instance_009",
+   "estimate": 92.0,
+   "memetic": 119.0,
+   "cpsat": 117.0,
+   "shortest": 117.0,
+   "policy": 124.0,
+   "found": 27.173913043478272,
+   "policy_gap": 34.78260869565217,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/N/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/N/instance_009.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_000",
+   "estimate": 187.00000000000006,
+   "memetic": 189.0,
+   "cpsat": 188.0,
+   "shortest": 188.0,
+   "policy": 195.0,
+   "found": 0.53475935828875,
+   "policy_gap": 4.278074866310133,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_000.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_001",
+   "estimate": 213.00000000000006,
+   "memetic": 213.0,
+   "cpsat": 213.0,
+   "shortest": 213.0,
+   "policy": 216.0,
+   "found": 0.0,
+   "policy_gap": 1.408450704225328,
+   "at_estimate": true,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_001.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_002",
+   "estimate": 195.00000000000006,
+   "memetic": 201.0,
+   "cpsat": 199.0,
+   "shortest": 199.0,
+   "policy": 215.0,
+   "found": 2.051282051282022,
+   "policy_gap": 10.25641025641022,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_002.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_003",
+   "estimate": 203.0,
+   "memetic": 206.0,
+   "cpsat": 206.0,
+   "shortest": 206.0,
+   "policy": 217.0,
+   "found": 1.4778325123152802,
+   "policy_gap": 6.896551724137923,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_003.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_004",
+   "estimate": 219.0,
+   "memetic": 219.0,
+   "cpsat": 219.0,
+   "shortest": 219.0,
+   "policy": 230.0,
+   "found": 0.0,
+   "policy_gap": 5.022831050228316,
+   "at_estimate": true,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_004.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_005",
+   "estimate": 211.0,
+   "memetic": 211.0,
+   "cpsat": 211.0,
+   "shortest": 211.0,
+   "policy": 217.0,
+   "found": 0.0,
+   "policy_gap": 2.8436018957346043,
+   "at_estimate": true,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_005.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_006",
+   "estimate": 194.99999999999997,
+   "memetic": 195.0,
+   "cpsat": 195.0,
+   "shortest": 195.0,
+   "policy": 198.0,
+   "found": 0.0,
+   "policy_gap": 1.5384615384615552,
+   "at_estimate": true,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_006.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_007",
+   "estimate": 197.0,
+   "memetic": 199.0,
+   "cpsat": 199.0,
+   "shortest": 199.0,
+   "policy": 205.0,
+   "found": 1.0152284263959421,
+   "policy_gap": 4.060913705583746,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_007.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_008",
+   "estimate": 215.00000000000003,
+   "memetic": 215.0,
+   "cpsat": 215.0,
+   "shortest": 215.0,
+   "policy": 220.0,
+   "found": 0.0,
+   "policy_gap": 2.325581395348819,
+   "at_estimate": true,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_008.json"
+   }
+  },
+  {
+   "combo": "L",
+   "instance": "instance_009",
+   "estimate": 184.0,
+   "memetic": 184.0,
+   "cpsat": 184.0,
+   "shortest": 184.0,
+   "policy": 189.0,
+   "found": 0.0,
+   "policy_gap": 2.717391304347827,
+   "at_estimate": true,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/L/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/L/instance_009.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_000",
+   "estimate": 134.0,
+   "memetic": 186.0,
+   "cpsat": 186.0,
+   "shortest": 186.0,
+   "policy": 194.0,
+   "found": 38.80597014925373,
+   "policy_gap": 44.776119402985074,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_000.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_001",
+   "estimate": 129.0,
+   "memetic": 185.0,
+   "cpsat": 188.0,
+   "shortest": 185.0,
+   "policy": 201.0,
+   "found": 43.41085271317831,
+   "policy_gap": 55.81395348837211,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_001.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_002",
+   "estimate": 129.0,
+   "memetic": 195.0,
+   "cpsat": 196.0,
+   "shortest": 195.0,
+   "policy": 205.0,
+   "found": 51.162790697674424,
+   "policy_gap": 58.914728682170534,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_002.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_003",
+   "estimate": 131.0,
+   "memetic": 175.0,
+   "cpsat": 177.0,
+   "shortest": 175.0,
+   "policy": 189.0,
+   "found": 33.58778625954197,
+   "policy_gap": 44.27480916030535,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_003.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_004",
+   "estimate": 110.99999999999999,
+   "memetic": 165.0,
+   "cpsat": 169.0,
+   "shortest": 165.0,
+   "policy": 175.0,
+   "found": 48.64864864864866,
+   "policy_gap": 57.657657657657666,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_004.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_005",
+   "estimate": 110.99999999999999,
+   "memetic": 164.0,
+   "cpsat": 168.0,
+   "shortest": 164.0,
+   "policy": 174.0,
+   "found": 47.74774774774777,
+   "policy_gap": 56.75675675675678,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_005.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_006",
+   "estimate": 130.0,
+   "memetic": 199.0,
+   "cpsat": 200.0,
+   "shortest": 199.0,
+   "policy": 215.0,
+   "found": 53.076923076923066,
+   "policy_gap": 65.38461538461537,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_006.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_007",
+   "estimate": 129.00000000000003,
+   "memetic": 191.0,
+   "cpsat": 194.0,
+   "shortest": 191.0,
+   "policy": 212.0,
+   "found": 48.06201550387594,
+   "policy_gap": 64.3410852713178,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_007.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_008",
+   "estimate": 108.00000000000003,
+   "memetic": 160.0,
+   "cpsat": 169.0,
+   "shortest": 160.0,
+   "policy": 180.0,
+   "found": 48.14814814814812,
+   "policy_gap": 66.66666666666663,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_008.json"
+   }
+  },
+  {
+   "combo": "S",
+   "instance": "instance_009",
+   "estimate": 136.0,
+   "memetic": 181.0,
+   "cpsat": 183.0,
+   "shortest": 181.0,
+   "policy": 192.0,
+   "found": 33.08823529411764,
+   "policy_gap": 41.176470588235304,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/S/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/S/instance_009.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_000",
+   "estimate": 90.0,
+   "memetic": 137.0,
+   "cpsat": 129.0,
+   "shortest": 129.0,
+   "policy": 140.0,
+   "found": 43.333333333333336,
+   "policy_gap": 55.55555555555556,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_000.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_001",
+   "estimate": 88.0,
+   "memetic": 135.0,
+   "cpsat": 131.0,
+   "shortest": 131.0,
+   "policy": 138.0,
+   "found": 48.86363636363635,
+   "policy_gap": 56.81818181818181,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_001.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_002",
+   "estimate": 91.00000000000001,
+   "memetic": 149.0,
+   "cpsat": 143.0,
+   "shortest": 143.0,
+   "policy": 154.0,
+   "found": 57.14285714285712,
+   "policy_gap": 69.23076923076921,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_002.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_003",
+   "estimate": 88.00000000000001,
+   "memetic": 125.0,
+   "cpsat": 125.0,
+   "shortest": 125.0,
+   "policy": 137.0,
+   "found": 42.04545454545452,
+   "policy_gap": 55.681818181818166,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_003.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_004",
+   "estimate": 89.0,
+   "memetic": 121.0,
+   "cpsat": 120.0,
+   "shortest": 120.0,
+   "policy": 135.0,
+   "found": 34.8314606741573,
+   "policy_gap": 51.685393258426956,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_004.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_005",
+   "estimate": 89.0,
+   "memetic": 134.0,
+   "cpsat": 133.0,
+   "shortest": 133.0,
+   "policy": 147.0,
+   "found": 49.43820224719102,
+   "policy_gap": 65.1685393258427,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_005.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_006",
+   "estimate": 91.00000000000001,
+   "memetic": 148.0,
+   "cpsat": 148.0,
+   "shortest": 148.0,
+   "policy": 164.0,
+   "found": 62.637362637362614,
+   "policy_gap": 80.2197802197802,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_006.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_007",
+   "estimate": 92.0,
+   "memetic": 147.0,
+   "cpsat": 139.0,
+   "shortest": 139.0,
+   "policy": 152.0,
+   "found": 51.08695652173913,
+   "policy_gap": 65.21739130434783,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_007.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_008",
+   "estimate": 86.00000000000001,
+   "memetic": 133.0,
+   "cpsat": 133.0,
+   "shortest": 133.0,
+   "policy": 141.0,
+   "found": 54.65116279069764,
+   "policy_gap": 63.953488372093005,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_008.json"
+   }
+  },
+  {
+   "combo": "W",
+   "instance": "instance_009",
+   "estimate": 92.0,
+   "memetic": 131.0,
+   "cpsat": 131.0,
+   "shortest": 131.0,
+   "policy": 137.0,
+   "found": 42.3913043478261,
+   "policy_gap": 48.91304347826087,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/W/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/W/instance_009.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_000",
+   "estimate": 231.00000000000006,
+   "memetic": 250.0,
+   "cpsat": 253.0,
+   "shortest": 250.0,
+   "policy": 259.0,
+   "found": 8.225108225108201,
+   "policy_gap": 12.12121212121209,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_000.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_001",
+   "estimate": 235.0,
+   "memetic": 243.0,
+   "cpsat": 242.0,
+   "shortest": 242.0,
+   "policy": 258.0,
+   "found": 2.9787234042553123,
+   "policy_gap": 9.787234042553195,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_001.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_002",
+   "estimate": 239.0,
+   "memetic": 266.0,
+   "cpsat": 270.0,
+   "shortest": 266.0,
+   "policy": 285.0,
+   "found": 11.297071129707103,
+   "policy_gap": 19.246861924686186,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_002.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_003",
+   "estimate": 247.00000000000003,
+   "memetic": 255.0,
+   "cpsat": 261.0,
+   "shortest": 255.0,
+   "policy": 278.0,
+   "found": 3.2388663967611198,
+   "policy_gap": 12.550607287449388,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_003.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_004",
+   "estimate": 240.99999999999991,
+   "memetic": 256.0,
+   "cpsat": 265.0,
+   "shortest": 256.0,
+   "policy": 287.0,
+   "found": 6.224066390041538,
+   "policy_gap": 19.087136929460623,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_004.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_005",
+   "estimate": 233.0,
+   "memetic": 242.0,
+   "cpsat": 245.0,
+   "shortest": 242.0,
+   "policy": 261.0,
+   "found": 3.862660944205998,
+   "policy_gap": 12.017167381974247,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_005.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_006",
+   "estimate": 217.00000000000003,
+   "memetic": 244.0,
+   "cpsat": 243.0,
+   "shortest": 243.0,
+   "policy": 258.0,
+   "found": 11.981566820276491,
+   "policy_gap": 18.894009216589836,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_006.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_007",
+   "estimate": 241.0,
+   "memetic": 260.0,
+   "cpsat": 261.0,
+   "shortest": 260.0,
+   "policy": 270.0,
+   "found": 7.883817427385886,
+   "policy_gap": 12.03319502074689,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_007.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_008",
+   "estimate": 237.00000000000003,
+   "memetic": 241.0,
+   "cpsat": 242.0,
+   "shortest": 241.0,
+   "policy": 257.0,
+   "found": 1.6877637130801482,
+   "policy_gap": 8.43881856540083,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_008.json"
+   }
+  },
+  {
+   "combo": "LS",
+   "instance": "instance_009",
+   "estimate": 228.00000000000006,
+   "memetic": 240.0,
+   "cpsat": 250.0,
+   "shortest": 240.0,
+   "policy": 253.0,
+   "found": 5.263157894736814,
+   "policy_gap": 10.964912280701732,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LS/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LS/instance_009.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_000",
+   "estimate": 187.00000000000006,
+   "memetic": 192.0,
+   "cpsat": 192.0,
+   "shortest": 192.0,
+   "policy": 199.0,
+   "found": 2.6737967914438165,
+   "policy_gap": 6.4171122994652,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_000.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_001",
+   "estimate": 213.00000000000006,
+   "memetic": 215.0,
+   "cpsat": 215.0,
+   "shortest": 215.0,
+   "policy": 219.0,
+   "found": 0.9389671361502039,
+   "policy_gap": 2.8169014084506783,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_001.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_002",
+   "estimate": 195.00000000000006,
+   "memetic": 219.0,
+   "cpsat": 210.0,
+   "shortest": 210.0,
+   "policy": 233.0,
+   "found": 7.692307692307665,
+   "policy_gap": 19.48717948717946,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_002.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_003",
+   "estimate": 203.0,
+   "memetic": 209.0,
+   "cpsat": 209.0,
+   "shortest": 209.0,
+   "policy": 221.0,
+   "found": 2.9556650246305383,
+   "policy_gap": 8.866995073891616,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_003.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_004",
+   "estimate": 219.0,
+   "memetic": 221.0,
+   "cpsat": 221.0,
+   "shortest": 221.0,
+   "policy": 233.0,
+   "found": 0.9132420091324311,
+   "policy_gap": 6.392694063926951,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_004.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_005",
+   "estimate": 211.0,
+   "memetic": 216.0,
+   "cpsat": 214.0,
+   "shortest": 214.0,
+   "policy": 225.0,
+   "found": 1.4218009478673022,
+   "policy_gap": 6.635071090047395,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_005.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_006",
+   "estimate": 194.99999999999997,
+   "memetic": 201.0,
+   "cpsat": 198.0,
+   "shortest": 198.0,
+   "policy": 212.0,
+   "found": 1.5384615384615552,
+   "policy_gap": 8.717948717948731,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_006.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_007",
+   "estimate": 197.0,
+   "memetic": 202.0,
+   "cpsat": 200.0,
+   "shortest": 200.0,
+   "policy": 220.0,
+   "found": 1.522842639593902,
+   "policy_gap": 11.675126903553302,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_007.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_008",
+   "estimate": 215.00000000000003,
+   "memetic": 217.0,
+   "cpsat": 217.0,
+   "shortest": 217.0,
+   "policy": 227.0,
+   "found": 0.9302325581395321,
+   "policy_gap": 5.581395348837193,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_008.json"
+   }
+  },
+  {
+   "combo": "LW",
+   "instance": "instance_009",
+   "estimate": 184.0,
+   "memetic": 192.0,
+   "cpsat": 191.0,
+   "shortest": 191.0,
+   "policy": 200.0,
+   "found": 3.8043478260869623,
+   "policy_gap": 8.695652173913038,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LW/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LW/instance_009.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_000",
+   "estimate": 134.0,
+   "memetic": 197.0,
+   "cpsat": 199.0,
+   "shortest": 197.0,
+   "policy": 222.0,
+   "found": 47.01492537313432,
+   "policy_gap": 65.67164179104476,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_000.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_001",
+   "estimate": 129.0,
+   "memetic": 201.0,
+   "cpsat": 214.0,
+   "shortest": 201.0,
+   "policy": 235.0,
+   "found": 55.81395348837211,
+   "policy_gap": 82.1705426356589,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_001.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_002",
+   "estimate": 129.0,
+   "memetic": 220.0,
+   "cpsat": 230.0,
+   "shortest": 220.0,
+   "policy": 232.0,
+   "found": 70.54263565891472,
+   "policy_gap": 79.84496124031008,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_002.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_003",
+   "estimate": 131.0,
+   "memetic": 197.0,
+   "cpsat": 206.0,
+   "shortest": 197.0,
+   "policy": 218.0,
+   "found": 50.38167938931297,
+   "policy_gap": 66.41221374045803,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_003.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_004",
+   "estimate": 110.99999999999999,
+   "memetic": 185.0,
+   "cpsat": 188.0,
+   "shortest": 185.0,
+   "policy": 201.0,
+   "found": 66.6666666666667,
+   "policy_gap": 81.0810810810811,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_004.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_005",
+   "estimate": 110.99999999999999,
+   "memetic": 191.0,
+   "cpsat": 198.0,
+   "shortest": 191.0,
+   "policy": 211.0,
+   "found": 72.07207207207209,
+   "policy_gap": 90.09009009009013,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_005.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_006",
+   "estimate": 130.0,
+   "memetic": 213.0,
+   "cpsat": 213.0,
+   "shortest": 213.0,
+   "policy": 239.0,
+   "found": 63.84615384615384,
+   "policy_gap": 83.84615384615384,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_006.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_007",
+   "estimate": 129.00000000000003,
+   "memetic": 221.0,
+   "cpsat": 224.0,
+   "shortest": 221.0,
+   "policy": 238.0,
+   "found": 71.31782945736431,
+   "policy_gap": 84.4961240310077,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_007.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_008",
+   "estimate": 108.00000000000003,
+   "memetic": 183.0,
+   "cpsat": 189.0,
+   "shortest": 183.0,
+   "policy": 210.0,
+   "found": 69.4444444444444,
+   "policy_gap": 94.4444444444444,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_008.json"
+   }
+  },
+  {
+   "combo": "SW",
+   "instance": "instance_009",
+   "estimate": 136.0,
+   "memetic": 198.0,
+   "cpsat": 203.0,
+   "shortest": 198.0,
+   "policy": 211.0,
+   "found": 45.58823529411764,
+   "policy_gap": 55.14705882352941,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/SW/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/SW/instance_009.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_000",
+   "estimate": 231.00000000000006,
+   "memetic": 276.0,
+   "cpsat": 281.0,
+   "shortest": 276.0,
+   "policy": 289.0,
+   "found": 19.480519480519455,
+   "policy_gap": 25.108225108225078,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_000_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_000.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_001",
+   "estimate": 235.0,
+   "memetic": 252.0,
+   "cpsat": 252.0,
+   "shortest": 252.0,
+   "policy": 268.0,
+   "found": 7.234042553191489,
+   "policy_gap": 14.042553191489372,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_001_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_001.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_002",
+   "estimate": 239.0,
+   "memetic": 284.0,
+   "cpsat": 303.0,
+   "shortest": 284.0,
+   "policy": 318.0,
+   "found": 18.828451882845187,
+   "policy_gap": 33.05439330543933,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_002_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_002.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_003",
+   "estimate": 247.00000000000003,
+   "memetic": 263.0,
+   "cpsat": 272.0,
+   "shortest": 263.0,
+   "policy": 315.0,
+   "found": 6.477732793522262,
+   "policy_gap": 27.530364372469627,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_003_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_003.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_004",
+   "estimate": 240.99999999999991,
+   "memetic": 262.0,
+   "cpsat": 273.0,
+   "shortest": 262.0,
+   "policy": 300.0,
+   "found": 8.713692946058128,
+   "policy_gap": 24.481327800829924,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_004_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_004.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_005",
+   "estimate": 233.0,
+   "memetic": 259.0,
+   "cpsat": 266.0,
+   "shortest": 259.0,
+   "policy": 275.0,
+   "found": 11.158798283261806,
+   "policy_gap": 18.025751072961384,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_005_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_005.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_006",
+   "estimate": 217.00000000000003,
+   "memetic": 260.0,
+   "cpsat": 262.0,
+   "shortest": 260.0,
+   "policy": 280.0,
+   "found": 19.815668202764968,
+   "policy_gap": 29.032258064516103,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_006_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_006.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_007",
+   "estimate": 241.0,
+   "memetic": 283.0,
+   "cpsat": 292.0,
+   "shortest": 283.0,
+   "policy": 301.0,
+   "found": 17.427385892116188,
+   "policy_gap": 24.896265560165975,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_007_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_007.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_008",
+   "estimate": 237.00000000000003,
+   "memetic": 260.0,
+   "cpsat": 267.0,
+   "shortest": 260.0,
+   "policy": 284.0,
+   "found": 9.704641350210963,
+   "policy_gap": 19.831223628691962,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_008_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_008.json"
+   }
+  },
+  {
+   "combo": "LSW",
+   "instance": "instance_009",
+   "estimate": 228.00000000000006,
+   "memetic": 257.0,
+   "cpsat": 261.0,
+   "shortest": 257.0,
+   "policy": 281.0,
+   "found": 12.719298245613997,
+   "policy_gap": 23.24561403508769,
+   "at_estimate": false,
+   "records": {
+    "memetic_rule": "or_solution/FAMILY/10x25_memetic600s/LSW/instance_009_seed1.json",
+    "cpsat_rule": "test_results/FAMILY/10x25_cparms/evidence_rule600s/lns/LSW/instance_009.json"
+   }
+  }
+ ]
+}

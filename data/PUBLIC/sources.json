@@ -1,0 +1,85 @@
+{
+ "description": "Sources of the public instance files of data/PUBLIC. scripts/fetch_public_instances.py downloads them and checks every file against the SHA256SUMS of its set folder.",
+ "sets": [
+  {
+   "set": "Brandimarte",
+   "source": "https://people.idsia.ch/~monaldo/fjspresults/TextData.zip",
+   "source_page": "https://people.idsia.ch/~monaldo/fjsp.html",
+   "archive_sha256": "e6637b4f84e2ab188a0c90ce27062e8ee50f11f34334d12c07931227e474f62f",
+   "path": "Monaldo/Fjsp/Job_Data/Brandimarte_Data/Text",
+   "files": 10,
+   "citation": "P. Brandimarte, Routing and scheduling in a flexible job shop by tabu search, Annals of Operations Research 41(3):157-183, 1993, doi:10.1007/BF02023073"
+  },
+  {
+   "set": "Hurink_edata",
+   "source": "https://people.idsia.ch/~monaldo/fjspresults/TextData.zip",
+   "source_page": "https://people.idsia.ch/~monaldo/fjsp.html",
+   "archive_sha256": "e6637b4f84e2ab188a0c90ce27062e8ee50f11f34334d12c07931227e474f62f",
+   "path": "Monaldo/Fjsp/Job_Data/Hurink_Data/Text/edata",
+   "files": 66,
+   "citation": "J. Hurink, B. Jurisch and M. Thole, Tabu search for the job-shop scheduling problem with multi-purpose machines, OR Spektrum 15(4):205-215, 1994, doi:10.1007/BF01719451"
+  },
+  {
+   "set": "Hurink_rdata",
+   "source": "https://people.idsia.ch/~monaldo/fjspresults/TextData.zip",
+   "source_page": "https://people.idsia.ch/~monaldo/fjsp.html",
+   "archive_sha256": "e6637b4f84e2ab188a0c90ce27062e8ee50f11f34334d12c07931227e474f62f",
+   "path": "Monaldo/Fjsp/Job_Data/Hurink_Data/Text/rdata",
+   "files": 66,
+   "citation": "J. Hurink, B. Jurisch and M. Thole, Tabu search for the job-shop scheduling problem with multi-purpose machines, OR Spektrum 15(4):205-215, 1994, doi:10.1007/BF01719451"
+  },
+  {
+   "set": "Hurink_vdata",
+   "source": "https://people.idsia.ch/~monaldo/fjspresults/TextData.zip",
+   "source_page": "https://people.idsia.ch/~monaldo/fjsp.html",
+   "archive_sha256": "e6637b4f84e2ab188a0c90ce27062e8ee50f11f34334d12c07931227e474f62f",
+   "path": "Monaldo/Fjsp/Job_Data/Hurink_Data/Text/vdata",
+   "files": 66,
+   "citation": "J. Hurink, B. Jurisch and M. Thole, Tabu search for the job-shop scheduling problem with multi-purpose machines, OR Spektrum 15(4):205-215, 1994, doi:10.1007/BF01719451"
+  },
+  {
+   "set": "SD2/test/10x5+mix",
+   "source": "https://github.com/wrqccc/FJSP-DRL",
+   "commit": "2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "archive_url": "https://github.com/wrqccc/FJSP-DRL/archive/2cf81b13f5044451e78cf780f8fb3e7eeac054c1.zip",
+   "archive_root": "FJSP-DRL-2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "path": "data/SD2/10x5+mix",
+   "files": 100,
+   "citation": "R. Wang, G. Wang, J. Sun, F. Deng and J. Chen, Flexible job shop scheduling via dual attention network-based reinforcement learning, IEEE Transactions on Neural Networks and Learning Systems, 2023, doi:10.1109/TNNLS.2023.3306421",
+   "generate": {"writer": "data_utils.generate_data_to_files", "seed": 200, "n_j": 10, "n_m": 5, "data_size": 100, "data_suffix": "mix", "low": 1, "high": 99, "op_per_job": 0}
+  },
+  {
+   "set": "SD2/test/20x10+mix",
+   "source": "https://github.com/wrqccc/FJSP-DRL",
+   "commit": "2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "archive_url": "https://github.com/wrqccc/FJSP-DRL/archive/2cf81b13f5044451e78cf780f8fb3e7eeac054c1.zip",
+   "archive_root": "FJSP-DRL-2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "path": "data/SD2/20x10+mix",
+   "files": 100,
+   "citation": "R. Wang, G. Wang, J. Sun, F. Deng and J. Chen, Flexible job shop scheduling via dual attention network-based reinforcement learning, IEEE Transactions on Neural Networks and Learning Systems, 2023, doi:10.1109/TNNLS.2023.3306421",
+   "generate": {"writer": "data_utils.generate_data_to_files", "seed": 200, "n_j": 20, "n_m": 10, "data_size": 100, "data_suffix": "mix", "low": 1, "high": 99, "op_per_job": 0}
+  },
+  {
+   "set": "SD2/vali/10x5+mix",
+   "source": "https://github.com/wrqccc/FJSP-DRL",
+   "commit": "2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "archive_url": "https://github.com/wrqccc/FJSP-DRL/archive/2cf81b13f5044451e78cf780f8fb3e7eeac054c1.zip",
+   "archive_root": "FJSP-DRL-2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "path": "data/data_train_vali/SD2/10x5+mix",
+   "files": 100,
+   "citation": "R. Wang, G. Wang, J. Sun, F. Deng and J. Chen, Flexible job shop scheduling via dual attention network-based reinforcement learning, IEEE Transactions on Neural Networks and Learning Systems, 2023, doi:10.1109/TNNLS.2023.3306421",
+   "generate": {"writer": "data_utils.generate_data_to_files", "seed": 100, "n_j": 10, "n_m": 5, "data_size": 100, "data_suffix": "mix", "low": 1, "high": 99, "op_per_job": 0}
+  },
+  {
+   "set": "SD2/vali/20x10+mix",
+   "source": "https://github.com/wrqccc/FJSP-DRL",
+   "commit": "2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "archive_url": "https://github.com/wrqccc/FJSP-DRL/archive/2cf81b13f5044451e78cf780f8fb3e7eeac054c1.zip",
+   "archive_root": "FJSP-DRL-2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+   "path": "data/data_train_vali/SD2/20x10+mix",
+   "files": 100,
+   "citation": "R. Wang, G. Wang, J. Sun, F. Deng and J. Chen, Flexible job shop scheduling via dual attention network-based reinforcement learning, IEEE Transactions on Neural Networks and Learning Systems, 2023, doi:10.1109/TNNLS.2023.3306421",
+   "generate": {"writer": "data_utils.generate_data_to_files", "seed": 100, "n_j": 20, "n_m": 10, "data_size": 100, "data_suffix": "mix", "low": 1, "high": 99, "op_per_job": 0}
+  }
+ ]
+}

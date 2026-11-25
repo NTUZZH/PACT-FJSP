@@ -1,0 +1,37 @@
+% Selection of the configuration of the memetic algorithm on the selection runs, written by scripts/p106_memetic_selection.py from the records of the selection runs.
+\newcommand{\MselOneScore}{2.63}  % configuration 1 (record folder A): score, mean over the 24 cells of the percentage by which its makespan exceeds the shortest makespan of the three configurations
+\newcommand{\MselOneScoreBold}{}  % configuration 1 (record folder A): bold marker of \MselOneScore, \bfseries when its printed value is the lowest of the three
+\newcommand{\MselOneBest}{1}  % configuration 1 (record folder A): cells of 24 in which its makespan is the shortest of the three (a tie counts for each)
+\newcommand{\MselOneBestBold}{}  % configuration 1 (record folder A): bold marker of \MselOneBest, \bfseries when it is the largest count of the three
+\newcommand{\MselOneChildren}{20}  % configuration 1 (record folder A): children per generation (n_offspring = 20)
+\newcommand{\MselOneInitShare}{no limit}  % configuration 1 (record folder A): budget share of the initial phase (init_frac = None)
+\newcommand{\MselOneMachineMoves}{10}  % configuration 1 (record folder A): machine moves evaluated per iteration (ts_cap = 10)
+\newcommand{\MselOneTabuScale}{5}  % configuration 1 (record folder A): stop of a tabu search, I = floor(s N) with this s (ts_scale = 5.0)
+\newcommand{\MselOneItsShare}{0\%}  % configuration 1 (record folder A): schedule evaluations in the iterated tabu search (its_share = 0.0)
+\newcommand{\MselOneNoGenerationRuns}{24}  % configuration 1 (record folder A): runs of 24 in which the budget ended before the first generation of the genetic phase (n_generations 0)
+\newcommand{\MselTwoScore}{4.08}  % configuration 2 (record folder B): score, mean over the 24 cells of the percentage by which its makespan exceeds the shortest makespan of the three configurations
+\newcommand{\MselTwoScoreBold}{}  % configuration 2 (record folder B): bold marker of \MselTwoScore, \bfseries when its printed value is the lowest of the three
+\newcommand{\MselTwoBest}{3}  % configuration 2 (record folder B): cells of 24 in which its makespan is the shortest of the three (a tie counts for each)
+\newcommand{\MselTwoBestBold}{}  % configuration 2 (record folder B): bold marker of \MselTwoBest, \bfseries when it is the largest count of the three
+\newcommand{\MselTwoChildren}{20}  % configuration 2 (record folder B): children per generation (n_offspring = 20)
+\newcommand{\MselTwoInitShare}{no limit}  % configuration 2 (record folder B): budget share of the initial phase (init_frac = None)
+\newcommand{\MselTwoMachineMoves}{50}  % configuration 2 (record folder B): machine moves evaluated per iteration (ts_cap = 50)
+\newcommand{\MselTwoTabuScale}{5}  % configuration 2 (record folder B): stop of a tabu search, I = floor(s N) with this s (ts_scale = 5.0)
+\newcommand{\MselTwoItsShare}{0\%}  % configuration 2 (record folder B): schedule evaluations in the iterated tabu search (its_share = 0.0)
+\newcommand{\MselTwoNoGenerationRuns}{19}  % configuration 2 (record folder B): runs of 24 in which the budget ended before the first generation of the genetic phase (n_generations 0)
+\newcommand{\MselThreeScore}{0.11}  % configuration 3 (record folder C): score, mean over the 24 cells of the percentage by which its makespan exceeds the shortest makespan of the three configurations
+\newcommand{\MselThreeScoreBold}{\bfseries}  % configuration 3 (record folder C): bold marker of \MselThreeScore, \bfseries when its printed value is the lowest of the three
+\newcommand{\MselThreeBest}{20}  % configuration 3 (record folder C): cells of 24 in which its makespan is the shortest of the three (a tie counts for each)
+\newcommand{\MselThreeBestBold}{\bfseries}  % configuration 3 (record folder C): bold marker of \MselThreeBest, \bfseries when it is the largest count of the three
+\newcommand{\MselThreeChildren}{5}  % configuration 3 (record folder C): children per generation (n_offspring = 5)
+\newcommand{\MselThreeInitShare}{10\%}  % configuration 3 (record folder C): budget share of the initial phase (init_frac = 0.1)
+\newcommand{\MselThreeMachineMoves}{10}  % configuration 3 (record folder C): machine moves evaluated per iteration (ts_cap = 10)
+\newcommand{\MselThreeTabuScale}{0.5}  % configuration 3 (record folder C): stop of a tabu search, I = floor(s N) with this s (ts_scale = 0.5)
+\newcommand{\MselThreeItsShare}{90\%}  % configuration 3 (record folder C): schedule evaluations in the iterated tabu search (its_share = 0.9)
+\newcommand{\MselThreeNoGenerationRuns}{0}  % configuration 3 (record folder C): runs of 24 in which the budget ended before the first generation of the genetic phase (n_generations 0)
+\newcommand{\MselRuns}{24}  % selection runs per configuration, one per cell (instance and combination)
+\newcommand{\MselInstances}{3}  % instances per production set and combination in the selection runs
+\newcommand{\MselBudget}{300}  % budget of a selection run in seconds of processor time on one core
+\newcommand{\MselSeed}{1}  % random seed of every selection run
+\newcommand{\MselTieRuns}{0}  % cells in which two or more configurations share the shortest makespan
+\newcommand{\MselSelected}{3}  % number of the configuration with the lowest score

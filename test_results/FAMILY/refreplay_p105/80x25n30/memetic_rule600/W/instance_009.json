@@ -1,0 +1,82 @@
+{
+ "replay": {
+  "A": {
+   "makespan": 547.0,
+   "off": 0,
+   "exact": true
+  },
+  "B": {
+   "makespan": 547.0,
+   "off": 0,
+   "exact": true
+  },
+  "C": {
+   "makespan": 555.0,
+   "off": 158,
+   "exact": false
+  }
+ },
+ "replay_makespan": 547.0,
+ "best_order": "A",
+ "exact_A": true,
+ "in_class": true,
+ "class_failures": {
+  "later": 0,
+  "earlier_pair": 0
+ },
+ "class_first_failure": null,
+ "decisions": 1760,
+ "off_A": 0,
+ "off_share_A": 0.0,
+ "design": {
+  "kind": "reference replay",
+  "version": 1,
+  "set": "80x25n30",
+  "ref": "memetic_rule600",
+  "combo": "W",
+  "mask": {
+   "first_mask": "exact",
+   "mask_ties": "exact"
+  },
+  "mask_mode": "nondelay",
+  "orders": {
+   "A": "(s_R(o), [m != m_R(o)], completion, m, j), smallest first",
+   "B": "([m != m_R(o)], s_R(o), completion, m, j), smallest first",
+   "C": "(c_R(o), [m != m_R(o)], completion, m, j), smallest first"
+  },
+  "departure": "the chosen pair (o, m) is off the reference when m != m_R(o) or an operation that R places on m_R(o) before o is not yet dispatched",
+  "class_test": "R in the class: in the order of R's processing starts, every operation starts at its earliest start on its reference machine given R's earlier operations, and no candidate pair starts earlier",
+  "validator": "reference_sim.validate_schedule (P101.validate)"
+ },
+ "set": "80x25n30",
+ "ref": "memetic_rule600",
+ "combo": "W",
+ "instance": "instance_009",
+ "row": 9,
+ "n_ops": 1760,
+ "n_jobs": 80,
+ "n_machines": 25,
+ "reference": {
+  "files": {
+   "or_solution/FAMILY/80x25n30_memetic600s/W/instance_009_seed1.json": "5077221017b047069903501330669ffe48218d8c3b048e266c062e863273e391"
+  },
+  "objective": 547.0,
+  "makespan": 547.0,
+  "proved_optimal": false,
+  "status": "FEASIBLE",
+  "exactness": null
+ },
+ "ref_makespan": 547.0,
+ "rules": {
+  "FIFO": 854.0,
+  "MOR": 1233.0,
+  "SPT": 547.0,
+  "MWKR": 1052.0
+ },
+ "best_rule": 547.0,
+ "best_rule_name": "SPT",
+ "spt_check": "equal to the stored array",
+ "cpu_s": 11.890257212000051,
+ "wall_s": 12.212370674998965,
+ "timing_note": "planning figures only; the replays are deterministic"
+}

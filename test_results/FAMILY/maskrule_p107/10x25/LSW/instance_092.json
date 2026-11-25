@@ -1,0 +1,323 @@
+{
+ "adm": {
+  "nondelay": {
+   "rules": {
+    "FIFO": {
+     "makespan": 307.0,
+     "decisions": 220,
+     "one_pair": 71,
+     "pairs_sum": 651,
+     "differ_nondelay": 0
+    },
+    "MOR": {
+     "makespan": 330.0,
+     "decisions": 220,
+     "one_pair": 55,
+     "pairs_sum": 819,
+     "differ_nondelay": 0
+    },
+    "SPT": {
+     "makespan": 291.0,
+     "decisions": 220,
+     "one_pair": 77,
+     "pairs_sum": 662,
+     "differ_nondelay": 0
+    },
+    "MWKR": {
+     "makespan": 301.0,
+     "decisions": 220,
+     "one_pair": 72,
+     "pairs_sum": 672,
+     "differ_nondelay": 0
+    }
+   },
+   "replay": {},
+   "best_rule": 291.0,
+   "best_rule_name": "SPT",
+   "random": {
+    "makespan": [
+     286.0,
+     324.0,
+     313.0,
+     312.0,
+     305.0,
+     309.0,
+     306.0,
+     311.0,
+     308.0,
+     319.0
+    ],
+    "mean": 309.3,
+    "best": 286.0
+   },
+   "cpu_s": 1.1724476270001105,
+   "wall_s": 1.1820607429835945
+  },
+  "block": {
+   "rules": {
+    "FIFO": {
+     "makespan": 323.0,
+     "decisions": 220,
+     "one_pair": 25,
+     "pairs_sum": 913,
+     "differ_nondelay": 81
+    },
+    "MOR": {
+     "makespan": 318.0,
+     "decisions": 220,
+     "one_pair": 42,
+     "pairs_sum": 907,
+     "differ_nondelay": 80
+    },
+    "SPT": {
+     "makespan": 290.0,
+     "decisions": 220,
+     "one_pair": 45,
+     "pairs_sum": 871,
+     "differ_nondelay": 63
+    },
+    "MWKR": {
+     "makespan": 302.0,
+     "decisions": 220,
+     "one_pair": 40,
+     "pairs_sum": 827,
+     "differ_nondelay": 70
+    }
+   },
+   "replay": {},
+   "best_rule": 290.0,
+   "best_rule_name": "SPT",
+   "random": {
+    "makespan": [
+     313.0,
+     312.0,
+     301.0,
+     319.0,
+     296.0,
+     311.0,
+     308.0,
+     308.0,
+     291.0,
+     303.0
+    ],
+    "mean": 306.2,
+    "best": 291.0
+   },
+   "cpu_s": 1.202028349000102,
+   "wall_s": 1.2179930440033786
+  },
+  "active": {
+   "rules": {
+    "FIFO": {
+     "makespan": 316.0,
+     "decisions": 220,
+     "one_pair": 11,
+     "pairs_sum": 1599,
+     "differ_nondelay": 169
+    },
+    "MOR": {
+     "makespan": 321.0,
+     "decisions": 220,
+     "one_pair": 18,
+     "pairs_sum": 1568,
+     "differ_nondelay": 174
+    },
+    "SPT": {
+     "makespan": 297.0,
+     "decisions": 220,
+     "one_pair": 7,
+     "pairs_sum": 1940,
+     "differ_nondelay": 185
+    },
+    "MWKR": {
+     "makespan": 314.0,
+     "decisions": 220,
+     "one_pair": 15,
+     "pairs_sum": 1500,
+     "differ_nondelay": 179
+    }
+   },
+   "replay": {},
+   "best_rule": 297.0,
+   "best_rule_name": "SPT",
+   "random": {
+    "makespan": [
+     318.0,
+     312.0,
+     315.0,
+     318.0,
+     304.0,
+     302.0,
+     297.0,
+     319.0,
+     298.0,
+     313.0
+    ],
+    "mean": 309.6,
+    "best": 297.0
+   },
+   "cpu_s": 1.1482983620003324,
+   "wall_s": 1.1530382739729248
+  }
+ },
+ "same_as_nondelay": {
+  "block": {
+   "any": true,
+   "rules": [
+    "FIFO",
+    "MOR",
+    "SPT",
+    "MWKR"
+   ],
+   "random": 10,
+   "replay": [],
+   "differ_decisions_spt": 63
+  },
+  "active": {
+   "any": true,
+   "rules": [
+    "FIFO",
+    "MOR",
+    "SPT",
+    "MWKR"
+   ],
+   "random": 10,
+   "replay": [],
+   "differ_decisions_spt": 185
+  }
+ },
+ "setups": true,
+ "checks": {
+  "stored_rules": "the four nondelay rule rollouts equal the stored arrays",
+  "nondelay_mask": "the admissible set computed from the state equals the environment's mask at every decision of the four nondelay rule rollouts",
+  "block_vs_nondelay": "setups: block may differ, not required to equal nondelay",
+  "p101_random": "equal to the cell of p101",
+  "p105_replay": {}
+ },
+ "design": {
+  "kind": "admissibility rules",
+  "version": 1,
+  "set": "10x25",
+  "combo": "LSW",
+  "rules": {
+   "nondelay": "admissible when the processing start is within half an hour of the earliest processing start over the compatible pairs (the rule of the paper)",
+   "block": "admissible when the block start (after the push past outages, before the setup) is within half an hour of the earliest block start over the compatible pairs (classical non-delay on block starts)",
+   "active": "admissible when the processing start is earlier than the earliest completion over the compatible pairs by more than half an hour (Giffler-Thompson)"
+  },
+  "mask": {
+   "first_mask": "exact",
+   "mask_ties": "exact"
+  },
+  "dispatching": [
+   "FIFO",
+   "MOR",
+   "SPT",
+   "MWKR"
+  ],
+  "rule_set": "common_utils.masked_rule_action after np.random.seed(50)",
+  "draws": 10,
+  "stream": "default_rng(SeedSequence([20261113, 10, instance index, draw]))",
+  "orders": {
+   "A": "(s_R(o), [m != m_R(o)], completion, m, j), smallest first",
+   "B": "([m != m_R(o)], s_R(o), completion, m, j), smallest first",
+   "C": "(c_R(o), [m != m_R(o)], completion, m, j), smallest first"
+  },
+  "refs": [
+   "memetic_rule600"
+  ],
+  "validator": "reference_sim.validate_schedule (P101.validate)"
+ },
+ "set": "10x25",
+ "combo": "LSW",
+ "instance": "instance_092",
+ "row": 92,
+ "n_ops": 220,
+ "n_jobs": 10,
+ "n_machines": 25,
+ "stored_rules": {
+  "FIFO": 307.0,
+  "MOR": 330.0,
+  "SPT": 291.0,
+  "MWKR": 301.0
+ },
+ "references": {},
+ "seeds": [
+  [
+   20261113,
+   10,
+   92,
+   0
+  ],
+  [
+   20261113,
+   10,
+   92,
+   1
+  ],
+  [
+   20261113,
+   10,
+   92,
+   2
+  ],
+  [
+   20261113,
+   10,
+   92,
+   3
+  ],
+  [
+   20261113,
+   10,
+   92,
+   4
+  ],
+  [
+   20261113,
+   10,
+   92,
+   5
+  ],
+  [
+   20261113,
+   10,
+   92,
+   6
+  ],
+  [
+   20261113,
+   10,
+   92,
+   7
+  ],
+  [
+   20261113,
+   10,
+   92,
+   8
+  ],
+  [
+   20261113,
+   10,
+   92,
+   9
+  ]
+ ],
+ "timing": {
+  "wall_s": 3.554591432970483,
+  "cpu_s": 3.5242805650000264,
+  "cpu_share": 0.9914727561403235,
+  "affinity": [
+   3
+  ],
+  "loadavg": [
+   9.25439453125,
+   11.88525390625,
+   11.193359375
+  ],
+  "python": "3.11.15",
+  "omp": "1",
+  "finished": "2026-11-13 18:51:09",
+  "timing_note": "planning figures only; the rollouts are deterministic"
+ }
+}

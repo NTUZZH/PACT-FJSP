@@ -1,0 +1,85 @@
+{
+ "design": {
+  "unit": [
+   "mix_steel",
+   "50x25n30",
+   "LSW",
+   "pact",
+   301,
+   "greedy+10x25+family+xmask-v1-s301"
+  ]
+ },
+ "instances": [
+  "instance_000",
+  "instance_001",
+  "instance_002",
+  "instance_003",
+  "instance_004",
+  "instance_005",
+  "instance_006",
+  "instance_007",
+  "instance_008",
+  "instance_009",
+  "instance_010",
+  "instance_011",
+  "instance_012",
+  "instance_013",
+  "instance_014",
+  "instance_015",
+  "instance_016",
+  "instance_017",
+  "instance_018",
+  "instance_019",
+  "instance_020",
+  "instance_021",
+  "instance_022",
+  "instance_023",
+  "instance_024",
+  "instance_025",
+  "instance_026",
+  "instance_027",
+  "instance_028",
+  "instance_029"
+ ],
+ "n": 30,
+ "wall_s": 254.64387994096614,
+ "cpu_s": 254.62081923799997,
+ "cpu_share": 0.9999094393983805,
+ "affinity": [
+  14
+ ],
+ "loadavg": [
+  18.3603515625,
+  19.408203125,
+  19.82861328125
+ ],
+ "host": "Aftershock-RTX-Pro5000",
+ "python": "3.11.15",
+ "omp": "1",
+ "commit": "3fc737bbfdf46b40113f56b3ea05f4806a6301d5",
+ "finished": "2026-11-17 07:49:25",
+ "timing_note": "planning figures only; rollouts are deterministic",
+ "level": "mix_steel",
+ "size": "50x25n30",
+ "regime": "LSW",
+ "arm": "pact",
+ "seed": 301,
+ "label": "greedy+10x25+family+xmask-v1-s301",
+ "mask": {
+  "first_mask": "exact",
+  "mask_ties": "exact"
+ },
+ "environment": "exact",
+ "validated": 30,
+ "violations": 0,
+ "validator": "checks.check_schedule_validation (C6) and the makespan (scripts/p103_five_classes.py schedule_check)",
+ "policy": {
+  "model": "10x25+family+xmask-v1-s301",
+  "params": 32786,
+  "delta_mode": "min",
+  "mask_mode": "nondelay",
+  "pair_extra": "none",
+  "snapshot_sha256": "716426f9faf787e017f6741876449c2843b92ddcb3ff20012ac5b6a3a077ec5e",
+  "checkpoint_sha256": "1386adcfd8aea78de53193b6d06bfac59bf0bb312d54e1a25275ea5678fd0ed0"
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "kind": "training_cost",
+ "generator": "scripts/run_training_cost.sh",
+ "name": "xcost-solo-S-s301-r1",
+ "environment": "exact",
+ "repeats": {
+  "arm": "specialist",
+  "combination": "S",
+  "seed": 301,
+  "run": "xmask-solo-S-s301",
+  "config": "train_log/FAMILY/config_10x25+family+xmask-solo-S-s301.json"
+ },
+ "attempt": 1,
+ "command": [
+  "taskset",
+  "-c",
+  "4-7",
+  "~/miniconda3/envs/fjsp/bin/python",
+  "train_family.py",
+  "--data_source",
+  "FAMILY",
+  "--n_j",
+  "10",
+  "--use_type_embedding",
+  "True",
+  "--validate_timestep",
+  "25",
+  "--use_film",
+  "False",
+  "--family_regimes",
+  "S",
+  "--max_updates",
+  "1000",
+  "--seed_train",
+  "301",
+  "--first_mask",
+  "exact",
+  "--mask_ties",
+  "exact",
+  "--model_suffix",
+  "xcost-solo-S-s301-r1"
+ ],
+ "train_env": {
+  "CUDA_VISIBLE_DEVICES": "0",
+  "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+  "OMP_NUM_THREADS": "4",
+  "MKL_NUM_THREADS": "4"
+ },
+ "cores": "4-7",
+ "affinity": [
+  4,
+  5,
+  6,
+  7
+ ],
+ "threads": 4,
+ "host": {
+  "gpu": "NVIDIA RTX PRO 5000 Blackwell",
+  "driver": "580.178.04",
+  "gpu_memory": "48935 MiB",
+  "torch": "2.11.0+cu128",
+  "torch_cuda": "12.8",
+  "python": "3.11.15",
+  "hostname": "Aftershock-RTX-Pro5000",
+  "cpu_model": "Intel(R) Core(TM) Ultra 9 285K",
+  "core_max_mhz": {
+   "4": 5500,
+   "5": 5500,
+   "6": 5700,
+   "7": 5500
+  }
+ },
+ "started": "2026-11-19 01:07:12",
+ "finished": "2026-11-19 01:42:22",
+ "wall_seconds": 2110.016,
+ "hours": 0.586116,
+ "done_in_hours": 0.58,
+ "best_rel": 0.8147,
+ "updates": 1000,
+ "episodes": 20000,
+ "num_envs": 20,
+ "update_seconds_sum": 2100.4,
+ "seconds_per_update": 2.1004,
+ "trainer_cpu_seconds": 4227.2,
+ "params_total": 32786,
+ "mask": [
+  "exact",
+  "exact"
+ ],
+ "exit_status": 0,
+ "config_check": {
+  "reference": "train_log/FAMILY/config_10x25+family+xmask-solo-S-s301.json",
+  "differences": [
+   [
+    "model_suffix",
+    "xmask-solo-S-s301",
+    "xcost-solo-S-s301-r1"
+   ]
+  ],
+  "allowed": [
+   "model_suffix"
+  ]
+ },
+ "samples": {
+  "n": 37,
+  "pre": 1,
+  "run": 36,
+  "needed_run": 34,
+  "foreign_gpu_util_max": 2.0,
+  "foreign_gpu_util_mean": 0.0556,
+  "foreign_gpu_samples_above_limit": 0,
+  "foreign_gpu_compute": [],
+  "gpu_memory_holders": [],
+  "foreign_cpu_pct_max": 0.0,
+  "kernel_threads": [],
+  "own_gpu_util_max": 60.0,
+  "file": "train_log/training_cost/xcost-solo-S-s301-r1.samples.csv",
+  "interval_s": 60,
+  "pre_window_s": 30
+ },
+ "thresholds": {
+  "foreign_gpu_util_mean_max_pct": 1.0,
+  "foreign_gpu_util_mean": "run samples with GPU rows, each at its largest one-second value, weighted by its window",
+  "foreign_gpu_util_pre_max_pct": 5.0,
+  "foreign_compute_sm_max_pct": 0.0,
+  "foreign_cpu_busy_pct": 5.0,
+  "samples_needed": "wall seconds / interval - 1, at least 1"
+ },
+ "files": {
+  "log": "train_log/training_cost/xcost-solo-S-s301-r1.log",
+  "samples": "train_log/training_cost/xcost-solo-S-s301-r1.samples.csv",
+  "checkpoint": "train_log/training_cost/xcost-solo-S-s301-r1/10x25+family+xcost-solo-S-s301-r1.pth",
+  "config": "train_log/training_cost/xcost-solo-S-s301-r1/config_10x25+family+xcost-solo-S-s301-r1.json",
+  "vali": "train_log/training_cost/xcost-solo-S-s301-r1/valiquality_10x25+family+xcost-solo-S-s301-r1.txt",
+  "reward": "train_log/training_cost/xcost-solo-S-s301-r1/reward_10x25+family+xcost-solo-S-s301-r1.txt"
+ },
+ "stub": null,
+ "allow_busy": false,
+ "valid": true,
+ "reasons": []
+}

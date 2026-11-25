@@ -1,0 +1,90 @@
+{
+ "replay": {
+  "A": {
+   "makespan": 873.0,
+   "off": 1200,
+   "exact": false
+  },
+  "B": {
+   "makespan": 866.0,
+   "off": 1055,
+   "exact": false
+  },
+  "C": {
+   "makespan": 868.0,
+   "off": 1106,
+   "exact": false
+  }
+ },
+ "replay_makespan": 866.0,
+ "best_order": "B",
+ "exact_A": false,
+ "in_class": false,
+ "class_failures": {
+  "later": 25,
+  "earlier_pair": 1075
+ },
+ "class_first_failure": {
+  "step": 37,
+  "op": 1430,
+  "kind": "an earlier pair",
+  "start": 31.0,
+  "earliest_own": 31.0,
+  "earliest_any": 30.0
+ },
+ "decisions": 1760,
+ "off_A": 1200,
+ "off_share_A": 0.6818181818181818,
+ "design": {
+  "kind": "reference replay",
+  "version": 1,
+  "set": "80x25n30",
+  "ref": "cpsat_rule600",
+  "combo": "LSW",
+  "mask": {
+   "first_mask": "exact",
+   "mask_ties": "exact"
+  },
+  "mask_mode": "nondelay",
+  "orders": {
+   "A": "(s_R(o), [m != m_R(o)], completion, m, j), smallest first",
+   "B": "([m != m_R(o)], s_R(o), completion, m, j), smallest first",
+   "C": "(c_R(o), [m != m_R(o)], completion, m, j), smallest first"
+  },
+  "departure": "the chosen pair (o, m) is off the reference when m != m_R(o) or an operation that R places on m_R(o) before o is not yet dispatched",
+  "class_test": "R in the class: in the order of R's processing starts, every operation starts at its earliest start on its reference machine given R's earlier operations, and no candidate pair starts earlier",
+  "validator": "reference_sim.validate_schedule (P101.validate)"
+ },
+ "set": "80x25n30",
+ "ref": "cpsat_rule600",
+ "combo": "LSW",
+ "instance": "instance_022",
+ "row": 22,
+ "n_ops": 1760,
+ "n_jobs": 80,
+ "n_machines": 25,
+ "reference": {
+  "files": {
+   "test_results/FAMILY/80x25n30_cparms/evidence_rule600s/lns/LSW/instance_022.json": "797ca2bba8add1ad4ece96c9f6a6b15236ce0b9fc27ff39f1249abf11e70e569",
+   "test_results/FAMILY/80x25n30_cparms/evidence_rule600s/lns/LSW/instance_022.schedule.npz": "7b1286aefe6ea0059f6c8fdcb5b0e08be61d974176ade5c4fca89b92f6ac1fc8"
+  },
+  "objective": 846.0,
+  "makespan": 846.0,
+  "proved_optimal": false,
+  "status": "FEASIBLE",
+  "exactness": "heuristic"
+ },
+ "ref_makespan": 846.0,
+ "rules": {
+  "FIFO": 1089.0,
+  "MOR": 1286.0,
+  "SPT": 860.0,
+  "MWKR": 1194.0
+ },
+ "best_rule": 860.0,
+ "best_rule_name": "SPT",
+ "spt_check": "equal to the stored array",
+ "cpu_s": 21.051973881999857,
+ "wall_s": 44.92343228595564,
+ "timing_note": "planning figures only; the replays are deterministic"
+}

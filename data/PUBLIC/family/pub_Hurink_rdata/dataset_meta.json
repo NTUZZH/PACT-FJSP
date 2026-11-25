@@ -1,0 +1,134 @@
+{
+ "base_dir": "data/PUBLIC/Hurink_rdata",
+ "n_instances": 65,
+ "instances": [
+  "abz5",
+  "abz6",
+  "abz7",
+  "abz8",
+  "abz9",
+  "car1",
+  "car2",
+  "car3",
+  "car4",
+  "car5",
+  "car6",
+  "car7",
+  "car8",
+  "la01",
+  "la02",
+  "la03",
+  "la04",
+  "la05",
+  "la06",
+  "la07",
+  "la08",
+  "la09",
+  "la10",
+  "la11",
+  "la12",
+  "la13",
+  "la14",
+  "la15",
+  "la16",
+  "la17",
+  "la18",
+  "la19",
+  "la20",
+  "la21",
+  "la22",
+  "la23",
+  "la24",
+  "la25",
+  "la26",
+  "la27",
+  "la28",
+  "la29",
+  "la30",
+  "la31",
+  "la32",
+  "la33",
+  "la34",
+  "la35",
+  "la36",
+  "la37",
+  "la38",
+  "la39",
+  "la40",
+  "mt06",
+  "mt10",
+  "mt20",
+  "orb1",
+  "orb2",
+  "orb3",
+  "orb4",
+  "orb5",
+  "orb6",
+  "orb8",
+  "orb9",
+  "orb10"
+ ],
+ "excluded": [
+  {
+   "instance": "orb7.fjs",
+   "reason": "orb7: job 9 operation 9: processing time 0 on machine 1"
+  }
+ ],
+ "regimes": [
+  "N",
+  "L",
+  "S",
+  "W",
+  "LS",
+  "LW",
+  "SW",
+  "LSW"
+ ],
+ "regimes_train": [
+  "N",
+  "L",
+  "S",
+  "W",
+  "LS",
+  "LW"
+ ],
+ "regimes_heldout": [
+  "SW",
+  "LSW"
+ ],
+ "desc_seed0": 20261103000,
+ "rules_version": "public-rules-1",
+ "params": {
+  "lag_short_frac": 0.0909090909090909,
+  "lag_long_frac": 0.056818181818181816,
+  "lag_short_pbar": [
+   2.7404976919392547,
+   5.4809953838785095
+  ],
+  "lag_long_pbar": [
+   5.4809953838785095,
+   10.961990767757019
+  ],
+  "lag_scale": 1.0,
+  "n_classes": 4,
+  "setup_same": [
+   0.25,
+   0.5
+  ],
+  "setup_cross": [
+   0.5,
+   1.0
+  ],
+  "window_density": [
+   0.05,
+   0.15
+  ],
+  "window_dur_pbar": [
+   0.4567496153232091,
+   1.8269984612928365
+  ],
+  "horizon_rule": "max_chain_load"
+ },
+ "factory_mean_pt": 4.378766687268565,
+ "convention": "attached setups; contiguous setup+proc block avoids outages; idle-row cold-start setup; integer time units of the base instance"
+}

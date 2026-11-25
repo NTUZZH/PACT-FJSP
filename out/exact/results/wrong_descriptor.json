@@ -1,0 +1,1905 @@
+{
+ "generator": "scripts/p121_wrong_descriptor.py",
+ "setting": "environment exact, training seeds 301,302,303,304,305",
+ "seeds": [
+  301,
+  302,
+  303,
+  304,
+  305
+ ],
+ "instances": 100,
+ "pairs": [
+  [
+   "LSW",
+   "N",
+   "Lsw"
+  ],
+  [
+   "SW",
+   "LS",
+   "Sw"
+  ]
+ ],
+ "cases_run": [
+  "A",
+  "C"
+ ],
+ "case_definitions": {
+  "A": "environment and inputs from the true descriptor",
+  "B": "p40: environment from the true descriptor, descriptor vector from the configured one. The policy does not read the descriptor vector, so B gives the schedules of A decision for decision (checked in the rollouts); inputs computed from the configured descriptor while the environment simulates the true one would need an environment that no plant can configure. Not run.",
+  "C": "environment and inputs from the configured descriptor: what a plant with the wrong descriptor gets",
+  "D": "p40: environment from the configured descriptor, descriptor vector from the true one. For the same reason D gives the schedules of C. Not run."
+ },
+ "part1": [
+  {
+   "label": "Lsw",
+   "true": "LSW",
+   "configured": "N",
+   "cases": {
+    "A": {
+     "environment": "LSW",
+     "per_seed": {
+      "301": {
+       "mean": 286.74,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "302": {
+       "mean": 285.78,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "303": {
+       "mean": 286.72,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "304": {
+       "mean": 286.7,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "305": {
+       "mean": 286.18,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      }
+     },
+     "pooled": {
+      "mean": 286.42400000000004,
+      "true": {
+       "schedules": 500,
+       "rejected": 0,
+       "rejected_reference_sim": 0,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 0,
+       "window_schedules": 0,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "configured": {
+       "schedules": 500,
+       "rejected": 0,
+       "rejected_reference_sim": 0,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 0,
+       "window_schedules": 0,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "change": 0.0
+     },
+     "seed_range": {
+      "change_min": 0.0,
+      "change_max": 0.0,
+      "rejected_true_min": 0,
+      "rejected_true_max": 0
+     }
+    },
+    "C": {
+     "environment": "N",
+     "per_seed": {
+      "301": {
+       "mean": 129.71,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 3193,
+        "lag_schedules": 100,
+        "setup": 15149,
+        "setup_schedules": 100,
+        "window": 5213,
+        "window_schedules": 100,
+        "presence": 15463,
+        "presence_schedules": 100,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 18656,
+        "schedule_validator": {
+         "precedence": 3193,
+         "overlap": 0,
+         "bound": 100,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 100
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": -54.76389760758875
+      },
+      "302": {
+       "mean": 129.74,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 3188,
+        "lag_schedules": 100,
+        "setup": 13683,
+        "setup_schedules": 100,
+        "window": 5166,
+        "window_schedules": 100,
+        "presence": 16286,
+        "presence_schedules": 100,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 19474,
+        "schedule_validator": {
+         "precedence": 3188,
+         "overlap": 0,
+         "bound": 100,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 100
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": -54.60144166841626
+      },
+      "303": {
+       "mean": 129.52,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 3193,
+        "lag_schedules": 100,
+        "setup": 13752,
+        "setup_schedules": 100,
+        "window": 5207,
+        "window_schedules": 100,
+        "presence": 15727,
+        "presence_schedules": 100,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 18920,
+        "schedule_validator": {
+         "precedence": 3193,
+         "overlap": 0,
+         "bound": 100,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 100
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": -54.82700892857143
+      },
+      "304": {
+       "mean": 129.87,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 3185,
+        "lag_schedules": 100,
+        "setup": 14767,
+        "setup_schedules": 100,
+        "window": 5149,
+        "window_schedules": 100,
+        "presence": 15376,
+        "presence_schedules": 100,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 18561,
+        "schedule_validator": {
+         "precedence": 3185,
+         "overlap": 0,
+         "bound": 100,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 100
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": -54.701778862922914
+      },
+      "305": {
+       "mean": 129.77,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 3187,
+        "lag_schedules": 100,
+        "setup": 14814,
+        "setup_schedules": 100,
+        "window": 5170,
+        "window_schedules": 100,
+        "presence": 16071,
+        "presence_schedules": 100,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 19258,
+        "schedule_validator": {
+         "precedence": 3187,
+         "overlap": 0,
+         "bound": 100,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 100
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": -54.654413306310715
+      }
+     },
+     "pooled": {
+      "mean": 129.72199999999998,
+      "true": {
+       "schedules": 500,
+       "rejected": 500,
+       "rejected_reference_sim": 500,
+       "lag": 15946,
+       "lag_schedules": 500,
+       "setup": 72165,
+       "setup_schedules": 500,
+       "window": 25905,
+       "window_schedules": 500,
+       "presence": 78923,
+       "presence_schedules": 500,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 94869,
+       "schedule_validator": {
+        "precedence": 15946,
+        "overlap": 0,
+        "bound": 500,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 500
+      },
+      "configured": {
+       "schedules": 500,
+       "rejected": 0,
+       "rejected_reference_sim": 0,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 0,
+       "window_schedules": 0,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "change": -54.709800854677
+     },
+     "seed_range": {
+      "change_min": -54.82700892857143,
+      "change_max": -54.60144166841626,
+      "rejected_true_min": 100,
+      "rejected_true_max": 100
+     }
+    }
+   }
+  },
+  {
+   "label": "Sw",
+   "true": "SW",
+   "configured": "LS",
+   "cases": {
+    "A": {
+     "environment": "SW",
+     "per_seed": {
+      "301": {
+       "mean": 217.67,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "302": {
+       "mean": 218.0,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "303": {
+       "mean": 217.78,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "304": {
+       "mean": 217.51,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      },
+      "305": {
+       "mean": 218.11,
+       "true": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 0.0
+      }
+     },
+     "pooled": {
+      "mean": 217.81400000000002,
+      "true": {
+       "schedules": 500,
+       "rejected": 0,
+       "rejected_reference_sim": 0,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 0,
+       "window_schedules": 0,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "configured": {
+       "schedules": 500,
+       "rejected": 0,
+       "rejected_reference_sim": 0,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 0,
+       "window_schedules": 0,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "change": 0.0
+     },
+     "seed_range": {
+      "change_min": 0.0,
+      "change_max": 0.0,
+      "rejected_true_min": 0,
+      "rejected_true_max": 0
+     }
+    },
+    "C": {
+     "environment": "LS",
+     "per_seed": {
+      "301": {
+       "mean": 268.49,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 4089,
+        "window_schedules": 100,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 23.34726880139662
+      },
+      "302": {
+       "mean": 269.12,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 4080,
+        "window_schedules": 100,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 23.44954128440367
+      },
+      "303": {
+       "mean": 270.37,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 4077,
+        "window_schedules": 100,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 24.148222977316557
+      },
+      "304": {
+       "mean": 269.41,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 4122,
+        "window_schedules": 100,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 23.86097190933752
+      },
+      "305": {
+       "mean": 269.0,
+       "true": {
+        "schedules": 100,
+        "rejected": 100,
+        "rejected_reference_sim": 100,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 4087,
+        "window_schedules": 100,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "configured": {
+        "schedules": 100,
+        "rejected": 0,
+        "rejected_reference_sim": 0,
+        "lag": 0,
+        "lag_schedules": 0,
+        "setup": 0,
+        "setup_schedules": 0,
+        "window": 0,
+        "window_schedules": 0,
+        "presence": 0,
+        "presence_schedules": 0,
+        "other": 0,
+        "other_schedules": 0,
+        "lag_p40_classify": 0,
+        "schedule_validator": {
+         "precedence": 0,
+         "overlap": 0,
+         "bound": 0,
+         "compat": 0,
+         "start": 0,
+         "release": 0,
+         "other": 0
+        },
+        "bound_schedules": 0
+       },
+       "change": 23.332263536747504
+      }
+     },
+     "pooled": {
+      "mean": 269.278,
+      "true": {
+       "schedules": 500,
+       "rejected": 500,
+       "rejected_reference_sim": 500,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 20455,
+       "window_schedules": 500,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "configured": {
+       "schedules": 500,
+       "rejected": 0,
+       "rejected_reference_sim": 0,
+       "lag": 0,
+       "lag_schedules": 0,
+       "setup": 0,
+       "setup_schedules": 0,
+       "window": 0,
+       "window_schedules": 0,
+       "presence": 0,
+       "presence_schedules": 0,
+       "other": 0,
+       "other_schedules": 0,
+       "lag_p40_classify": 0,
+       "schedule_validator": {
+        "precedence": 0,
+        "overlap": 0,
+        "bound": 0,
+        "compat": 0,
+        "start": 0,
+        "release": 0,
+        "other": 0
+       },
+       "bound_schedules": 0
+      },
+      "change": 23.627498691544158
+     },
+     "seed_range": {
+      "change_min": 23.332263536747504,
+      "change_max": 24.148222977316557,
+      "rejected_true_min": 100,
+      "rejected_true_max": 100
+     }
+    }
+   }
+  }
+ ],
+ "part2": {
+  "Lsw": {
+   "C1": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C2": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C3": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C4": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C5": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C6": {
+    "configured": {
+     "PASS": 500,
+     "FAIL": 0
+    },
+    "configured_against_true": {
+     "PASS": 0,
+     "FAIL": 500
+    },
+    "true": {
+     "PASS": 500,
+     "FAIL": 0
+    },
+    "unit": "schedules of case C (configured) and case A (true), all seeds"
+   },
+   "C7": {
+    "configured": {
+     "MANUAL": 100
+    },
+    "true": {
+     "MANUAL": 100
+    },
+    "unit": "descriptors"
+   }
+  },
+  "Sw": {
+   "C1": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C2": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C3": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C4": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C5": {
+    "configured": {
+     "PASS": 100
+    },
+    "true": {
+     "PASS": 100
+    },
+    "unit": "descriptors"
+   },
+   "C6": {
+    "configured": {
+     "PASS": 500,
+     "FAIL": 0
+    },
+    "configured_against_true": {
+     "PASS": 0,
+     "FAIL": 500
+    },
+    "true": {
+     "PASS": 500,
+     "FAIL": 0
+    },
+    "unit": "schedules of case C (configured) and case A (true), all seeds"
+   },
+   "C7": {
+    "configured": {
+     "MANUAL": 100
+    },
+    "true": {
+     "MANUAL": 100
+    },
+    "unit": "descriptors"
+   }
+  }
+ },
+ "checks": {
+  "C1": {
+   "function": "constraint_family.checks.check_schema_and_values",
+   "location": "constraint_family/checks.py:83",
+   "basis": "computation: shapes, types and values of the descriptor fields"
+  },
+  "C2": {
+   "function": "constraint_family.checks.check_setup_convention",
+   "location": "constraint_family/checks.py:270",
+   "basis": "computation on a plant declaration: it reads the declared setup convention; whether the declaration is true cannot be computed"
+  },
+  "C3": {
+   "function": "constraint_family.checks.check_family_membership",
+   "location": "constraint_family/checks.py:390",
+   "basis": "computation: the active rule types of the descriptor against the registry"
+  },
+  "C4": {
+   "function": "constraint_family.checks.check_magnitude_range",
+   "location": "constraint_family/checks.py:459",
+   "basis": "computation: rule magnitudes against the training ranges (warns, never fails)"
+  },
+  "C5": {
+   "function": "constraint_family.checks.check_applicability",
+   "location": "constraint_family/checks.py:576",
+   "basis": "plant declaration: finite downstream buffers, passed as an argument; the code checks only that it is declared and false"
+  },
+  "C6": {
+   "function": "constraint_family.checks.check_schedule_validation",
+   "location": "constraint_family/checks.py:601",
+   "basis": "computation: the schedule against the descriptor it is given"
+  },
+  "C7": {
+   "function": "constraint_family.checks.check_source_reconciliation",
+   "location": "constraint_family/checks.py:653",
+   "basis": "sign-off: an engineer compares the descriptor with the plant source records; the code records the fingerprint and returns MANUAL"
+  },
+  "run_all": {
+   "function": "constraint_family.checks.run_all",
+   "location": "constraint_family/checks.py:678"
+  }
+ },
+ "faults": {
+  "base": "LSW descriptor of instance_000",
+  "rows": [
+   {
+    "fault": "neglag",
+    "text": "a negative lag",
+    "word": "NegLag",
+    "statuses": {
+     "C1": "FAIL",
+     "C2": "PASS",
+     "C3": "PASS",
+     "C4": "WARN",
+     "C5": "PASS",
+     "C6": "MANUAL",
+     "C7": "MANUAL"
+    },
+    "caught_by": [
+     "C1"
+    ],
+    "messages": {
+     "C1": [
+      "lag entries must be finite and >= 0, min = -30.0",
+      "setup entries all > 0 (envelope strictly tightening)"
+     ]
+    }
+   },
+   {
+    "fault": "negsetup",
+    "text": "a setup matrix with a negative entry",
+    "word": "NegSetup",
+    "statuses": {
+     "C1": "FAIL",
+     "C2": "PASS",
+     "C3": "PASS",
+     "C4": "WARN",
+     "C5": "PASS",
+     "C6": "MANUAL",
+     "C7": "MANUAL"
+    },
+    "caught_by": [
+     "C1"
+    ],
+    "messages": {
+     "C1": [
+      "setup entries must be finite and >= 0, min = -2.0"
+     ]
+    }
+   },
+   {
+    "fault": "overlap",
+    "text": "two overlapping windows on one machine",
+    "word": "Overlap",
+    "statuses": {
+     "C1": "FAIL",
+     "C2": "PASS",
+     "C3": "PASS",
+     "C4": "WARN",
+     "C5": "PASS",
+     "C6": "MANUAL",
+     "C7": "MANUAL"
+    },
+    "caught_by": [
+     "C1"
+    ],
+    "messages": {
+     "C1": [
+      "windows[0][0] = [30, 36) and [31, 37) overlap",
+      "setup entries all > 0 (envelope strictly tightening)"
+     ]
+    }
+   },
+   {
+    "fault": "reversed",
+    "text": "a window whose end precedes its start",
+    "word": "Reversed",
+    "statuses": {
+     "C1": "FAIL",
+     "C2": "PASS",
+     "C3": "PASS",
+     "C4": "WARN",
+     "C5": "PASS",
+     "C6": "MANUAL",
+     "C7": "MANUAL"
+    },
+    "caught_by": [
+     "C1"
+    ],
+    "messages": {
+     "C1": [
+      "windows[0][0] = [36, 30) needs start < end",
+      "setup entries all > 0 (envelope strictly tightening)"
+     ]
+    }
+   },
+   {
+    "fault": "twice",
+    "text": "the setup matrix at twice the trained range",
+    "word": "Twice",
+    "statuses": {
+     "C1": "PASS",
+     "C2": "PASS",
+     "C3": "PASS",
+     "C4": "WARN",
+     "C5": "PASS",
+     "C6": "MANUAL",
+     "C7": "MANUAL"
+    },
+    "caught_by": [
+     "C4"
+    ],
+    "messages": {
+     "C4": [
+      "SETUP: mean cross-class setup = 1.30 p_bar, outside training range [0.50, 1.00] p_bar (p_bar = 4.35 h)",
+      "SETUP: 3 of 4 same-class entries outside [1.1, 2.2] h (= [0.25, 0.50] p_bar); extreme = 4 h",
+      "SETUP: 8 of 12 cross-class entries outside [2.2, 4.4] h (= [0.50, 1.00] p_bar); extreme = 8 h",
+      "SETUP: 1 of 4 cold-start entries outside [1.1, 2.2] h (= [0.25, 0.50] p_bar); extreme = 4 h"
+     ]
+    }
+   },
+   {
+    "fault": "asym",
+    "text": "an asymmetric setup matrix",
+    "word": "Asym",
+    "statuses": {
+     "C1": "PASS",
+     "C2": "PASS",
+     "C3": "PASS",
+     "C4": "WARN",
+     "C5": "PASS",
+     "C6": "MANUAL",
+     "C7": "MANUAL"
+    },
+    "caught_by": [
+     "C4"
+    ],
+    "messages": {
+     "C4": [
+      "SETUP: asymmetry max|S[a,b]-S[b,a]| = 1 h; the training generator draws symmetric matrices"
+     ]
+    }
+   }
+  ]
+ },
+ "vector_check": {
+  "records": {
+   "301:LSW": {
+    "partner": "N",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "301:N": {
+    "partner": "LSW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "301:SW": {
+    "partner": "LS",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "301:LS": {
+    "partner": "SW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "302:LSW": {
+    "partner": "N",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "302:N": {
+    "partner": "LSW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "302:SW": {
+    "partner": "LS",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "302:LS": {
+    "partner": "SW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "303:LSW": {
+    "partner": "N",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "303:N": {
+    "partner": "LSW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "303:SW": {
+    "partner": "LS",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "303:LS": {
+    "partner": "SW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "304:LSW": {
+    "partner": "N",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "304:N": {
+    "partner": "LSW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "304:SW": {
+    "partner": "LS",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "304:LS": {
+    "partner": "SW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "305:LSW": {
+    "partner": "N",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "305:N": {
+    "partner": "LSW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "305:SW": {
+    "partner": "LS",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   },
+   "305:LS": {
+    "partner": "SW",
+    "decisions": 1195,
+    "all_equal": true,
+    "full_instances": 5
+   }
+  },
+  "decisions": 23900,
+  "all_equal": true
+ },
+ "reproduction": {
+  "compared": 2000,
+  "identical": 2000,
+  "folder": "test_results/FAMILY/10x25_xmask"
+ },
+ "functions": {
+  "rollout": "eval_family.load_model, eval_family.mask_options, the greedy branch of eval_family.main (FJSPEnvFamily, greedy_select_action)",
+  "validator": "constraint_family.checks.check_schedule_validation (C6: schedule_validator.validate_schedule and reference_sim.validate_schedule)",
+  "rule_buckets": "scripts/p40_misconfig.py classify (loaded from its source)",
+  "change": "scripts/p88_family_inference.py rel: 100 (a - b) / b of the means",
+  "pooled": "arm_registry.pooled: per-instance mean over the seeds"
+ },
+ "folder": "test_results/FAMILY/10x25_wrongdesc_xmask"
+}

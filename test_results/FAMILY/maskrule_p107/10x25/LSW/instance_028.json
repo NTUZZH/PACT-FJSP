@@ -1,0 +1,404 @@
+{
+ "adm": {
+  "nondelay": {
+   "rules": {
+    "FIFO": {
+     "makespan": 298.0,
+     "decisions": 220,
+     "one_pair": 83,
+     "pairs_sum": 509,
+     "differ_nondelay": 0
+    },
+    "MOR": {
+     "makespan": 291.0,
+     "decisions": 220,
+     "one_pair": 87,
+     "pairs_sum": 501,
+     "differ_nondelay": 0
+    },
+    "SPT": {
+     "makespan": 288.0,
+     "decisions": 220,
+     "one_pair": 87,
+     "pairs_sum": 499,
+     "differ_nondelay": 0
+    },
+    "MWKR": {
+     "makespan": 290.0,
+     "decisions": 220,
+     "one_pair": 76,
+     "pairs_sum": 547,
+     "differ_nondelay": 0
+    }
+   },
+   "replay": {
+    "memetic_rule600": {
+     "A": {
+      "makespan": 291.0,
+      "off": 116,
+      "exact": false
+     },
+     "B": {
+      "makespan": 283.0,
+      "off": 131,
+      "exact": false
+     },
+     "C": {
+      "makespan": 288.0,
+      "off": 141,
+      "exact": false
+     },
+     "best": 283.0,
+     "best_order": "B"
+    }
+   },
+   "best_rule": 288.0,
+   "best_rule_name": "SPT",
+   "random": {
+    "makespan": [
+     296.0,
+     305.0,
+     309.0,
+     292.0,
+     286.0,
+     294.0,
+     284.0,
+     299.0,
+     298.0,
+     303.0
+    ],
+    "mean": 296.6,
+    "best": 284.0
+   },
+   "cpu_s": 1.8369055140001365,
+   "wall_s": 1.8845414849929512
+  },
+  "block": {
+   "rules": {
+    "FIFO": {
+     "makespan": 299.0,
+     "decisions": 220,
+     "one_pair": 48,
+     "pairs_sum": 823,
+     "differ_nondelay": 142
+    },
+    "MOR": {
+     "makespan": 308.0,
+     "decisions": 220,
+     "one_pair": 44,
+     "pairs_sum": 774,
+     "differ_nondelay": 138
+    },
+    "SPT": {
+     "makespan": 304.0,
+     "decisions": 220,
+     "one_pair": 41,
+     "pairs_sum": 791,
+     "differ_nondelay": 153
+    },
+    "MWKR": {
+     "makespan": 332.0,
+     "decisions": 220,
+     "one_pair": 39,
+     "pairs_sum": 803,
+     "differ_nondelay": 155
+    }
+   },
+   "replay": {
+    "memetic_rule600": {
+     "A": {
+      "makespan": 276.0,
+      "off": 62,
+      "exact": false
+     },
+     "B": {
+      "makespan": 285.0,
+      "off": 52,
+      "exact": false
+     },
+     "C": {
+      "makespan": 278.0,
+      "off": 67,
+      "exact": false
+     },
+     "best": 276.0,
+     "best_order": "A"
+    }
+   },
+   "best_rule": 299.0,
+   "best_rule_name": "FIFO",
+   "random": {
+    "makespan": [
+     311.0,
+     294.0,
+     317.0,
+     318.0,
+     300.0,
+     302.0,
+     298.0,
+     295.0,
+     303.0,
+     301.0
+    ],
+    "mean": 303.9,
+    "best": 294.0
+   },
+   "cpu_s": 1.9165746389999185,
+   "wall_s": 1.9302295970264822
+  },
+  "active": {
+   "rules": {
+    "FIFO": {
+     "makespan": 293.0,
+     "decisions": 220,
+     "one_pair": 14,
+     "pairs_sum": 1421,
+     "differ_nondelay": 192
+    },
+    "MOR": {
+     "makespan": 334.0,
+     "decisions": 220,
+     "one_pair": 16,
+     "pairs_sum": 1684,
+     "differ_nondelay": 192
+    },
+    "SPT": {
+     "makespan": 295.0,
+     "decisions": 220,
+     "one_pair": 7,
+     "pairs_sum": 1930,
+     "differ_nondelay": 205
+    },
+    "MWKR": {
+     "makespan": 316.0,
+     "decisions": 220,
+     "one_pair": 18,
+     "pairs_sum": 1442,
+     "differ_nondelay": 185
+    }
+   },
+   "replay": {
+    "memetic_rule600": {
+     "A": {
+      "makespan": 271.0,
+      "off": 36,
+      "exact": false
+     },
+     "B": {
+      "makespan": 275.0,
+      "off": 32,
+      "exact": false
+     },
+     "C": {
+      "makespan": 284.0,
+      "off": 42,
+      "exact": false
+     },
+     "best": 271.0,
+     "best_order": "A"
+    }
+   },
+   "best_rule": 293.0,
+   "best_rule_name": "FIFO",
+   "random": {
+    "makespan": [
+     304.0,
+     303.0,
+     304.0,
+     297.0,
+     306.0,
+     305.0,
+     304.0,
+     306.0,
+     303.0,
+     306.0
+    ],
+    "mean": 303.8,
+    "best": 297.0
+   },
+   "cpu_s": 1.799376121000023,
+   "wall_s": 1.8186804020078853
+  }
+ },
+ "same_as_nondelay": {
+  "block": {
+   "any": true,
+   "rules": [
+    "FIFO",
+    "MOR",
+    "SPT",
+    "MWKR"
+   ],
+   "random": 10,
+   "replay": [
+    "memetic_rule600/A",
+    "memetic_rule600/B",
+    "memetic_rule600/C"
+   ],
+   "differ_decisions_spt": 153
+  },
+  "active": {
+   "any": true,
+   "rules": [
+    "FIFO",
+    "MOR",
+    "SPT",
+    "MWKR"
+   ],
+   "random": 10,
+   "replay": [
+    "memetic_rule600/A",
+    "memetic_rule600/B",
+    "memetic_rule600/C"
+   ],
+   "differ_decisions_spt": 205
+  }
+ },
+ "setups": true,
+ "checks": {
+  "stored_rules": "the four nondelay rule rollouts equal the stored arrays",
+  "nondelay_mask": "the admissible set computed from the state equals the environment's mask at every decision of the four nondelay rule rollouts",
+  "block_vs_nondelay": "setups: block may differ, not required to equal nondelay",
+  "p101_random": "equal to the cell of p101",
+  "p105_replay": {
+   "memetic_rule600": "equal to the case of p105 (orders A, B, C)"
+  }
+ },
+ "design": {
+  "kind": "admissibility rules",
+  "version": 1,
+  "set": "10x25",
+  "combo": "LSW",
+  "rules": {
+   "nondelay": "admissible when the processing start is within half an hour of the earliest processing start over the compatible pairs (the rule of the paper)",
+   "block": "admissible when the block start (after the push past outages, before the setup) is within half an hour of the earliest block start over the compatible pairs (classical non-delay on block starts)",
+   "active": "admissible when the processing start is earlier than the earliest completion over the compatible pairs by more than half an hour (Giffler-Thompson)"
+  },
+  "mask": {
+   "first_mask": "exact",
+   "mask_ties": "exact"
+  },
+  "dispatching": [
+   "FIFO",
+   "MOR",
+   "SPT",
+   "MWKR"
+  ],
+  "rule_set": "common_utils.masked_rule_action after np.random.seed(50)",
+  "draws": 10,
+  "stream": "default_rng(SeedSequence([20261113, 10, instance index, draw]))",
+  "orders": {
+   "A": "(s_R(o), [m != m_R(o)], completion, m, j), smallest first",
+   "B": "([m != m_R(o)], s_R(o), completion, m, j), smallest first",
+   "C": "(c_R(o), [m != m_R(o)], completion, m, j), smallest first"
+  },
+  "refs": [
+   "memetic_rule600"
+  ],
+  "validator": "reference_sim.validate_schedule (P101.validate)"
+ },
+ "set": "10x25",
+ "combo": "LSW",
+ "instance": "instance_028",
+ "row": 28,
+ "n_ops": 220,
+ "n_jobs": 10,
+ "n_machines": 25,
+ "stored_rules": {
+  "FIFO": 298.0,
+  "MOR": 291.0,
+  "SPT": 288.0,
+  "MWKR": 290.0
+ },
+ "references": {
+  "memetic_rule600": {
+   "state": "valid",
+   "files": {
+    "or_solution/FAMILY/10x25_memetic600s/LSW/instance_028_seed1.json": "82a3cb3a3161bc2fd7c2b8e040b1a488615738af9773fe24ba8eda1bec7d43cd"
+   },
+   "objective": 262.0,
+   "makespan": 262.0,
+   "proved_optimal": false,
+   "status": "FEASIBLE"
+  }
+ },
+ "seeds": [
+  [
+   20261113,
+   10,
+   28,
+   0
+  ],
+  [
+   20261113,
+   10,
+   28,
+   1
+  ],
+  [
+   20261113,
+   10,
+   28,
+   2
+  ],
+  [
+   20261113,
+   10,
+   28,
+   3
+  ],
+  [
+   20261113,
+   10,
+   28,
+   4
+  ],
+  [
+   20261113,
+   10,
+   28,
+   5
+  ],
+  [
+   20261113,
+   10,
+   28,
+   6
+  ],
+  [
+   20261113,
+   10,
+   28,
+   7
+  ],
+  [
+   20261113,
+   10,
+   28,
+   8
+  ],
+  [
+   20261113,
+   10,
+   28,
+   9
+  ]
+ ],
+ "timing": {
+  "wall_s": 5.63849201699486,
+  "cpu_s": 5.555019247000018,
+  "cpu_share": 0.9851959052627461,
+  "affinity": [
+   3
+  ],
+  "loadavg": [
+   16.28466796875,
+   12.9677734375,
+   11.09033203125
+  ],
+  "python": "3.11.15",
+  "omp": "1",
+  "finished": "2026-11-13 18:47:09",
+  "timing_note": "planning figures only; the rollouts are deterministic"
+ }
+}

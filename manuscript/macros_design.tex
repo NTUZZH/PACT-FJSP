@@ -1,0 +1,14 @@
+% Constants of the training recipe, the test shops and the timing rule, typed by hand.
+% scripts/p111_model_facts.py compares each value with the source that its comment names.
+\newcommand{\ExpEnvs}{20}  % parallel training episodes per update: num_envs of the stored configurations train_log/FAMILY/config_<run>.json of the policy, control and specialist runs
+\newcommand{\ExpSpecUpdates}{1,000}  % updates of a specialist: max_updates of the configurations of the runs xmask-solo-<R>-s<seed>
+\newcommand{\ExpEqUpdates}{6,000}  % updates of the longer-trained policy: max_updates of the configurations of the runs xmask-eq-s<seed>
+\newcommand{\ExpRelUpdates}{2,000}  % updates of the policy: max_updates of the configurations of the runs xmask-v1-s<seed>
+\newcommand{\ExpSpecPerRegime}{20,000}  % training episodes of a specialist on its combination: max_updates x num_envs of its configuration
+\newcommand{\ExpEqPerRegime}{20,000}  % training episodes of the longer-trained policy per training combination: max_updates x num_envs / the combinations of family_regimes
+\newcommand{\ExpRelPerRegime}{6,667}  % training episodes of the policy per training combination: max_updates x num_envs / the combinations of family_regimes, rounded
+\newcommand{\LoadTenJobs}{10}  % modules per instance at the training size: the job count of the base instances that the descriptors of data/FAMILY/10x25 name
+\newcommand{\LoadStations}{25}  % stations per shop: the machine count of the base instances that the descriptors of data/FAMILY/10x25, 20x25 and 30x25 name
+\newcommand{\HgnnBatch}{20}  % instances per iteration of the published scheduler: env_paras.batch_size of the configurations of the runs hgnn-<reward>-joint-s<seed>-xmask
+\newcommand{\HgnnParams}{204,250}  % parameters of the published scheduler: n_params of the same configurations
+\newcommand{\CpuShareMin}{0.9}  % minimum CPU share of a valid timed record: SHARE_MIN of scripts/timing_validity.py

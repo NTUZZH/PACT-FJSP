@@ -1,0 +1,290 @@
+{
+ "kind": "rule_change_count",
+ "generator": "scripts/p99_rule_change_cost.py count",
+ "environment": "exact",
+ "seed_option": "select",
+ "policy": {
+  "models": 1,
+  "covers": [
+   "N",
+   "L",
+   "S",
+   "W",
+   "LS",
+   "LW",
+   "SW",
+   "LSW"
+  ],
+  "params_per_model": [
+   32786
+  ],
+  "checkpoint_bytes": 155957,
+  "config_files": 1,
+  "config_bytes": 1898,
+  "validation_pairs": 8,
+  "validation_rollouts": 160,
+  "validation_instances": [
+   20
+  ],
+  "per_model": [
+   {
+    "arm": "released",
+    "combination": null,
+    "seed": 304,
+    "run": "xmask-v1-s304",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-v1-s304.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-v1-s304.json",
+    "serves": [
+     "N",
+     "L",
+     "S",
+     "W",
+     "LS",
+     "LW",
+     "SW",
+     "LSW"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 155957,
+    "config_bytes": 1898,
+    "vali_instances": 20
+   }
+  ]
+ },
+ "specialists": {
+  "models": 8,
+  "covers": [
+   "N",
+   "L",
+   "S",
+   "W",
+   "LS",
+   "LW",
+   "SW",
+   "LSW"
+  ],
+  "params_per_model": [
+   32786
+  ],
+  "checkpoint_bytes": 1249876,
+  "config_files": 8,
+  "config_bytes": 15130,
+  "validation_pairs": 8,
+  "validation_rollouts": 160,
+  "validation_instances": [
+   20
+  ],
+  "per_model": [
+   {
+    "arm": "specialist",
+    "combination": "N",
+    "seed": 305,
+    "run": "xmask-solo-N-s305",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-N-s305.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-N-s305.json",
+    "serves": [
+     "N"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156197,
+    "config_bytes": 1890,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "L",
+    "seed": 305,
+    "run": "xmask-solo-L-s305",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-L-s305.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-L-s305.json",
+    "serves": [
+     "L"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156197,
+    "config_bytes": 1890,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "S",
+    "seed": 303,
+    "run": "xmask-solo-S-s303",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-S-s303.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-S-s303.json",
+    "serves": [
+     "S"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156197,
+    "config_bytes": 1890,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "W",
+    "seed": 303,
+    "run": "xmask-solo-W-s303",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-W-s303.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-W-s303.json",
+    "serves": [
+     "W"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156197,
+    "config_bytes": 1890,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "LS",
+    "seed": 303,
+    "run": "xmask-solo-LS-s303",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-LS-s303.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s303.json",
+    "serves": [
+     "LS"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156257,
+    "config_bytes": 1892,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "LW",
+    "seed": 305,
+    "run": "xmask-solo-LW-s305",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-LW-s305.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s305.json",
+    "serves": [
+     "LW"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156257,
+    "config_bytes": 1892,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "SW",
+    "seed": 303,
+    "run": "xmask-solo-SW-s303",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-SW-s303.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s303.json",
+    "serves": [
+     "SW"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156257,
+    "config_bytes": 1892,
+    "vali_instances": 20
+   },
+   {
+    "arm": "specialist",
+    "combination": "LSW",
+    "seed": 302,
+    "run": "xmask-solo-LSW-s302",
+    "checkpoint": "trained_network/FAMILY/10x25+family+xmask-solo-LSW-s302.pth",
+    "config": "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s302.json",
+    "serves": [
+     "LSW"
+    ],
+    "params": 32786,
+    "checkpoint_bytes": 156317,
+    "config_bytes": 1894,
+    "vali_instances": 20
+   }
+  ]
+ },
+ "validation_equal": true,
+ "validation_cap_of_trainer": 20,
+ "checks": [
+  {
+   "id": "C1",
+   "name": "schema_and_values",
+   "kind": "computed by code"
+  },
+  {
+   "id": "C2",
+   "name": "setup_convention",
+   "kind": "declared by the plant"
+  },
+  {
+   "id": "C3",
+   "name": "family_membership",
+   "kind": "computed by code"
+  },
+  {
+   "id": "C4",
+   "name": "magnitude_range",
+   "kind": "computed by code"
+  },
+  {
+   "id": "C5",
+   "name": "applicability",
+   "kind": "declared by the plant"
+  },
+  {
+   "id": "C6",
+   "name": "schedule_validation",
+   "kind": "computed by code"
+  },
+  {
+   "id": "C7",
+   "name": "source_reconciliation",
+   "kind": "organizational procedure"
+  }
+ ],
+ "checks_by_kind": {
+  "computed": [
+   "C1",
+   "C3",
+   "C4",
+   "C6"
+  ],
+  "declared": [
+   "C2",
+   "C5"
+  ],
+  "organizational": [
+   "C7"
+  ]
+ },
+ "run_all_checks": [
+  [
+   "C1",
+   "schema_and_values"
+  ],
+  [
+   "C2",
+   "setup_convention"
+  ],
+  [
+   "C3",
+   "family_membership"
+  ],
+  [
+   "C4",
+   "magnitude_range"
+  ],
+  [
+   "C5",
+   "applicability"
+  ],
+  [
+   "C6",
+   "schedule_validation"
+  ],
+  [
+   "C7",
+   "source_reconciliation"
+  ]
+ ],
+ "definitions": {
+  "models": "distinct checkpoints that serve the eight combinations",
+  "params": "summed numel of the tensors of the checkpoint state dict",
+  "config_files": "stored training configurations of these models",
+  "validation_rollouts": "one greedy rollout per validation instance of every combination a model serves; validation instances = vali_size of the configuration capped by the trainer"
+ }
+}

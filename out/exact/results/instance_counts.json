@@ -1,0 +1,1061 @@
+{
+ "generator": "scripts/p125_instance_counts.py",
+ "dry": false,
+ "setting": "environment exact, training seeds 301,302,303,304,305,306,307,308,309,310",
+ "branch": "ten",
+ "seeds": [
+  301,
+  302,
+  303,
+  304,
+  305,
+  306,
+  307,
+  308,
+  309,
+  310
+ ],
+ "seeds_reason": "the extension rule applies (W) and all 45 runs of the second five seeds are complete, so the ten seeds of p110",
+ "boot": 20000,
+ "alpha": 0.05,
+ "equal_threshold_h": 0.5,
+ "n_instances": 100,
+ "integer_makespans": true,
+ "streams": "parity stream default_rng(110) in the order ['N', 'L', 'S', 'W', 'LS', 'LW', 'SW', 'LSW']; pooled rows fresh default_rng(110); instance-level rows default_rng(110)",
+ "statistics": "p88.component on stats_family.hier_draws_stream (parity stream), p88.pooled_block (stats_family.hier_boot, seed_t), stats_family.instance_boot, stats_family.direction, p93_rule_comparison.shares; seeds and streams via p110.p88_setting; reproduction via p110.section_a and p110.reproduction",
+ "reproduction": {
+  "five": {
+   "record": "out/exact/results/family_inference.json",
+   "compared": 212,
+   "identical": true,
+   "largest_abs_difference": 0.0,
+   "example": {
+    "N": {
+     "mean": 0.24277100715011654,
+     "lo": -0.40123254006251907,
+     "hi": 0.8603644455933975,
+     "v1": "equivalent"
+    },
+    "L": {
+     "mean": 0.18409246314125927,
+     "lo": -0.10572816104403591,
+     "hi": 0.4891742813323138,
+     "v1": "equivalent"
+    },
+    "S": {
+     "mean": -0.3536017848509719,
+     "lo": -0.8024327450879083,
+     "hi": 0.06323516139133763,
+     "v1": "equivalent"
+    },
+    "W": {
+     "mean": 0.3953586320415558,
+     "lo": -0.5064277219878143,
+     "hi": 1.3125519882600407,
+     "v1": "inconclusive"
+    },
+    "LS": {
+     "mean": -0.07250916975018297,
+     "lo": -0.37906414897776447,
+     "hi": 0.2486906319345987,
+     "v1": "equivalent"
+    },
+    "LW": {
+     "mean": 0.45936975319476026,
+     "lo": 0.056320773201885735,
+     "hi": 0.8821347167357871,
+     "v1": "equivalent"
+    },
+    "SW": {
+     "mean": -0.47136449260942,
+     "lo": -0.8880616042710487,
+     "hi": -0.08114418228210588,
+     "v1": "equivalent"
+    },
+    "LSW": {
+     "mean": -0.14777816566495255,
+     "lo": -0.5325310129434012,
+     "hi": 0.21719051381658652,
+     "v1": "equivalent"
+    }
+   },
+   "pooled": {
+    "All": {
+     "mean": 0.029542280331520544,
+     "lo": -0.18489750425202406,
+     "hi": 0.24003099388015897
+    },
+    "Train": {
+     "mean": 0.14258015015442285,
+     "lo": -0.09886459355287645,
+     "hi": 0.3893652367038645
+    },
+    "Held": {
+     "mean": -0.3095713291371863,
+     "lo": -0.6024507115364555,
+     "hi": -0.005315432567194019
+    }
+   }
+  },
+  "ten": {
+   "record": "out/exact/results/seed_extension.json",
+   "compared": 42,
+   "identical": true
+  }
+ },
+ "rows": {
+  "N": {
+   "combinations": [
+    "N"
+   ],
+   "pairs": {
+    "shorter": 35.4,
+    "equal": 13.0,
+    "longer": 51.6,
+    "n": 1000,
+    "n_shorter": 354,
+    "n_equal": 130,
+    "n_longer": 516
+   },
+   "instances": {
+    "shorter": 25.0,
+    "equal": 15.0,
+    "longer": 60.0,
+    "n": 100,
+    "n_shorter": 25,
+    "n_equal": 15,
+    "n_longer": 60
+   },
+   "hours": {
+    "mean": 0.654,
+    "lo": -0.044024999999999974,
+    "hi": 1.322,
+    "sim_lo": -0.340515625,
+    "sim_hi": 1.5920062499999985,
+    "t_lo": 0.04238774120002209,
+    "t_hi": 1.2656122587999779,
+    "seed_means": [
+     0.49,
+     -0.77,
+     0.4,
+     -0.39,
+     1.43,
+     0.87,
+     1.49,
+     0.2,
+     0.83,
+     1.99
+    ],
+    "n": 100,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 5.8999999999999915,
+     "instance": 4,
+     "combination": "N",
+     "hours": 5.8999999999999915,
+     "pct": 4.750402576489526
+    },
+    "gain_hours": {
+     "value": -5.300000000000011,
+     "instance": 62,
+     "combination": "N",
+     "hours": -5.300000000000011,
+     "pct": -3.719298245614043
+    },
+    "loss_pct": {
+     "value": 4.750402576489526,
+     "instance": 4,
+     "combination": "N",
+     "hours": 5.8999999999999915,
+     "pct": 4.750402576489526
+    },
+    "gain_pct": {
+     "value": -3.719298245614043,
+     "instance": 62,
+     "combination": "N",
+     "hours": -5.300000000000011,
+     "pct": -3.719298245614043
+    }
+   },
+   "policy_mean_h": 129.841,
+   "specialist_mean_h": 129.187,
+   "pct_mean": 0.5607059678624862,
+   "hours_instance_level": {
+    "mean": 0.654,
+    "lo": 0.25297499999999834,
+    "hi": 1.0399999999999991,
+    "direction": "behind",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "L": {
+   "combinations": [
+    "L"
+   ],
+   "pairs": {
+    "shorter": 39.0,
+    "equal": 15.299999999999999,
+    "longer": 45.7,
+    "n": 1000,
+    "n_shorter": 390,
+    "n_equal": 153,
+    "n_longer": 457
+   },
+   "instances": {
+    "shorter": 28.999999999999996,
+    "equal": 30.0,
+    "longer": 41.0,
+    "n": 100,
+    "n_shorter": 29,
+    "n_equal": 30,
+    "n_longer": 41
+   },
+   "hours": {
+    "mean": 0.272,
+    "lo": -0.229,
+    "hi": 0.747,
+    "sim_lo": -0.472,
+    "sim_hi": 0.9550062499999985,
+    "t_lo": -0.09078932863438949,
+    "t_hi": 0.6347893286343894,
+    "seed_means": [
+     -0.1,
+     0.34,
+     0.18,
+     1.02,
+     0.29,
+     0.83,
+     -0.78,
+     0.02,
+     0.3,
+     0.62
+    ],
+    "n": 100,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 4.300000000000011,
+     "instance": 6,
+     "combination": "L",
+     "hours": 4.300000000000011,
+     "pct": 2.1772151898734236
+    },
+    "gain_hours": {
+     "value": -3.0999999999999943,
+     "instance": 97,
+     "combination": "L",
+     "hours": -3.0999999999999943,
+     "pct": -1.5624999999999971
+    },
+    "loss_pct": {
+     "value": 2.1772151898734236,
+     "instance": 6,
+     "combination": "L",
+     "hours": 4.300000000000011,
+     "pct": 2.1772151898734236
+    },
+    "gain_pct": {
+     "value": -1.5624999999999971,
+     "instance": 97,
+     "combination": "L",
+     "hours": -3.0999999999999943,
+     "pct": -1.5624999999999971
+    }
+   },
+   "policy_mean_h": 211.229,
+   "specialist_mean_h": 210.957,
+   "pct_mean": 0.1459733047218206,
+   "hours_instance_level": {
+    "mean": 0.27199999999999847,
+    "lo": -0.00800000000000155,
+    "hi": 0.5549999999999986,
+    "direction": "neither",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "S": {
+   "combinations": [
+    "S"
+   ],
+   "pairs": {
+    "shorter": 53.1,
+    "equal": 7.7,
+    "longer": 39.2,
+    "n": 1000,
+    "n_shorter": 531,
+    "n_equal": 77,
+    "n_longer": 392
+   },
+   "instances": {
+    "shorter": 57.99999999999999,
+    "equal": 17.0,
+    "longer": 25.0,
+    "n": 100,
+    "n_shorter": 58,
+    "n_equal": 17,
+    "n_longer": 25
+   },
+   "hours": {
+    "mean": -0.862,
+    "lo": -1.566,
+    "hi": -0.175,
+    "sim_lo": -1.847503125,
+    "sim_hi": 0.11300624999999855,
+    "t_lo": -1.4117016046403434,
+    "t_hi": -0.3122983953596562,
+    "seed_means": [
+     -0.58,
+     -0.03,
+     -0.23,
+     -2.22,
+     -0.72,
+     -0.73,
+     -0.92,
+     -0.36,
+     -2.25,
+     -0.58
+    ],
+    "n": 100,
+    "direction": "ahead"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 5.400000000000006,
+     "instance": 81,
+     "combination": "S",
+     "hours": 5.400000000000006,
+     "pct": 2.7635619242579352
+    },
+    "gain_hours": {
+     "value": -6.599999999999994,
+     "instance": 62,
+     "combination": "S",
+     "hours": -6.599999999999994,
+     "pct": -3.098591549295772
+    },
+    "loss_pct": {
+     "value": 2.7635619242579352,
+     "instance": 81,
+     "combination": "S",
+     "hours": 5.400000000000006,
+     "pct": 2.7635619242579352
+    },
+    "gain_pct": {
+     "value": -3.098591549295772,
+     "instance": 62,
+     "combination": "S",
+     "hours": -6.599999999999994,
+     "pct": -3.098591549295772
+    }
+   },
+   "policy_mean_h": 193.525,
+   "specialist_mean_h": 194.387,
+   "pct_mean": -0.3990077687499085,
+   "hours_instance_level": {
+    "mean": -0.8620000000000008,
+    "lo": -1.2950000000000008,
+    "hi": -0.4210000000000025,
+    "direction": "ahead",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "W": {
+   "combinations": [
+    "W"
+   ],
+   "pairs": {
+    "shorter": 38.7,
+    "equal": 11.799999999999999,
+    "longer": 49.5,
+    "n": 1000,
+    "n_shorter": 387,
+    "n_equal": 118,
+    "n_longer": 495
+   },
+   "instances": {
+    "shorter": 26.0,
+    "equal": 25.0,
+    "longer": 49.0,
+    "n": 100,
+    "n_shorter": 26,
+    "n_equal": 25,
+    "n_longer": 49
+   },
+   "hours": {
+    "mean": 0.359,
+    "lo": -0.555025,
+    "hi": 1.281,
+    "sim_lo": -0.948521875,
+    "sim_hi": 1.6490062499999985,
+    "t_lo": -0.4792095317186227,
+    "t_hi": 1.1972095317186227,
+    "seed_means": [
+     -1.53,
+     1.27,
+     1.45,
+     -0.66,
+     1.59,
+     0.43,
+     0.8,
+     -1.29,
+     0.07,
+     1.46
+    ],
+    "n": 100,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 6.100000000000023,
+     "instance": 13,
+     "combination": "W",
+     "hours": 6.100000000000023,
+     "pct": 4.03439153439155
+    },
+    "gain_hours": {
+     "value": -13.700000000000017,
+     "instance": 7,
+     "combination": "W",
+     "hours": -13.700000000000017,
+     "pct": -8.333333333333345
+    },
+    "loss_pct": {
+     "value": 4.03439153439155,
+     "instance": 13,
+     "combination": "W",
+     "hours": 6.100000000000023,
+     "pct": 4.03439153439155
+    },
+    "gain_pct": {
+     "value": -8.333333333333345,
+     "instance": 7,
+     "combination": "W",
+     "hours": -13.700000000000017,
+     "pct": -8.333333333333345
+    }
+   },
+   "policy_mean_h": 146.925,
+   "specialist_mean_h": 146.566,
+   "pct_mean": 0.34449995455970145,
+   "hours_instance_level": {
+    "mean": 0.3590000000000003,
+    "lo": -0.1810000000000011,
+    "hi": 0.8610000000000005,
+    "direction": "neither",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "LS": {
+   "combinations": [
+    "LS"
+   ],
+   "pairs": {
+    "shorter": 50.9,
+    "equal": 9.6,
+    "longer": 39.5,
+    "n": 1000,
+    "n_shorter": 509,
+    "n_equal": 96,
+    "n_longer": 395
+   },
+   "instances": {
+    "shorter": 52.0,
+    "equal": 22.0,
+    "longer": 26.0,
+    "n": 100,
+    "n_shorter": 52,
+    "n_equal": 22,
+    "n_longer": 26
+   },
+   "hours": {
+    "mean": -0.7,
+    "lo": -1.411,
+    "hi": -0.026,
+    "sim_lo": -1.7375031250000001,
+    "sim_hi": 0.2675031249999993,
+    "t_lo": -1.183182272369479,
+    "t_hi": -0.21681772763052087,
+    "seed_means": [
+     -1.02,
+     -0.73,
+     0.76,
+     -0.07,
+     -0.29,
+     -1.22,
+     -1.6,
+     -0.94,
+     -0.79,
+     -1.1
+    ],
+    "n": 100,
+    "direction": "ahead"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 6.300000000000011,
+     "instance": 57,
+     "combination": "LS",
+     "hours": 6.300000000000011,
+     "pct": 2.4258760107816757
+    },
+    "gain_hours": {
+     "value": -12.300000000000011,
+     "instance": 62,
+     "combination": "LS",
+     "hours": -12.300000000000011,
+     "pct": -4.33556573845612
+    },
+    "loss_pct": {
+     "value": 2.4258760107816757,
+     "instance": 57,
+     "combination": "LS",
+     "hours": 6.300000000000011,
+     "pct": 2.4258760107816757
+    },
+    "gain_pct": {
+     "value": -4.33556573845612,
+     "instance": 62,
+     "combination": "LS",
+     "hours": -12.300000000000011,
+     "pct": -4.33556573845612
+    }
+   },
+   "policy_mean_h": 269.221,
+   "specialist_mean_h": 269.921,
+   "pct_mean": -0.23318035709981558,
+   "hours_instance_level": {
+    "mean": -0.6999999999999988,
+    "lo": -1.1770000000000003,
+    "hi": -0.24199999999999838,
+    "direction": "ahead",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "LW": {
+   "combinations": [
+    "LW"
+   ],
+   "pairs": {
+    "shorter": 42.3,
+    "equal": 12.2,
+    "longer": 45.5,
+    "n": 1000,
+    "n_shorter": 423,
+    "n_equal": 122,
+    "n_longer": 455
+   },
+   "instances": {
+    "shorter": 28.000000000000004,
+    "equal": 25.0,
+    "longer": 47.0,
+    "n": 100,
+    "n_shorter": 28,
+    "n_equal": 25,
+    "n_longer": 47
+   },
+   "hours": {
+    "mean": 0.4,
+    "lo": -0.351025,
+    "hi": 1.174,
+    "sim_lo": -0.668,
+    "sim_hi": 1.5335093749999977,
+    "t_lo": -0.3166671936335782,
+    "t_hi": 1.1166671936335781,
+    "seed_means": [
+     0.45,
+     0.92,
+     0.11,
+     2.17,
+     1.23,
+     0.09,
+     0.16,
+     -1.22,
+     -0.91,
+     1.0
+    ],
+    "n": 100,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 6.400000000000006,
+     "instance": 95,
+     "combination": "LW",
+     "hours": 6.400000000000006,
+     "pct": 2.8193832599118966
+    },
+    "gain_hours": {
+     "value": -4.0,
+     "instance": 46,
+     "combination": "LW",
+     "hours": -4.0,
+     "pct": -1.8957345971563981
+    },
+    "loss_pct": {
+     "value": 2.8193832599118966,
+     "instance": 95,
+     "combination": "LW",
+     "hours": 6.400000000000006,
+     "pct": 2.8193832599118966
+    },
+    "gain_pct": {
+     "value": -1.8957345971563981,
+     "instance": 46,
+     "combination": "LW",
+     "hours": -4.0,
+     "pct": -1.8957345971563981
+    }
+   },
+   "policy_mean_h": 220.366,
+   "specialist_mean_h": 219.966,
+   "pct_mean": 0.20171584016557456,
+   "hours_instance_level": {
+    "mean": 0.3999999999999986,
+    "lo": 0.03197499999999573,
+    "hi": 0.782999999999999,
+    "direction": "behind",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "SW": {
+   "combinations": [
+    "SW"
+   ],
+   "pairs": {
+    "shorter": 50.4,
+    "equal": 7.3,
+    "longer": 42.3,
+    "n": 1000,
+    "n_shorter": 504,
+    "n_equal": 73,
+    "n_longer": 423
+   },
+   "instances": {
+    "shorter": 56.99999999999999,
+    "equal": 13.0,
+    "longer": 30.0,
+    "n": 100,
+    "n_shorter": 57,
+    "n_equal": 13,
+    "n_longer": 30
+   },
+   "hours": {
+    "mean": -0.798,
+    "lo": -1.581,
+    "hi": 0.002,
+    "sim_lo": -1.913509375,
+    "sim_hi": 0.3975031249999993,
+    "t_lo": -1.4019371228043345,
+    "t_hi": -0.1940628771956655,
+    "seed_means": [
+     -1.62,
+     -1.51,
+     -0.47,
+     -1.31,
+     -0.98,
+     -1.92,
+     -0.14,
+     -0.42,
+     -0.52,
+     0.91
+    ],
+    "n": 100,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 5.0,
+     "instance": 81,
+     "combination": "SW",
+     "hours": 5.0,
+     "pct": 2.2665457842248413
+    },
+    "gain_hours": {
+     "value": -10.200000000000017,
+     "instance": 58,
+     "combination": "SW",
+     "hours": -10.200000000000017,
+     "pct": -4.342273307790556
+    },
+    "loss_pct": {
+     "value": 2.2665457842248413,
+     "instance": 81,
+     "combination": "SW",
+     "hours": 5.0,
+     "pct": 2.2665457842248413
+    },
+    "gain_pct": {
+     "value": -4.342273307790556,
+     "instance": 58,
+     "combination": "SW",
+     "hours": -10.200000000000017,
+     "pct": -4.342273307790556
+    }
+   },
+   "policy_mean_h": 217.713,
+   "specialist_mean_h": 218.511,
+   "pct_mean": -0.30566216825525705,
+   "hours_instance_level": {
+    "mean": -0.7980000000000004,
+    "lo": -1.2790250000000014,
+    "hi": -0.32100000000000134,
+    "direction": "ahead",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "LSW": {
+   "combinations": [
+    "LSW"
+   ],
+   "pairs": {
+    "shorter": 50.5,
+    "equal": 7.000000000000001,
+    "longer": 42.5,
+    "n": 1000,
+    "n_shorter": 505,
+    "n_equal": 70,
+    "n_longer": 425
+   },
+   "instances": {
+    "shorter": 51.0,
+    "equal": 22.0,
+    "longer": 27.0,
+    "n": 100,
+    "n_shorter": 51,
+    "n_equal": 22,
+    "n_longer": 27
+   },
+   "hours": {
+    "mean": -0.83,
+    "lo": -1.698,
+    "hi": -0.007950000000004365,
+    "sim_lo": -2.06200625,
+    "sim_hi": 0.34,
+    "t_lo": -1.4263882278595679,
+    "t_hi": -0.23361177214043216,
+    "seed_means": [
+     0.03,
+     -0.5,
+     0.53,
+     -1.34,
+     -1.26,
+     -1.02,
+     0.06,
+     -1.98,
+     -1.03,
+     -1.79
+    ],
+    "n": 100,
+    "direction": "ahead"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 7.5,
+     "instance": 38,
+     "combination": "LSW",
+     "hours": 7.5,
+     "pct": 2.7372262773722627
+    },
+    "gain_hours": {
+     "value": -11.100000000000023,
+     "instance": 62,
+     "combination": "LSW",
+     "hours": -11.100000000000023,
+     "pct": -3.6537195523370714
+    },
+    "loss_pct": {
+     "value": 2.7372262773722627,
+     "instance": 38,
+     "combination": "LSW",
+     "hours": 7.5,
+     "pct": 2.7372262773722627
+    },
+    "gain_pct": {
+     "value": -3.6537195523370714,
+     "instance": 62,
+     "combination": "LSW",
+     "hours": -11.100000000000023,
+     "pct": -3.6537195523370714
+    }
+   },
+   "policy_mean_h": 286.385,
+   "specialist_mean_h": 287.215,
+   "pct_mean": -0.2560901661294166,
+   "hours_instance_level": {
+    "mean": -0.8299999999999994,
+    "lo": -1.375025000000003,
+    "hi": -0.2960000000000025,
+    "direction": "ahead",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "All": {
+   "combinations": [
+    "N",
+    "L",
+    "S",
+    "W",
+    "LS",
+    "LW",
+    "SW",
+    "LSW"
+   ],
+   "pairs": {
+    "shorter": 45.0375,
+    "equal": 10.487499999999999,
+    "longer": 44.474999999999994,
+    "n": 8000,
+    "n_shorter": 3603,
+    "n_equal": 839,
+    "n_longer": 3558
+   },
+   "instances": {
+    "shorter": 40.75,
+    "equal": 21.125,
+    "longer": 38.125,
+    "n": 800,
+    "n_shorter": 326,
+    "n_equal": 169,
+    "n_longer": 305
+   },
+   "hours": {
+    "mean": -0.188125,
+    "lo": -0.51888125,
+    "hi": 0.14388437499999918,
+    "t_lo": -0.4531271644375084,
+    "t_hi": 0.07687716443750842,
+    "seed_means": [
+     -0.485,
+     -0.12625,
+     0.34125,
+     -0.35,
+     0.16125,
+     -0.33375,
+     -0.11625,
+     -0.74875,
+     -0.5375,
+     0.31375
+    ],
+    "c": 8,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 7.5,
+     "instance": 38,
+     "combination": "LSW",
+     "hours": 7.5,
+     "pct": 2.7372262773722627
+    },
+    "gain_hours": {
+     "value": -13.700000000000017,
+     "instance": 7,
+     "combination": "W",
+     "hours": -13.700000000000017,
+     "pct": -8.333333333333345
+    },
+    "loss_pct": {
+     "value": 4.750402576489526,
+     "instance": 4,
+     "combination": "N",
+     "hours": 5.8999999999999915,
+     "pct": 4.750402576489526
+    },
+    "gain_pct": {
+     "value": -8.333333333333345,
+     "instance": 7,
+     "combination": "W",
+     "hours": -13.700000000000017,
+     "pct": -8.333333333333345
+    }
+   },
+   "policy_mean_h": 209.400625,
+   "specialist_mean_h": 209.58875,
+   "pct_mean": 0.007369325884398147,
+   "hours_instance_level": {
+    "mean": -0.18812500000000024,
+    "lo": -0.41312812499999985,
+    "hi": 0.02438124999999934,
+    "direction": "neither",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "Train": {
+   "combinations": [
+    "N",
+    "L",
+    "S",
+    "W",
+    "LS",
+    "LW"
+   ],
+   "pairs": {
+    "shorter": 43.233333333333334,
+    "equal": 11.600000000000001,
+    "longer": 45.166666666666664,
+    "n": 6000,
+    "n_shorter": 2594,
+    "n_equal": 696,
+    "n_longer": 2710
+   },
+   "instances": {
+    "shorter": 36.333333333333336,
+    "equal": 22.333333333333332,
+    "longer": 41.333333333333336,
+    "n": 600,
+    "n_shorter": 218,
+    "n_equal": 134,
+    "n_longer": 248
+   },
+   "hours": {
+    "mean": 0.0205,
+    "lo": -0.33400416666666666,
+    "hi": 0.37817083333333307,
+    "t_lo": -0.28332065789779076,
+    "t_hi": 0.3243206578977908,
+    "seed_means": [
+     -0.38166666666666665,
+     0.16666666666666666,
+     0.445,
+     -0.025,
+     0.5883333333333334,
+     0.045,
+     -0.14166666666666666,
+     -0.5983333333333334,
+     -0.4583333333333333,
+     0.565
+    ],
+    "c": 6,
+    "direction": "neither"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 6.400000000000006,
+     "instance": 95,
+     "combination": "LW",
+     "hours": 6.400000000000006,
+     "pct": 2.8193832599118966
+    },
+    "gain_hours": {
+     "value": -13.700000000000017,
+     "instance": 7,
+     "combination": "W",
+     "hours": -13.700000000000017,
+     "pct": -8.333333333333345
+    },
+    "loss_pct": {
+     "value": 4.750402576489526,
+     "instance": 4,
+     "combination": "N",
+     "hours": 5.8999999999999915,
+     "pct": 4.750402576489526
+    },
+    "gain_pct": {
+     "value": -8.333333333333345,
+     "instance": 7,
+     "combination": "W",
+     "hours": -13.700000000000017,
+     "pct": -8.333333333333345
+    }
+   },
+   "policy_mean_h": 195.1845,
+   "specialist_mean_h": 195.164,
+   "pct_mean": 0.10345115690997647,
+   "hours_instance_level": {
+    "mean": 0.02049999999999964,
+    "lo": -0.20533333333333276,
+    "hi": 0.23633749999999998,
+    "direction": "neither",
+    "scheme": "base instances, combinations kept together"
+   }
+  },
+  "Held": {
+   "combinations": [
+    "SW",
+    "LSW"
+   ],
+   "pairs": {
+    "shorter": 50.449999999999996,
+    "equal": 7.1499999999999995,
+    "longer": 42.4,
+    "n": 2000,
+    "n_shorter": 1009,
+    "n_equal": 143,
+    "n_longer": 848
+   },
+   "instances": {
+    "shorter": 54.0,
+    "equal": 17.5,
+    "longer": 28.499999999999996,
+    "n": 200,
+    "n_shorter": 108,
+    "n_equal": 35,
+    "n_longer": 57
+   },
+   "hours": {
+    "mean": -0.814,
+    "lo": -1.382,
+    "hi": -0.2495,
+    "t_lo": -1.1852312558451243,
+    "t_hi": -0.44276874415487577,
+    "seed_means": [
+     -0.795,
+     -1.005,
+     0.03,
+     -1.325,
+     -1.12,
+     -1.47,
+     -0.04,
+     -1.2,
+     -0.775,
+     -0.44
+    ],
+    "c": 2,
+    "direction": "ahead"
+   },
+   "extremes": {
+    "loss_hours": {
+     "value": 7.5,
+     "instance": 38,
+     "combination": "LSW",
+     "hours": 7.5,
+     "pct": 2.7372262773722627
+    },
+    "gain_hours": {
+     "value": -11.100000000000023,
+     "instance": 62,
+     "combination": "LSW",
+     "hours": -11.100000000000023,
+     "pct": -3.6537195523370714
+    },
+    "loss_pct": {
+     "value": 2.7372262773722627,
+     "instance": 38,
+     "combination": "LSW",
+     "hours": 7.5,
+     "pct": 2.7372262773722627
+    },
+    "gain_pct": {
+     "value": -4.342273307790556,
+     "instance": 58,
+     "combination": "SW",
+     "hours": -10.200000000000017,
+     "pct": -4.342273307790556
+    }
+   },
+   "policy_mean_h": 252.049,
+   "specialist_mean_h": 252.863,
+   "pct_mean": -0.2808761671923368,
+   "hours_instance_level": {
+    "mean": -0.814,
+    "lo": -1.1949999999999965,
+    "hi": -0.4415000000000002,
+    "direction": "ahead",
+    "scheme": "base instances, combinations kept together"
+   }
+  }
+ }
+}

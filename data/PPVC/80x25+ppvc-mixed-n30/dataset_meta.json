@@ -1,0 +1,11 @@
+{
+ "seed0": 110000,
+ "n_instances": 30,
+ "n_modules": 80,
+ "ppvc_mix": "mixed",
+ "ppvc_factory": "default",
+ "n_stations": 25,
+ "purpose": "80-module production-size test set, 30 instances (eval-only): instance_000 to instance_019 are byte-identical to the 20-instance set data/PPVC/80x25+ppvc-mixed; instance_020 to instance_029 continue its seed sequence (instance i uses seed seed0 + i)",
+ "extends": "data/PPVC/80x25+ppvc-mixed",
+ "generator": "scripts/p86_extend_scale_sets.py"
+}

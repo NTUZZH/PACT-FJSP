@@ -1,0 +1,342 @@
+% Selection of the solver configuration on the selection runs, written by scripts/p98_solver_selection.py from the records of the selection runs.
+\newcommand{\CselRowOneScoreAll}{4.10}  % row 1 (ref, partial warm start): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowOneScoreFifty}{4.86}  % row 1 (ref, partial warm start): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowOneScoreEighty}{3.35}  % row 1 (ref, partial warm start): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowOneScoreSetup}{2.94}  % row 1 (ref, partial warm start): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowOneScoreNoSetup}{7.58}  % row 1 (ref, partial warm start): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowOneScoreAllBold}{}  % row 1 (ref, partial warm start): bold marker of \CselRowOneScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowOneScoreFiftyBold}{}  % row 1 (ref, partial warm start): bold marker of \CselRowOneScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowOneScoreEightyBold}{}  % row 1 (ref, partial warm start): bold marker of \CselRowOneScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowOneScoreSetupBold}{}  % row 1 (ref, partial warm start): bold marker of \CselRowOneScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowOneScoreNoSetupBold}{}  % row 1 (ref, partial warm start): bold marker of \CselRowOneScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowOneShortest}{0}  % row 1 (ref, partial warm start): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowOneImproveAll}{0.41}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowOneImproveFifty}{0.68}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowOneImproveEighty}{0.15}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowOneImproveSetup}{0.13}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowOneImproveNoSetup}{1.27}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowOneImproveFiftyNoSetup}{2.15}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowOneImproveFiftySetup}{0.19}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowOneImproveEightyNoSetup}{0.39}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowOneImproveEightySetup}{0.07}  % row 1 (ref, partial warm start): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowOneShareMedianFiftyNoSetup}{1.00}  % row 1 (ref, partial warm start): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowOneShareMinFiftyNoSetup}{1.00}  % row 1 (ref, partial warm start): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowOneShareMaxFiftyNoSetup}{1.00}  % row 1 (ref, partial warm start): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowOneMemoryMedianFiftyNoSetup}{1.2}  % row 1 (ref, partial warm start): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowOneMemoryMaxFiftyNoSetup}{1.2}  % row 1 (ref, partial warm start): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowOneShareMedianFiftySetup}{0.91}  % row 1 (ref, partial warm start): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowOneShareMinFiftySetup}{0.91}  % row 1 (ref, partial warm start): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowOneShareMaxFiftySetup}{0.92}  % row 1 (ref, partial warm start): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowOneMemoryMedianFiftySetup}{17.8}  % row 1 (ref, partial warm start): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowOneMemoryMaxFiftySetup}{19.4}  % row 1 (ref, partial warm start): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowOneShareMedianEightyNoSetup}{1.00}  % row 1 (ref, partial warm start): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowOneShareMinEightyNoSetup}{1.00}  % row 1 (ref, partial warm start): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowOneShareMaxEightyNoSetup}{1.00}  % row 1 (ref, partial warm start): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowOneMemoryMedianEightyNoSetup}{1.7}  % row 1 (ref, partial warm start): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowOneMemoryMaxEightyNoSetup}{1.7}  % row 1 (ref, partial warm start): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowOneShareMedianEightySetup}{0.78}  % row 1 (ref, partial warm start): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowOneShareMinEightySetup}{0.78}  % row 1 (ref, partial warm start): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowOneShareMaxEightySetup}{0.79}  % row 1 (ref, partial warm start): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowOneMemoryMedianEightySetup}{34.8}  % row 1 (ref, partial warm start): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowOneMemoryMaxEightySetup}{37.1}  % row 1 (ref, partial warm start): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowTwoScoreAll}{4.15}  % row 2 (ref_fullhint, full model): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowTwoScoreFifty}{4.92}  % row 2 (ref_fullhint, full model): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowTwoScoreEighty}{3.38}  % row 2 (ref_fullhint, full model): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowTwoScoreSetup}{2.97}  % row 2 (ref_fullhint, full model): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowTwoScoreNoSetup}{7.70}  % row 2 (ref_fullhint, full model): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowTwoScoreAllBold}{}  % row 2 (ref_fullhint, full model): bold marker of \CselRowTwoScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowTwoScoreFiftyBold}{}  % row 2 (ref_fullhint, full model): bold marker of \CselRowTwoScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowTwoScoreEightyBold}{}  % row 2 (ref_fullhint, full model): bold marker of \CselRowTwoScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowTwoScoreSetupBold}{}  % row 2 (ref_fullhint, full model): bold marker of \CselRowTwoScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowTwoScoreNoSetupBold}{}  % row 2 (ref_fullhint, full model): bold marker of \CselRowTwoScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowTwoShortest}{0}  % row 2 (ref_fullhint, full model): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowTwoImproveAll}{0.37}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowTwoImproveFifty}{0.62}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowTwoImproveEighty}{0.11}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowTwoImproveSetup}{0.11}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowTwoImproveNoSetup}{1.16}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowTwoImproveFiftyNoSetup}{1.86}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowTwoImproveFiftySetup}{0.21}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowTwoImproveEightyNoSetup}{0.45}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowTwoImproveEightySetup}{0.00}  % row 2 (ref_fullhint, full model): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowTwoShareMedianFiftyNoSetup}{1.00}  % row 2 (ref_fullhint, full model): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowTwoShareMinFiftyNoSetup}{1.00}  % row 2 (ref_fullhint, full model): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowTwoShareMaxFiftyNoSetup}{1.00}  % row 2 (ref_fullhint, full model): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowTwoMemoryMedianFiftyNoSetup}{1.2}  % row 2 (ref_fullhint, full model): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowTwoMemoryMaxFiftyNoSetup}{1.2}  % row 2 (ref_fullhint, full model): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowTwoShareMedianFiftySetup}{0.91}  % row 2 (ref_fullhint, full model): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowTwoShareMinFiftySetup}{0.91}  % row 2 (ref_fullhint, full model): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowTwoShareMaxFiftySetup}{0.92}  % row 2 (ref_fullhint, full model): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowTwoMemoryMedianFiftySetup}{19.4}  % row 2 (ref_fullhint, full model): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowTwoMemoryMaxFiftySetup}{19.8}  % row 2 (ref_fullhint, full model): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowTwoShareMedianEightyNoSetup}{1.00}  % row 2 (ref_fullhint, full model): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowTwoShareMinEightyNoSetup}{1.00}  % row 2 (ref_fullhint, full model): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowTwoShareMaxEightyNoSetup}{1.00}  % row 2 (ref_fullhint, full model): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowTwoMemoryMedianEightyNoSetup}{1.7}  % row 2 (ref_fullhint, full model): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowTwoMemoryMaxEightyNoSetup}{1.7}  % row 2 (ref_fullhint, full model): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowTwoShareMedianEightySetup}{0.78}  % row 2 (ref_fullhint, full model): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowTwoShareMinEightySetup}{0.76}  % row 2 (ref_fullhint, full model): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowTwoShareMaxEightySetup}{0.78}  % row 2 (ref_fullhint, full model): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowTwoMemoryMedianEightySetup}{35.5}  % row 2 (ref_fullhint, full model): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowTwoMemoryMaxEightySetup}{36.1}  % row 2 (ref_fullhint, full model): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowThreeScoreAll}{4.15}  % row 3 (ref_presolve_light_fullhint, lighter presolve): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowThreeScoreFifty}{4.89}  % row 3 (ref_presolve_light_fullhint, lighter presolve): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowThreeScoreEighty}{3.42}  % row 3 (ref_presolve_light_fullhint, lighter presolve): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowThreeScoreSetup}{2.98}  % row 3 (ref_presolve_light_fullhint, lighter presolve): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowThreeScoreNoSetup}{7.67}  % row 3 (ref_presolve_light_fullhint, lighter presolve): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowThreeScoreAllBold}{}  % row 3 (ref_presolve_light_fullhint, lighter presolve): bold marker of \CselRowThreeScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowThreeScoreFiftyBold}{}  % row 3 (ref_presolve_light_fullhint, lighter presolve): bold marker of \CselRowThreeScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowThreeScoreEightyBold}{}  % row 3 (ref_presolve_light_fullhint, lighter presolve): bold marker of \CselRowThreeScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowThreeScoreSetupBold}{}  % row 3 (ref_presolve_light_fullhint, lighter presolve): bold marker of \CselRowThreeScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowThreeScoreNoSetupBold}{}  % row 3 (ref_presolve_light_fullhint, lighter presolve): bold marker of \CselRowThreeScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowThreeShortest}{0}  % row 3 (ref_presolve_light_fullhint, lighter presolve): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowThreeImproveAll}{0.37}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowThreeImproveFifty}{0.66}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowThreeImproveEighty}{0.08}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowThreeImproveSetup}{0.10}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowThreeImproveNoSetup}{1.18}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowThreeImproveFiftyNoSetup}{2.05}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowThreeImproveFiftySetup}{0.19}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowThreeImproveEightyNoSetup}{0.32}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowThreeImproveEightySetup}{0.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowThreeShareMedianFiftyNoSetup}{1.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowThreeShareMinFiftyNoSetup}{1.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowThreeShareMaxFiftyNoSetup}{1.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowThreeMemoryMedianFiftyNoSetup}{1.2}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowThreeMemoryMaxFiftyNoSetup}{1.2}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowThreeShareMedianFiftySetup}{0.96}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowThreeShareMinFiftySetup}{0.95}  % row 3 (ref_presolve_light_fullhint, lighter presolve): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowThreeShareMaxFiftySetup}{0.96}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowThreeMemoryMedianFiftySetup}{19.4}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowThreeMemoryMaxFiftySetup}{20.0}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowThreeShareMedianEightyNoSetup}{1.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowThreeShareMinEightyNoSetup}{1.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowThreeShareMaxEightyNoSetup}{1.00}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowThreeMemoryMedianEightyNoSetup}{1.6}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowThreeMemoryMaxEightyNoSetup}{1.7}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowThreeShareMedianEightySetup}{0.89}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowThreeShareMinEightySetup}{0.89}  % row 3 (ref_presolve_light_fullhint, lighter presolve): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowThreeShareMaxEightySetup}{0.90}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowThreeMemoryMedianEightySetup}{36.2}  % row 3 (ref_presolve_light_fullhint, lighter presolve): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowThreeMemoryMaxEightySetup}{38.2}  % row 3 (ref_presolve_light_fullhint, lighter presolve): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowFourScoreAll}{4.11}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFourScoreFifty}{4.93}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFourScoreEighty}{3.30}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFourScoreSetup}{2.88}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFourScoreNoSetup}{7.81}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFourScoreAllBold}{}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): bold marker of \CselRowFourScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFourScoreFiftyBold}{}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): bold marker of \CselRowFourScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFourScoreEightyBold}{}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): bold marker of \CselRowFourScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFourScoreSetupBold}{}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): bold marker of \CselRowFourScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFourScoreNoSetupBold}{}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): bold marker of \CselRowFourScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFourShortest}{0}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowFourImproveAll}{0.41}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowFourImproveFifty}{0.62}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowFourImproveEighty}{0.19}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowFourImproveSetup}{0.19}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowFourImproveNoSetup}{1.05}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowFourImproveFiftyNoSetup}{1.40}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowFourImproveFiftySetup}{0.37}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowFourImproveEightyNoSetup}{0.71}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowFourImproveEightySetup}{0.01}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowFourShareMedianFiftyNoSetup}{1.00}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowFourShareMinFiftyNoSetup}{1.00}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowFourShareMaxFiftyNoSetup}{1.00}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowFourMemoryMedianFiftyNoSetup}{1.2}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowFourMemoryMaxFiftyNoSetup}{1.2}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowFourShareMedianFiftySetup}{0.91}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowFourShareMinFiftySetup}{0.91}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowFourShareMaxFiftySetup}{0.92}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowFourMemoryMedianFiftySetup}{10.7}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowFourMemoryMaxFiftySetup}{11.2}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowFourShareMedianEightyNoSetup}{1.00}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowFourShareMinEightyNoSetup}{1.00}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowFourShareMaxEightyNoSetup}{1.00}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowFourMemoryMedianEightyNoSetup}{1.4}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowFourMemoryMaxEightyNoSetup}{1.4}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowFourShareMedianEightySetup}{0.79}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowFourShareMinEightySetup}{0.77}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowFourShareMaxEightySetup}{0.79}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowFourMemoryMedianEightySetup}{21.1}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowFourMemoryMaxEightySetup}{21.9}  % row 4 (ref_lnsonly_fullhint, solver's neighborhood search): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowFiveScoreAll}{3.93}  % row 5 (compact, compact formulation): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFiveScoreFifty}{4.62}  % row 5 (compact, compact formulation): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFiveScoreEighty}{3.24}  % row 5 (compact, compact formulation): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFiveScoreSetup}{2.94}  % row 5 (compact, compact formulation): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFiveScoreNoSetup}{6.93}  % row 5 (compact, compact formulation): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowFiveScoreAllBold}{}  % row 5 (compact, compact formulation): bold marker of \CselRowFiveScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFiveScoreFiftyBold}{}  % row 5 (compact, compact formulation): bold marker of \CselRowFiveScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFiveScoreEightyBold}{}  % row 5 (compact, compact formulation): bold marker of \CselRowFiveScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFiveScoreSetupBold}{}  % row 5 (compact, compact formulation): bold marker of \CselRowFiveScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFiveScoreNoSetupBold}{}  % row 5 (compact, compact formulation): bold marker of \CselRowFiveScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowFiveShortest}{0}  % row 5 (compact, compact formulation): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowFiveImproveAll}{0.57}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowFiveImproveFifty}{0.89}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowFiveImproveEighty}{0.24}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowFiveImproveSetup}{0.14}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowFiveImproveNoSetup}{1.86}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowFiveImproveFiftyNoSetup}{2.88}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowFiveImproveFiftySetup}{0.23}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowFiveImproveEightyNoSetup}{0.84}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowFiveImproveEightySetup}{0.04}  % row 5 (compact, compact formulation): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowFiveShareMedianFiftyNoSetup}{1.00}  % row 5 (compact, compact formulation): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowFiveShareMinFiftyNoSetup}{1.00}  % row 5 (compact, compact formulation): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowFiveShareMaxFiftyNoSetup}{1.00}  % row 5 (compact, compact formulation): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowFiveMemoryMedianFiftyNoSetup}{0.8}  % row 5 (compact, compact formulation): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowFiveMemoryMaxFiftyNoSetup}{0.8}  % row 5 (compact, compact formulation): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowFiveShareMedianFiftySetup}{0.94}  % row 5 (compact, compact formulation): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowFiveShareMinFiftySetup}{0.94}  % row 5 (compact, compact formulation): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowFiveShareMaxFiftySetup}{0.95}  % row 5 (compact, compact formulation): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowFiveMemoryMedianFiftySetup}{13.6}  % row 5 (compact, compact formulation): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowFiveMemoryMaxFiftySetup}{13.8}  % row 5 (compact, compact formulation): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowFiveShareMedianEightyNoSetup}{0.99}  % row 5 (compact, compact formulation): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowFiveShareMinEightyNoSetup}{0.99}  % row 5 (compact, compact formulation): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowFiveShareMaxEightyNoSetup}{1.00}  % row 5 (compact, compact formulation): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowFiveMemoryMedianEightyNoSetup}{1.1}  % row 5 (compact, compact formulation): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowFiveMemoryMaxEightyNoSetup}{1.1}  % row 5 (compact, compact formulation): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowFiveShareMedianEightySetup}{0.86}  % row 5 (compact, compact formulation): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowFiveShareMinEightySetup}{0.85}  % row 5 (compact, compact formulation): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowFiveShareMaxEightySetup}{0.86}  % row 5 (compact, compact formulation): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowFiveMemoryMedianEightySetup}{30.3}  % row 5 (compact, compact formulation): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowFiveMemoryMaxEightySetup}{30.7}  % row 5 (compact, compact formulation): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowSixScoreAll}{3.97}  % row 6 (fixassign, fixed machine assignment): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSixScoreFifty}{4.56}  % row 6 (fixassign, fixed machine assignment): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSixScoreEighty}{3.37}  % row 6 (fixassign, fixed machine assignment): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSixScoreSetup}{2.83}  % row 6 (fixassign, fixed machine assignment): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSixScoreNoSetup}{7.36}  % row 6 (fixassign, fixed machine assignment): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSixScoreAllBold}{}  % row 6 (fixassign, fixed machine assignment): bold marker of \CselRowSixScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSixScoreFiftyBold}{}  % row 6 (fixassign, fixed machine assignment): bold marker of \CselRowSixScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSixScoreEightyBold}{}  % row 6 (fixassign, fixed machine assignment): bold marker of \CselRowSixScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSixScoreSetupBold}{}  % row 6 (fixassign, fixed machine assignment): bold marker of \CselRowSixScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSixScoreNoSetupBold}{}  % row 6 (fixassign, fixed machine assignment): bold marker of \CselRowSixScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSixShortest}{0}  % row 6 (fixassign, fixed machine assignment): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowSixImproveAll}{0.54}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowSixImproveFifty}{0.96}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowSixImproveEighty}{0.12}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowSixImproveSetup}{0.24}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowSixImproveNoSetup}{1.47}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowSixImproveFiftyNoSetup}{2.61}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowSixImproveFiftySetup}{0.41}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowSixImproveEightyNoSetup}{0.32}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowSixImproveEightySetup}{0.06}  % row 6 (fixassign, fixed machine assignment): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowSixShareMedianFiftyNoSetup}{1.00}  % row 6 (fixassign, fixed machine assignment): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowSixShareMinFiftyNoSetup}{1.00}  % row 6 (fixassign, fixed machine assignment): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowSixShareMaxFiftyNoSetup}{1.00}  % row 6 (fixassign, fixed machine assignment): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowSixMemoryMedianFiftyNoSetup}{0.6}  % row 6 (fixassign, fixed machine assignment): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowSixMemoryMaxFiftyNoSetup}{0.7}  % row 6 (fixassign, fixed machine assignment): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowSixShareMedianFiftySetup}{0.98}  % row 6 (fixassign, fixed machine assignment): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowSixShareMinFiftySetup}{0.98}  % row 6 (fixassign, fixed machine assignment): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowSixShareMaxFiftySetup}{0.98}  % row 6 (fixassign, fixed machine assignment): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowSixMemoryMedianFiftySetup}{2.4}  % row 6 (fixassign, fixed machine assignment): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowSixMemoryMaxFiftySetup}{2.5}  % row 6 (fixassign, fixed machine assignment): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowSixShareMedianEightyNoSetup}{1.00}  % row 6 (fixassign, fixed machine assignment): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowSixShareMinEightyNoSetup}{1.00}  % row 6 (fixassign, fixed machine assignment): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowSixShareMaxEightyNoSetup}{1.00}  % row 6 (fixassign, fixed machine assignment): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowSixMemoryMedianEightyNoSetup}{0.6}  % row 6 (fixassign, fixed machine assignment): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowSixMemoryMaxEightyNoSetup}{0.6}  % row 6 (fixassign, fixed machine assignment): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowSixShareMedianEightySetup}{0.97}  % row 6 (fixassign, fixed machine assignment): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowSixShareMinEightySetup}{0.97}  % row 6 (fixassign, fixed machine assignment): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowSixShareMaxEightySetup}{0.97}  % row 6 (fixassign, fixed machine assignment): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowSixMemoryMedianEightySetup}{4.8}  % row 6 (fixassign, fixed machine assignment): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowSixMemoryMaxEightySetup}{5.2}  % row 6 (fixassign, fixed machine assignment): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowSevenScoreAll}{3.88}  % row 7 (radius, restricted arcs): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSevenScoreFifty}{4.64}  % row 7 (radius, restricted arcs): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSevenScoreEighty}{3.12}  % row 7 (radius, restricted arcs): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSevenScoreSetup}{2.81}  % row 7 (radius, restricted arcs): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSevenScoreNoSetup}{7.07}  % row 7 (radius, restricted arcs): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowSevenScoreAllBold}{}  % row 7 (radius, restricted arcs): bold marker of \CselRowSevenScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSevenScoreFiftyBold}{}  % row 7 (radius, restricted arcs): bold marker of \CselRowSevenScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSevenScoreEightyBold}{}  % row 7 (radius, restricted arcs): bold marker of \CselRowSevenScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSevenScoreSetupBold}{}  % row 7 (radius, restricted arcs): bold marker of \CselRowSevenScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSevenScoreNoSetupBold}{}  % row 7 (radius, restricted arcs): bold marker of \CselRowSevenScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowSevenShortest}{0}  % row 7 (radius, restricted arcs): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowSevenImproveAll}{0.63}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowSevenImproveFifty}{0.89}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowSevenImproveEighty}{0.37}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowSevenImproveSetup}{0.26}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowSevenImproveNoSetup}{1.73}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowSevenImproveFiftyNoSetup}{2.50}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowSevenImproveFiftySetup}{0.35}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowSevenImproveEightyNoSetup}{0.97}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowSevenImproveEightySetup}{0.16}  % row 7 (radius, restricted arcs): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowSevenShareMedianFiftyNoSetup}{1.00}  % row 7 (radius, restricted arcs): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowSevenShareMinFiftyNoSetup}{1.00}  % row 7 (radius, restricted arcs): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowSevenShareMaxFiftyNoSetup}{1.00}  % row 7 (radius, restricted arcs): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowSevenMemoryMedianFiftyNoSetup}{0.8}  % row 7 (radius, restricted arcs): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowSevenMemoryMaxFiftyNoSetup}{0.8}  % row 7 (radius, restricted arcs): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowSevenShareMedianFiftySetup}{0.96}  % row 7 (radius, restricted arcs): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowSevenShareMinFiftySetup}{0.94}  % row 7 (radius, restricted arcs): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowSevenShareMaxFiftySetup}{0.98}  % row 7 (radius, restricted arcs): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowSevenMemoryMedianFiftySetup}{3.3}  % row 7 (radius, restricted arcs): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowSevenMemoryMaxFiftySetup}{3.6}  % row 7 (radius, restricted arcs): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowSevenShareMedianEightyNoSetup}{0.99}  % row 7 (radius, restricted arcs): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowSevenShareMinEightyNoSetup}{0.99}  % row 7 (radius, restricted arcs): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowSevenShareMaxEightyNoSetup}{0.99}  % row 7 (radius, restricted arcs): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowSevenMemoryMedianEightyNoSetup}{1.1}  % row 7 (radius, restricted arcs): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowSevenMemoryMaxEightyNoSetup}{1.2}  % row 7 (radius, restricted arcs): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowSevenShareMedianEightySetup}{0.94}  % row 7 (radius, restricted arcs): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowSevenShareMinEightySetup}{0.91}  % row 7 (radius, restricted arcs): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowSevenShareMaxEightySetup}{0.96}  % row 7 (radius, restricted arcs): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowSevenMemoryMedianEightySetup}{4.6}  % row 7 (radius, restricted arcs): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowSevenMemoryMaxEightySetup}{5.0}  % row 7 (radius, restricted arcs): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowEightScoreAll}{0.00}  % row 8 (lns, neighborhood search over sub-models): score of the selection rule over all runs (24 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowEightScoreFifty}{0.00}  % row 8 (lns, neighborhood search over sub-models): score of the selection rule over 50 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowEightScoreEighty}{0.00}  % row 8 (lns, neighborhood search over sub-models): score of the selection rule over 80 modules (12 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowEightScoreSetup}{0.00}  % row 8 (lns, neighborhood search over sub-models): score of the selection rule over runs with setups (18 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowEightScoreNoSetup}{0.00}  % row 8 (lns, neighborhood search over sub-models): score of the selection rule over runs without setups (6 runs), mean percent above the shortest reported makespan of the eight
+\newcommand{\CselRowEightScoreAllBold}{\bfseries}  % row 8 (lns, neighborhood search over sub-models): bold marker of \CselRowEightScoreAll, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowEightScoreFiftyBold}{\bfseries}  % row 8 (lns, neighborhood search over sub-models): bold marker of \CselRowEightScoreFifty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowEightScoreEightyBold}{\bfseries}  % row 8 (lns, neighborhood search over sub-models): bold marker of \CselRowEightScoreEighty, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowEightScoreSetupBold}{\bfseries}  % row 8 (lns, neighborhood search over sub-models): bold marker of \CselRowEightScoreSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowEightScoreNoSetupBold}{\bfseries}  % row 8 (lns, neighborhood search over sub-models): bold marker of \CselRowEightScoreNoSetup, \bfseries when its printed value is the lowest of the column
+\newcommand{\CselRowEightShortest}{24}  % row 8 (lns, neighborhood search over sub-models): runs of 24 with the shortest reported makespan of the eight (ties count for each)
+\newcommand{\CselRowEightImproveAll}{4.24}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, all runs (24 runs)
+\newcommand{\CselRowEightImproveFifty}{5.21}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, 50 modules (12 runs)
+\newcommand{\CselRowEightImproveEighty}{3.28}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, 80 modules (12 runs)
+\newcommand{\CselRowEightImproveSetup}{2.93}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, runs with setups (18 runs)
+\newcommand{\CselRowEightImproveNoSetup}{8.20}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, runs without setups (6 runs)
+\newcommand{\CselRowEightImproveFiftyNoSetup}{9.75}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, 50 modules, without setups (3 runs)
+\newcommand{\CselRowEightImproveFiftySetup}{3.70}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, 50 modules, with setups (9 runs)
+\newcommand{\CselRowEightImproveEightyNoSetup}{6.65}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, 80 modules, without setups (3 runs)
+\newcommand{\CselRowEightImproveEightySetup}{2.15}  % row 8 (lns, neighborhood search over sub-models): mean improvement over the warm start in percent, 80 modules, with setups (9 runs)
+\newcommand{\CselRowEightShareMedianFiftyNoSetup}{0.94}  % row 8 (lns, neighborhood search over sub-models): median CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowEightShareMinFiftyNoSetup}{0.93}  % row 8 (lns, neighborhood search over sub-models): minimum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowEightShareMaxFiftyNoSetup}{0.95}  % row 8 (lns, neighborhood search over sub-models): maximum CPU share over 3 runs, 50 modules, without setups
+\newcommand{\CselRowEightMemoryMedianFiftyNoSetup}{1.0}  % row 8 (lns, neighborhood search over sub-models): median peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowEightMemoryMaxFiftyNoSetup}{1.1}  % row 8 (lns, neighborhood search over sub-models): maximum peak memory in GB over 3 of 3 runs, 50 modules, without setups
+\newcommand{\CselRowEightShareMedianFiftySetup}{0.67}  % row 8 (lns, neighborhood search over sub-models): median CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowEightShareMinFiftySetup}{0.60}  % row 8 (lns, neighborhood search over sub-models): minimum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowEightShareMaxFiftySetup}{0.73}  % row 8 (lns, neighborhood search over sub-models): maximum CPU share over 9 runs, 50 modules, with setups
+\newcommand{\CselRowEightMemoryMedianFiftySetup}{1.7}  % row 8 (lns, neighborhood search over sub-models): median peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowEightMemoryMaxFiftySetup}{2.8}  % row 8 (lns, neighborhood search over sub-models): maximum peak memory in GB over 9 of 9 runs, 50 modules, with setups
+\newcommand{\CselRowEightShareMedianEightyNoSetup}{0.89}  % row 8 (lns, neighborhood search over sub-models): median CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowEightShareMinEightyNoSetup}{0.87}  % row 8 (lns, neighborhood search over sub-models): minimum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowEightShareMaxEightyNoSetup}{0.89}  % row 8 (lns, neighborhood search over sub-models): maximum CPU share over 3 runs, 80 modules, without setups
+\newcommand{\CselRowEightMemoryMedianEightyNoSetup}{1.1}  % row 8 (lns, neighborhood search over sub-models): median peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowEightMemoryMaxEightyNoSetup}{1.1}  % row 8 (lns, neighborhood search over sub-models): maximum peak memory in GB over 3 of 3 runs, 80 modules, without setups
+\newcommand{\CselRowEightShareMedianEightySetup}{0.58}  % row 8 (lns, neighborhood search over sub-models): median CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowEightShareMinEightySetup}{0.52}  % row 8 (lns, neighborhood search over sub-models): minimum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowEightShareMaxEightySetup}{0.62}  % row 8 (lns, neighborhood search over sub-models): maximum CPU share over 9 runs, 80 modules, with setups
+\newcommand{\CselRowEightMemoryMedianEightySetup}{2.1}  % row 8 (lns, neighborhood search over sub-models): median peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselRowEightMemoryMaxEightySetup}{3.0}  % row 8 (lns, neighborhood search over sub-models): maximum peak memory in GB over 9 of 9 runs, 80 modules, with setups
+\newcommand{\CselModelVarsFiftyNoSetup}{19{,}225}  % full model (row 2), 50 modules, without setups: median variables of the initial model over 3 of 3 runs
+\newcommand{\CselModelVarsMissingFiftyNoSetup}{0}  % full model (row 2), 50 modules, without setups: runs whose record states no variable count of the initial model
+\newcommand{\CselModelBuildFiftyNoSetup}{0.26}  % full model (row 2), 50 modules, without setups: median seconds to build the model over 3 of 3 runs
+\newcommand{\CselModelVarsFiftySetup}{561{,}446}  % full model (row 2), 50 modules, with setups: median variables of the initial model over 9 of 9 runs
+\newcommand{\CselModelVarsMissingFiftySetup}{0}  % full model (row 2), 50 modules, with setups: runs whose record states no variable count of the initial model
+\newcommand{\CselModelBuildFiftySetup}{11.99}  % full model (row 2), 50 modules, with setups: median seconds to build the model over 9 of 9 runs
+\newcommand{\CselModelVarsEightyNoSetup}{30{,}673}  % full model (row 2), 80 modules, without setups: median variables of the initial model over 3 of 3 runs
+\newcommand{\CselModelVarsMissingEightyNoSetup}{0}  % full model (row 2), 80 modules, without setups: runs whose record states no variable count of the initial model
+\newcommand{\CselModelBuildEightyNoSetup}{0.43}  % full model (row 2), 80 modules, without setups: median seconds to build the model over 3 of 3 runs
+\newcommand{\CselModelVarsEightySetup}{1{,}414{,}166}  % full model (row 2), 80 modules, with setups: median variables of the initial model over 9 of 9 runs
+\newcommand{\CselModelVarsMissingEightySetup}{0}  % full model (row 2), 80 modules, with setups: runs whose record states no variable count of the initial model
+\newcommand{\CselModelBuildEightySetup}{33.23}  % full model (row 2), 80 modules, with setups: median seconds to build the model over 9 of 9 runs
+\newcommand{\CselSelectedRow}{8}  % row of Table tab:sn-cpsat selected by the rule (lns)
+\newcommand{\CselSelectedConfiguration}{neighborhood search over sub-models}  % plain words of the selected configuration
+\newcommand{\CselRuns}{24}  % selection runs per candidate configuration
+\newcommand{\CselInstances}{3}  % instances per size and combination in the selection runs
+\newcommand{\CselBudgetMin}{10}  % budget of a selection run, minutes
+\newcommand{\CselTieMargin}{0.1}  % margin in percentage points within which the earlier row wins
+\newcommand{\CselScoreLowest}{0.00}  % lowest score of the selection rule over all runs
+\newcommand{\CselScoreOthersMin}{3.88}  % lowest score over all runs among the seven other candidates
+\newcommand{\CselScoreOthersMax}{4.15}  % highest score over all runs among the seven other candidates

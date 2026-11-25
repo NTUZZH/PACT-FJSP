@@ -1,0 +1,19 @@
+{
+ "base_dir": "data/PPVC/50x25+ppvc-mixed-n30",
+ "n_instances": 30,
+ "regimes": [
+  "N",
+  "L",
+  "S",
+  "W",
+  "LS",
+  "LW",
+  "SW",
+  "LSW"
+ ],
+ "desc_seed0": 20260706,
+ "convention": "attached setups; contiguous setup+proc block avoids outages; idle-row cold-start setup; integer hours",
+ "extends": "data/FAMILY/50x25",
+ "purpose": "instance_000 to instance_019 are byte copies of data/FAMILY/50x25, so their base_instance field names data/PPVC/50x25+ppvc-mixed, whose files are byte-identical to the same instances of base_dir; instance_020 to instance_029 use descriptor seed desc_seed0 + index and name base_dir",
+ "generator": "scripts/p86_extend_scale_sets.py"
+}

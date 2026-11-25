@@ -1,0 +1,401 @@
+{
+ "generator": "scripts/p111_model_facts.py",
+ "setting": "environment exact, training seeds 301,302,303,304,305 (5 runs per arm)",
+ "facts": {
+  "policy": {
+   "value": 32786,
+   "runs": {
+    "train_log/FAMILY_xmask-v1-s301.log": 32786,
+    "train_log/FAMILY_xmask-ctl-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-N-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-L-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-S-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-W-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-LS-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-LW-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-SW-s301.log": 32786,
+    "train_log/FAMILY_xmask-solo-LSW-s301.log": 32786,
+    "train_log/FAMILY_xmask-v1-s302.log": 32786,
+    "train_log/FAMILY_xmask-ctl-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-N-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-L-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-S-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-W-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-LS-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-LW-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-SW-s302.log": 32786,
+    "train_log/FAMILY_xmask-solo-LSW-s302.log": 32786,
+    "train_log/FAMILY_xmask-v1-s303.log": 32786,
+    "train_log/FAMILY_xmask-ctl-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-N-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-L-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-S-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-W-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-LS-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-LW-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-SW-s303.log": 32786,
+    "train_log/FAMILY_xmask-solo-LSW-s303.log": 32786,
+    "train_log/FAMILY_xmask-v1-s304.log": 32786,
+    "train_log/FAMILY_xmask-ctl-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-N-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-L-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-S-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-W-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-LS-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-LW-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-SW-s304.log": 32786,
+    "train_log/FAMILY_xmask-solo-LSW-s304.log": 32786,
+    "train_log/FAMILY_xmask-v1-s305.log": 32786,
+    "train_log/FAMILY_xmask-ctl-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-N-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-L-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-S-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-W-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-LS-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-LW-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-SW-s305.log": 32786,
+    "train_log/FAMILY_xmask-solo-LSW-s305.log": 32786
+   },
+   "missing": []
+  },
+  "descriptor": {
+   "value": null,
+   "runs": {},
+   "missing": [
+    "no training log train_log/FAMILY_xmask-film-s301.log",
+    "no training log train_log/FAMILY_xmask-film-s302.log",
+    "no training log train_log/FAMILY_xmask-film-s303.log"
+   ]
+  },
+  "hgnn": {
+   "value": null,
+   "runs": {},
+   "missing": [
+    "no training log matching train_log/FAMILY_hgnn-*-xmask*.log"
+   ]
+  },
+  "checkpoint": {
+   "seed": 304,
+   "path": "trained_network/FAMILY/10x25+family+xmask-v1-s304.pth",
+   "bytes": 155957,
+   "kib": 152.3017578125
+  },
+  "op_duration": {
+   "value": 4.0,
+   "pairs": 68467,
+   "instances": 100,
+   "base_dir": "data/PPVC/10x25+ppvc-mixed"
+  }
+ },
+ "constants": [
+  {
+   "macro": "JointUpdates",
+   "meaning": "updates of the policy",
+   "value": 2000,
+   "sources": [
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s305.json"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros.tex",
+     "text": "2,000",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "ExpRelUpdates",
+   "meaning": "updates of the policy",
+   "value": 2000,
+   "sources": [
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s305.json"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_eqexp.tex",
+     "text": "2,000",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "SpecUpdates",
+   "meaning": "updates of a specialist",
+   "value": 1000,
+   "sources": [
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s305.json"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros.tex",
+     "text": "1,000",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "ExpSpecUpdates",
+   "meaning": "updates of a specialist",
+   "value": 1000,
+   "sources": [
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s305.json"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_eqexp.tex",
+     "text": "1,000",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "ExpEqUpdates",
+   "meaning": "updates of the longer-trained policy",
+   "value": 6000,
+   "sources": [
+    "train_log/FAMILY/config_10x25+family+xmask-eq-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-eq-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-eq-s303.json"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_eqexp.tex",
+     "text": "6,000",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "ExpEnvs",
+   "meaning": "parallel training episodes per update",
+   "value": 20,
+   "sources": [
+    "train_log/FAMILY/config_10x25+family+xmask-ctl-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-ctl-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-ctl-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-ctl-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-ctl-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-L-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LS-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LSW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-LW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-N-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-S-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-SW-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-solo-W-s305.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s301.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s302.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s303.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s304.json",
+    "train_log/FAMILY/config_10x25+family+xmask-v1-s305.json"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_eqexp.tex",
+     "text": "20",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "LoadStations",
+   "meaning": "stations per shop",
+   "value": 25,
+   "sources": [
+    "data/FAMILY/10x25",
+    "data/FAMILY/20x25",
+    "data/FAMILY/30x25"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_load.tex",
+     "text": "25",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "LoadTenJobs",
+   "meaning": "modules at the training size",
+   "value": 10,
+   "sources": [
+    "data/FAMILY/10x25: 100 base instances"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_load.tex",
+     "text": "10",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "LoadTwentyJobs",
+   "meaning": "modules at the transfer size 20x25",
+   "value": 20,
+   "sources": [
+    "data/FAMILY/20x25: 50 base instances"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_load.tex",
+     "text": "20",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "LoadThirtyJobs",
+   "meaning": "modules at the transfer size 30x25",
+   "value": 30,
+   "sources": [
+    "data/FAMILY/30x25: 20 base instances"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_load.tex",
+     "text": "30",
+     "equal": true
+    }
+   ]
+  },
+  {
+   "macro": "CpuShareMin",
+   "meaning": "minimum CPU share of a valid timed record",
+   "value": 0.9,
+   "sources": [
+    "scripts/timing_validity.py SHARE_MIN"
+   ],
+   "definitions": [
+    {
+     "file": "manuscript/macros_timing.tex",
+     "text": "0.9",
+     "equal": true
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "left_out": [
+  "\\DescriptorParams (parameters of the variant with descriptor input): no training log train_log/FAMILY_xmask-film-s301.log",
+  "\\HgnnNetworkParams (parameters of the HGNN scheduler trained under the non-delay mask): no training log matching train_log/FAMILY_hgnn-*-xmask*.log"
+ ]
+}
